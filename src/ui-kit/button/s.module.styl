@@ -1,0 +1,129 @@
+.button
+  color var(--contrast-color)
+  height 34px
+  border none
+  outline none
+  box-shadow none
+  display flex
+  align-items center
+  background linear-gradient(to top right, var(--brand-g1-color), var(--brand-g2-color))
+  padding 2px 12px
+  border-radius 22px
+  will-change transform, background-color
+  transition background-color 0.1s ease, opacity 0.1s ease
+
+  &:focus, &:active
+    outline none
+    box-shadow none
+    border none
+    border-radius 22px
+
+  &:active
+    opacity 0.7
+
+  &.onlyIcon
+    width 28px
+    height 28px
+    padding 4px
+    border-radius 50%
+    justify-content center
+
+    svg
+      width 18px
+      height 18px
+
+  &.customIcon
+    svg
+      width 16px
+      height 16px
+
+    .label
+      padding 0 5px 0 3px
+
+.small
+  height 24px
+
+  &.onlyIcon
+    width 24px
+    height 24px
+    padding 3px
+
+    svg
+      width 16px
+      height 16px
+
+.large
+  height 44px
+
+  &.onlyIcon
+    width 44px
+    height 44px
+    padding 6px
+
+    svg
+      width 24px
+      height 24px
+
+.selected
+  filter brightness(0.65)
+
+  p
+    filter brightness(0.4)
+
+.active
+  color var(--contrast-color)
+
+.disabled
+  color var(--disabled-color)
+
+.gost
+  background transparent
+
+.label
+  font-size 12px
+  text-align center
+  padding 0 5px
+
+.contentWrapper
+  display flex
+  align-items center
+
+  &.leftWrapper
+    flex-direction row
+
+  &.rightWrapper
+    flex-direction row-reverse
+
+  & .label
+    position absolute
+    right 12px
+    white-space nowrap
+    opacity 0
+
+  & .activeLabel
+    opacity 1
+
+  & .hiddenLabel
+    opacity 0
+    font-size 12px
+    text-align center
+    padding 0 5px
+
+.hidden
+  opacity 0
+
+.link
+  background linear-gradient(to top right, var(--brand-g1-color), var(--brand-g2-color))
+  -webkit-background-clip text
+  background-clip text
+  color transparent
+  padding 0
+  border-radius 0
+  height auto
+  font-size 12px
+  text-align center
+  padding 0 5px
+  transition filter 0.2s ease
+
+  &:hover
+    filter brightness(1.2)

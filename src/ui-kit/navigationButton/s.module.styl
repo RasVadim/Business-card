@@ -1,0 +1,21 @@
+@import '../../styles/vars.styl'
+
+.wrap
+  width 100%
+  display flex
+  justify-content center
+
+  @media (min-width $medium-width)
+    justify-content start
+
+  button
+    border none
+
+.left
+  justify-content start
+
+.right
+  justify-content end
+
+  @media (min-width $medium-width)
+    justify-content start

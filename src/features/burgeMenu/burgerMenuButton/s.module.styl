@@ -1,0 +1,123 @@
+@import '../../../styles/vars.styl'
+
+.wrapper
+  width 30px
+  height 30px
+  padding 6px 0
+
+  nav
+    width 100%
+    height 100%
+    background-color var(--background-front-color)
+    display flex
+    justify-content flex-start
+
+.menuButton
+  height 100%
+  width 30px
+  display flex
+  flex-direction column
+  align-items flex-start
+  justify-content space-between
+  cursor pointer
+  padding-left 8px
+  z-index 100
+  position relative
+
+.buttonStick
+  width 25px
+  height 1px
+  background linear-gradient(to top right, var(--brand-g1-color), var(--brand-g2-color))
+  border-radius 20%
+  transition cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s
+
+  &.back
+    position absolute
+    left 4px
+    top 50%
+    transform-origin left center
+
+    @media (min-width $medium-width)
+      left 12px
+
+    &:nth-child(1)
+      transform rotate(-40deg)
+      width 18px
+      margin-left 0
+      margin-top 0
+      transition cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s
+
+    &:nth-child(2)
+      transform scale(0)
+      opacity 0
+      transition cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s
+
+    &:nth-child(3)
+      transform rotate(40deg)
+      width 18px
+      margin-left 0
+      margin-top 0
+      transition cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s
+
+  &.open
+    &:nth-child(1)
+      transform scale(0.01)
+      transition ease-in 0.3s
+
+    &:nth-child(2)
+      transform scale(0.01)
+      transition ease-out 0.3s
+
+    &:nth-child(3)
+      transform scale(0.01)
+      transition ease 0.3s
+
+.menuBackground
+  width 100%
+  height 100vh
+  background-color var(--blackout-color)
+  position fixed
+  top 0
+  left 0
+  z-index 50
+  opacity 50%
+  animation 0.5s show ease
+  animation-fill-mode forwards
+
+  @keyframes show
+    from
+      opacity 0
+
+    to
+      opacity 50%
+
+  /* ------------- sliding menu ------------------ */
+
+.hidden
+  animation 0.5s hide ease
+  animation-fill-mode forwards
+  pointer-events none
+
+  @keyframes hide
+    from
+      display flex
+      opacity 50%
+
+    to
+      opacity 0
+      display none
+      z-index 0
+
+/* ----- animations--------- */
+/* opening */
+.buttonStick.open:nth-child(1)
+  transform scale(0.01)
+  transition ease-in 0.3s
+
+.buttonStick.open:nth-child(2)
+  transform scale(0.01)
+  transition ease-out 0.3s
+
+.buttonStick.open:nth-child(3)
+  transform scale(0.01)
+  transition ease 0.3s
