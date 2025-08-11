@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { BackIcon, HouseIcon, MenuIcon, ProfileIcon } from '@/icons';
+import { BackIcon, DocsIcon, HouseIcon, MenuIcon, ProfileIcon } from '@/icons';
 
-type TBaseIconName = 'menu' | 'back' | 'settings' | 'test';
+type TBaseIconName = 'menu' | 'back' | 'profile' | 'docs' | 'home';
 export type TIconName = TBaseIconName;
 
 export type TIconProps = {
@@ -12,6 +12,7 @@ export type TIconProps = {
 export const BUTTON_ICONS: Record<TIconName, FC<TIconProps>> = {
   menu: MenuIcon,
   back: BackIcon,
-  settings: ProfileIcon,
-  test: HouseIcon,
+  profile: ProfileIcon,
+  home: HouseIcon,
+  docs: DocsIcon,
 };

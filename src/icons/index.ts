@@ -11,3 +11,5 @@ export { OutlineProfileIcon } from './outlineProfileIcon';
 export { ChevronIcon } from './chevronIcon';
 
 export { CheckIcon } from './checkIcon';
+
+export { DocsIcon } from './docsIcon';

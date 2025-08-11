@@ -33,7 +33,7 @@ export const TabBar: FC<TProps> = ({ preview = false }) => {
                 label={t(`layout.${label}`)}
                 to={to}
                 position={index}
-                pathName={PATHS.MAIN}
+                pathName={PATHS.PROFILE}
               />
             );
           return (

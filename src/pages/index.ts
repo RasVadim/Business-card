@@ -1,3 +1,3 @@
-export { Settings } from './settings/Settings';
+export { CV } from './cv/CV';
 
-export { Info } from './info/Info';
+export { Profile } from './profile/profile';

@@ -1,5 +1,8 @@
 {
-  "common": {
-    "hello": "Hello"
+  "layout": {
+    "profile": "Profile",
+    "cv": "CV",
+    "light": "Light",
+    "dark": "Dark"
   }
 }

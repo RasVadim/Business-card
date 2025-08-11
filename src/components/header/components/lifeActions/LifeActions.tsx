@@ -15,7 +15,7 @@ export const LifeActions: FC = () => {
         <Button
           key={mode}
           onClick={() => setMode(mode)}
-          icon="test"
+          icon="home"
           active={currentMode === mode}
           gost={currentMode !== mode}
           size="small"

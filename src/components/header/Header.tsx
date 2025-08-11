@@ -27,7 +27,7 @@ export const Header: FC<TProps> = ({ preview = false }) => {
 
   const currentDepth = getDepth(location.pathname);
 
-  const title = t(`layout.${pageName}`);
+  const title = t(`layout.${pageName || 'profile'}`);
 
   return (
     <div className={cx(s.container, { [s.preview]: preview })}>

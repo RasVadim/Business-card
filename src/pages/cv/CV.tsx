@@ -5,9 +5,9 @@ import { Page } from '@/ui-kit';
 
 const LazyContent = lazy(() => import('./components/content/Content'));
 
-export const Info: FC = () => {
+export const CV: FC = () => {
   return (
-    <Page name={PAGE_NAMES.MAIN}>
+    <Page name={PAGE_NAMES.CV}>
       <LazyContent />
     </Page>
   );

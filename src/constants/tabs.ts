@@ -5,18 +5,13 @@ type TTab = { icon: TIconName; label: string; to: string };
 
 export const TABS: TTab[] = [
   {
-    icon: 'test',
-    label: 'test',
-    to: PATHS.TEST,
+    icon: 'profile',
+    label: 'profile',
+    to: PATHS.PROFILE,
   },
   {
-    icon: 'menu',
-    label: 'main',
-    to: PATHS.MAIN,
-  },
-  {
-    icon: 'settings',
-    label: 'settings',
-    to: PATHS.SETTINGS,
+    icon: 'docs',
+    label: 'cv',
+    to: PATHS.CV,
   },
 ];

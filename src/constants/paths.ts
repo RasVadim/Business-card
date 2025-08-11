@@ -1,11 +1,9 @@
 export const PATHS = {
-  MAIN: '/',
-  SETTINGS: '/settings',
-  TEST: '/test',
+  PROFILE: '/',
+  CV: '/cv',
 };
 
 export const PAGE_NAMES = {
-  MAIN: 'main',
-  SETTINGS: 'settings',
-  TEST: 'test',
+  PROFILE: 'profile',
+  CV: 'cv',
 } as const;
