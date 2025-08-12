@@ -2,15 +2,11 @@ import { FC } from 'react';
 
 import cx from 'classnames';
 
-import { PATHS, TABS } from '@/constants';
+import { TABS } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { NavigationButton } from '@/ui-kit';
 
 import s from './s.module.styl';
-
-type TProps = {
-  preview?: boolean;
-};
 
 /**
  * A bottom tab bar with navigation buttons.
@@ -18,33 +14,14 @@ type TProps = {
  *
  * @returns A bottom tab bar with navigation buttons.
  */
-export const TabBar: FC<TProps> = ({ preview = false }) => {
+export const TabBar: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={cx(s.container, { [s.preview]: preview })}>
+    <div className={cx(s.container)}>
       <div className={s.tabBar}>
-        {TABS.map(({ icon, label, to }, index) => {
-          if (preview)
-            return (
-              <NavigationButton
-                key={to}
-                icon={icon}
-                label={t(`layout.${label}`)}
-                to={to}
-                position={index}
-                pathName={PATHS.PROFILE}
-              />
-            );
-          return (
-            <NavigationButton
-              key={to}
-              icon={icon}
-              label={t(`layout.${label}`)}
-              to={to}
-              position={index}
-            />
-          );
+        {TABS.map(({ icon, label, to }) => {
+          return <NavigationButton key={to} icon={icon} label={t(`layout.${label}`)} to={to} />;
         })}
       </div>
     </div>
