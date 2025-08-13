@@ -1,14 +1,38 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
-import { Section } from '../../components';
+import { COMPANIES, PROJECTS } from '@/constants';
+import { useTranslation } from '@/hooks';
+import { formatMonthYear } from '@/utils';
 
-import s from './s.module.styl';
+import { Section, ExpierienceItem } from '../../components';
 
 export const WorkExperience: FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const items = useMemo(() => {
+    return COMPANIES.map((company) => {
+      const projectList = PROJECTS.filter(
+        (p) => p.companyId === Number(company.id?.replace('c', '')),
+      );
+      const projects = projectList.map((p) => t(p.name));
+
+      return {
+        title: company.position,
+        company: company.name,
+        period: `${formatMonthYear(company.startDate)} - ${formatMonthYear(company.endDate)}`,
+        location: company.countries?.join(', '),
+        description: t(company.descriptionKey),
+        projects,
+        image: company.image,
+      };
+    });
+  }, [t, i18n.language]);
+
   return (
     <Section title="WORK EXPERIENCE">
-      {/* TODO: populate with actual list items styled per PDF */}
-      <div className={s.placeholder}>Experience list goes here</div>
+      {items.map((it) => (
+        <ExpierienceItem key={`${it.company}-${it.period}`} {...it} />
+      ))}
     </Section>
   );
 };

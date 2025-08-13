@@ -7,6 +7,26 @@
     "leadership": "LEADERSHIP",
     "leadershipBottom": "ROLES",
     "name": "Vadim Rasstrigin",
-    "role": "Software Engineer"
+    "role": "Software Engineer",
+    "companyDescriptions": {
+      "c1": "Digital studio, one of the main clients is the automobile manufacturer LADA (AvtoVAZ).",
+      "c2": "International optics manufacturer (operates in 92 countries), listed in the top 500 US internet retailers.",
+      "c3": "One of the largest and oldest real estate development and construction companies in the Russian market.",
+      "c4": "A major international VPN service."
+    },
+    "projectDescriptions": {
+      "p1": "A large portal similar to a CRM for car dealers, suppliers, and AvtoVAZ contractors.",
+      "p2": "A platform with analytics for senior managers and the CEO of AvtoVAZ.",
+      "p3": "International online store with complex architecture and high daily traffic (132,000 unique users/day).",
+      "p4": "Mobile version of the Glasses Store Desktop with equally high load and complexity.",
+      "p5": "Federal platform for developers, suppliers, designers, architects, builders, and more.",
+      "p6": "Cross-browser VPN extension with over 6M users in the Chrome Web Store.",
+      "p7": "Cross‑platform desktop VPN application built on Electron and React."
+    },
+    "ownProjectDescriptions": {
+      "op1": "Browser extension to manage application submissions with window tracking and auto‑fill.",
+      "op2": "Telegram bot to manage extension subscriptions, including key generation and payments.",
+      "op3": "A project that visualizes your whole life by weeks."
+    }
   }
 }

@@ -7,3 +7,4 @@ export { getYearsWordDative } from './getRightWordEnd/getYearsWordDative';
 
 // common
 export { getDepth } from './common/getDepth';
+export { formatMonthYear } from './common/formatYearMonth';
