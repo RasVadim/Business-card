@@ -20,3 +20,6 @@ export { Segmented } from './segmented/Segmented';
 // Data input components
 export { Select } from './select/Select';
 export type { TOption } from './select/Select';
+
+// Tags
+export { Tag } from './tag/Tag';

@@ -11,4 +11,4 @@ export { Languages } from './languages/Languages';
 export { Soft } from './soft/Soft';
 export { Technical } from './technical/Technical';
 export { WorkExperience } from './workExperience/WorkExperience';
-export { ExpierienceItem } from './expierienceItem/ExpierienceItem';
+export { SectionItem } from './sectionItem/SectionItem';

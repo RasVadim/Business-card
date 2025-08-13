@@ -1,13 +1,28 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
-import { Section } from '../../components';
+import { LANGUAGES } from '@/constants';
+import { useTranslation } from '@/hooks';
 
-import s from './s.module.styl';
+import { Section, SectionItem } from '../../components';
+
+import './s.module.styl';
 
 export const Languages: FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const items = useMemo(() => {
+    return LANGUAGES.map((lang) => ({
+      title: t(lang.nameKey),
+      company: t(lang.levelKey),
+      location: lang.levelCode,
+    }));
+  }, [i18n.language]);
+
   return (
-    <Section title="LANGUAGES" dark>
-      <div className={s.placeholder}>Languages</div>
+    <Section title={t('profile.languages')} dark>
+      {items.map((it) => (
+        <SectionItem key={`${it.title}-${it.location}`} {...it} small />
+      ))}
     </Section>
   );
 };

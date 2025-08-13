@@ -22,7 +22,7 @@ export const COMPANIES = [
   },
   {
     id: 'c3',
-    name: 'ETALON GROUP',
+    name: 'Etalon Group',
     descriptionKey: 'profile.companyDescriptions.c3',
     countries: ['Russia'],
     startDate: '2023-08-01',
@@ -126,4 +126,41 @@ export const OWN_PROJECTS = [
     name: 'Life Calendar',
     descriptionKey: 'profile.ownProjectDescriptions.op3',
   },
+];
+
+export const EDUCATION = {
+  degreeKey: 'profile.educationData.degree',
+  universityKey: 'profile.educationData.university',
+  locationKey: 'profile.educationData.location',
+  startDate: '2008-09-01',
+  endDate: '2013-06-01',
+  thesisKey: 'profile.educationData.thesis',
+};
+
+export const LANGUAGES = [
+  {
+    id: 'l1',
+    nameKey: 'profile.languageList.english.name',
+    levelKey: 'profile.languageList.english.level',
+    levelCode: 'B1',
+  },
+  {
+    id: 'l2',
+    nameKey: 'profile.languageList.russian.name',
+    levelKey: 'profile.languageList.russian.level',
+    levelCode: 'C1',
+  },
+];
+
+export const SOFT_SKILLS = [
+  { id: 's1', nameKey: 'profile.softs.communicativeness' },
+  { id: 's2', nameKey: 'profile.softs.attentiveness' },
+  { id: 's3', nameKey: 'profile.softs.selfAnalysis' },
+  { id: 's4', nameKey: 'profile.softs.independence' },
+  { id: 's5', nameKey: 'profile.softs.argumentation' },
+  { id: 's6', nameKey: 'profile.softs.mentorship' },
+  { id: 's7', nameKey: 'profile.softs.onboarding' },
+  { id: 's8', nameKey: 'profile.softs.scrum' },
+  { id: 's9', nameKey: 'profile.softs.teamwork' },
+  { id: 's10', nameKey: 'profile.softs.discipline' },
 ];

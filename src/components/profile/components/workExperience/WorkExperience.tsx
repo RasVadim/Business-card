@@ -4,7 +4,7 @@ import { COMPANIES, PROJECTS } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { formatMonthYear } from '@/utils';
 
-import { Section, ExpierienceItem } from '../../components';
+import { Section, SectionItem } from '../../components';
 
 export const WorkExperience: FC = () => {
   const { t, i18n } = useTranslation();
@@ -29,9 +29,9 @@ export const WorkExperience: FC = () => {
   }, [t, i18n.language]);
 
   return (
-    <Section title="WORK EXPERIENCE">
+    <Section title={t('profile.workExperience')}>
       {items.map((it) => (
-        <ExpierienceItem key={`${it.company}-${it.period}`} {...it} />
+        <SectionItem key={`${it.company}-${it.period}`} {...it} />
       ))}
     </Section>
   );

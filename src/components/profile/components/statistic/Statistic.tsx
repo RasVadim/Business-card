@@ -12,7 +12,7 @@ type StatItem = {
 };
 
 export const Statistic: FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const stats = useMemo<StatItem[]>(() => {
     const start = new Date(FIRST_JOB_DATE).getTime();
     const now = new Date().getTime();
@@ -39,7 +39,7 @@ export const Statistic: FC = () => {
         labelBottom: t('profile.leadershipBottom'),
       },
     ];
-  }, [t]);
+  }, [i18n.language]);
 
   return (
     <section className={s.wrapper}>

@@ -1,13 +1,27 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
-import { Section } from '../section/Section';
+import { EDUCATION } from '@/constants';
+import { useTranslation } from '@/hooks';
+import { formatMonthYear } from '@/utils';
 
-import s from './s.module.styl';
+import { Section, SectionItem } from '../../components';
 
 export const Education: FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const item = useMemo(() => {
+    return {
+      title: t(EDUCATION.degreeKey),
+      company: t(EDUCATION.universityKey),
+      period: `${formatMonthYear(EDUCATION.startDate)} - ${formatMonthYear(EDUCATION.endDate)}`,
+      location: t(EDUCATION.locationKey),
+      description: t(EDUCATION.thesisKey),
+    };
+  }, [i18n.language]);
+
   return (
-    <Section title="EDUCATION">
-      <div className={s.placeholder}>Education list goes here</div>
+    <Section title={t('profile.education')}>
+      <SectionItem key={`${item.company}-${item.period}`} {...item} />
     </Section>
   );
 };

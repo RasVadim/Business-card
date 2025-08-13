@@ -8,6 +8,10 @@
     "leadershipBottom": "ROLES",
     "name": "Vadim Rasstrigin",
     "role": "Software Engineer",
+    "languages": "LANGUAGES",
+    "education": "EDUCATION",
+    "soft": "SOFT",
+    "workExperience": "WORK EXPERIENCE",
     "companyDescriptions": {
       "c1": "Digital studio, one of the main clients is the automobile manufacturer LADA (AvtoVAZ).",
       "c2": "International optics manufacturer (operates in 92 countries), listed in the top 500 US internet retailers.",
@@ -27,6 +31,34 @@
       "op1": "Browser extension to manage application submissions with window tracking and auto‑fill.",
       "op2": "Telegram bot to manage extension subscriptions, including key generation and payments.",
       "op3": "A project that visualizes your whole life by weeks."
+    },
+    "educationData": {
+      "degree": "Service specialist of microprocessor technology",
+      "university": "Volga Region State University of Service",
+      "location": "Russia, Volga Region, Togliatti",
+      "thesis": "Methods for reducing nonlinear distortions in the audio frequency path"
+    },
+    "languageList": {
+      "english": {
+        "name": "English",
+        "level": "Intermediate level"
+      },
+      "russian": {
+        "name": "Russian",
+        "level": "Native speaker"
+      }
+    },
+    "softs": {
+      "communicativeness": "Communicativeness",
+      "attentiveness": "Attentiveness",
+      "selfAnalysis": "Self-analysis",
+      "independence": "Independence",
+      "argumentation": "Argumentation",
+      "mentorship": "Mentorship",
+      "onboarding": "Onboarding",
+      "scrum": "SCRUM",
+      "teamwork": "Teamwork",
+      "discipline": "Discipline"
     }
   }
 }
