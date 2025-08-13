@@ -14,10 +14,12 @@ export const HeaderCard: FC = () => {
 
   return (
     <section className={s.wrapper}>
-      <Avatar />
-      <div className={s.titleBlock}>
-        <h1 className={s.name}>{name}</h1>
-        <div className={s.role}>{role}</div>
+      <div className={s.center}>
+        <Avatar />
+        <div className={s.titleBlock}>
+          <h1 className={s.name}>{name}</h1>
+          <div className={s.role}>{role}</div>
+        </div>
       </div>
     </section>
   );

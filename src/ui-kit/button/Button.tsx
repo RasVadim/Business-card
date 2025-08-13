@@ -14,6 +14,8 @@ type PropsType = {
   active?: boolean;
   disabled?: boolean;
   gost?: boolean;
+  circle?: boolean;
+  empty?: boolean;
   selected?: boolean;
   hideNonActiveLabel?: boolean;
   labelShiftAnimation?: 'right-start' | 'left-start';
@@ -32,6 +34,8 @@ type PropsType = {
  * @prop {boolean} [active=false] - Determines if the button is in the active state.
  * @prop {boolean} [disabled=false] - If true, the button will be disabled.
  * @prop {boolean} [gost=false] - If true, the button will be styled as a "ghost" button.
+ * @prop {boolean} [circle=false] - If true, the button will be styled as a circular button.
+ * @prop {boolean} [empty=false] - If true, the button will be styled as an empty button.
  * @prop {boolean} [selected=false] - If true, the button will be styled as a selected button.
  * @prop {boolean} [hideNonActiveLabel=false] - If true, the label will be hidden when the button is not active.
  * @prop {'right-start' | 'left-start'} [labelShiftAnimation] - Determines the animation direction for the label.
@@ -49,6 +53,8 @@ export const Button: FC<PropsType> = memo(
     active = false,
     disabled = false,
     gost = false,
+    circle = false,
+    empty = false,
     hideNonActiveLabel = false,
     labelShiftAnimation = '',
     onlyIcon = false,
@@ -76,11 +82,12 @@ export const Button: FC<PropsType> = memo(
           [s.active]: active,
           [s.disabled]: disabled,
           [s.gost]: gost,
+          [s.empty]: empty,
           [s.customIcon]: icon && typeof icon !== 'string',
           [s.small]: size === 'small',
           [s.large]: size === 'large',
           [s.labelShiftAnimation]: labelShiftAnimation,
-          [s.onlyIcon]: onlyIcon,
+          [s.onlyIcon]: onlyIcon || circle,
           [s.selected]: selected,
           [s.link]: link,
         })}

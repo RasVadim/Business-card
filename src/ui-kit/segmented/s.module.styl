@@ -10,7 +10,7 @@
   align-items center
   justify-content center
   text-align center
-  height 32px
+  height 28px
   background-color var(--background-front-color)
   border 1px solid var(--border-color)
   border-radius 40px
@@ -23,7 +23,7 @@
   display flex
   align-items center
   justify-content center
-  height 28px
+  height 24px
   flex 1 1 0%
   background-color transparent
   border none
@@ -31,7 +31,7 @@
   transition all 0.2s ease
   min-width 0
   width 100%
-  padding 0 12px
+  padding 0 8px
 
   &:focus, &:active
     outline none
@@ -44,14 +44,14 @@
   display flex
   align-items center
   justify-content center
-  height 28px
+  height 24px
   flex 1
   background linear-gradient(90deg, var(--brand-g1-color) 0%, var(--brand-g2-color) 100%)
   border none
   border-radius 38px
   transition all 0.2s ease
   min-width 0
-  padding 0 12px
+  padding 0 8px
   box-shadow 0 1px 3px rgba(0, 0, 0, 0.2)
 
   &:focus, &:active
@@ -73,19 +73,21 @@
   max-width 100%
 
   .selected &
-    color var(--contrast-color)
+    color var(--text-button-color)
     font-weight 600
 
 .icon
-  width 24px
-  height 24px
+  width 18px
+  height 18px
   display flex
   align-items center
   justify-content center
 
   .selected &
     svg
-      fill var(--contrast-color)
+      fill var(--text-button-color)
+      stroke var(--text-button-color)
 
       path
-        fill var(--contrast-color)
+        fill var(--text-button-color)
+        stroke var(--text-button-color)

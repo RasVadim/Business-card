@@ -2,4 +2,4 @@ import { atomWithStorage } from 'jotai/utils';
 
 import { EThemeMode } from '@/types';
 
-export const ThemeMode = atomWithStorage<EThemeMode>('themeMode', EThemeMode.DARK);
+export const ThemeMode = atomWithStorage<EThemeMode>('themeMode', EThemeMode.LIGHT);

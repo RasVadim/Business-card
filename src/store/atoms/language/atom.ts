@@ -1,7 +1,7 @@
 import { atomWithStorage } from 'jotai/utils';
 
-import { TLanguage } from '@/types';
+import { ELanguage } from '@/types';
 
-export const Language = atomWithStorage<TLanguage>('language', null, undefined, {
+export const Language = atomWithStorage<ELanguage | null>('language', null, undefined, {
   getOnInit: true,
 });

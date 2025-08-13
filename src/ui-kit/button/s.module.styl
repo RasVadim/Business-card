@@ -12,6 +12,9 @@
   will-change transform, background-color
   transition background-color 0.1s ease, opacity 0.1s ease
 
+  &:hover
+    filter brightness(1.2)
+
   &:focus, &:active
     outline none
     box-shadow none
@@ -76,6 +79,13 @@
 .disabled
   color var(--disabled-color)
 
+.empty
+  background transparent
+  border 1px solid var(--brand-g1-color) !important
+
+  &:hover
+    border 2px solid var(--brand-g1-color) !important
+
 .gost
   background transparent
 
@@ -124,6 +134,3 @@
   text-align center
   padding 0 5px
   transition filter 0.2s ease
-
-  &:hover
-    filter brightness(1.2)

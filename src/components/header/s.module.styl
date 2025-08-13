@@ -24,7 +24,7 @@
   align-items center
   padding 6px 10px
   border-radius 40px
-  box-shadow 0 2px 25px -16px rgba(0, 0, 0, 0.1)
+  box-shadow 0 4px 20px -13px var(--shadow-color)
   font-family 'Montserrat', sans-serif
   font-size 15px
   background var(--background-front-color)
@@ -34,9 +34,10 @@
   margin 0 auto
 
   @media (min-width $medium-width)
+    box-shadow none
     flex-direction column-reverse
     gap 10px
-    padding 18px 20px
+    padding 18px 19px
     min-height 100px
 
 .title

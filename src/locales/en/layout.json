@@ -3,6 +3,7 @@
     "profile": "Profile",
     "cv": "CV",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "loading": "LOADNG..."
   }
 }

@@ -6,7 +6,7 @@ import s from './s.module.styl';
 
 const modes = ['A1', 'B2', 'C3'];
 
-export const LifeActions: FC = () => {
+export const ProfileNavigation: FC = () => {
   const [currentMode, setMode] = useState<string>('');
 
   return (

@@ -24,7 +24,7 @@
 .tabBar
   display flex
   line-height 6px
-  box-shadow 0 -1px 25px -16px rgba(0, 0, 0, 0.1)
+  box-shadow 0 0 26px -12px var(--shadow-color)
   background-color var(--background-front-color)
   border-radius 40px
   max-width 420px
@@ -36,5 +36,6 @@
   padding 10px
 
   @media (min-width $medium-width)
+    box-shadow none
     gap 10px
     padding 15px

@@ -3,7 +3,10 @@ export enum EThemeMode {
   DARK = 'dark',
 }
 
-export type TLanguage = 'en' | 'ru' | null;
+export enum ELanguage {
+  EN = 'en',
+  RU = 'ru',
+}
 
 export enum EModalKeys {
   SOME_DRAWER = 'some-drawer',

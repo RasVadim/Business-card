@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import i18n from 'i18next';
 
 import { useLanguage, useSetSyncPending } from '@/store/atoms';
-import { TLanguage } from '@/types';
+import { ELanguage } from '@/types';
 
 export const useInitLanguage = () => {
   const [language, setLanguage] = useLanguage();
@@ -19,7 +19,7 @@ export const useInitLanguage = () => {
       i18n.changeLanguage(langToSet).then(() => {
         setPending(false);
       });
-      setLanguage(langToSet as TLanguage);
+      setLanguage(langToSet as ELanguage);
     } else {
       // Set language from atom (user's choice or restored from storage)
       i18n.changeLanguage(language).then(() => {

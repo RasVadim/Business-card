@@ -13,3 +13,7 @@ export { ChevronIcon } from './chevronIcon';
 export { CheckIcon } from './checkIcon';
 
 export { DocsIcon } from './docsIcon';
+
+export { SunIcon } from './sunIcon';
+
+export { MoonIcon } from './moonIcon';
