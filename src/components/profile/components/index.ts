@@ -1,6 +1,6 @@
 // main
 export { HeaderCard } from './headerCard/HeaderCard';
-export { MainGrid } from './mainGrid/MainGrid';
+export { PortfolioGrid } from './portfolioGrid/PortfolioGrid';
 export { Section } from './section/Section';
 export { Statistic } from './statistic/Statistic';
 export { Avatar } from './avatar/Avatar';

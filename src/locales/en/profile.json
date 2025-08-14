@@ -13,6 +13,7 @@
     "soft": "SOFT",
     "workExperience": "WORK EXPERIENCE",
     "companyDescriptions": {
+      "c0": "Integrator company developing B2B solutions for large commercial enterprises.",
       "c1": "Digital studio, one of the main clients is the automobile manufacturer LADA (AvtoVAZ).",
       "c2": "International optics manufacturer (operates in 92 countries), listed in the top 500 US internet retailers.",
       "c3": "One of the largest and oldest real estate development and construction companies in the Russian market.",
@@ -59,6 +60,15 @@
       "scrum": "SCRUM",
       "teamwork": "Teamwork",
       "discipline": "Discipline"
+    },
+    "hardCategories": {
+      "ui": "UI",
+      "state": "State",
+      "common": "Common",
+      "styles": "Styles",
+      "bundlers": "Bundlers",
+      "tests": "Tests",
+      "api": "API"
     }
   }
 }

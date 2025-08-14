@@ -13,6 +13,7 @@ type TProps = {
   projects?: string[];
   image?: string;
   small?: boolean;
+  colorLess?: boolean;
 };
 
 export const SectionItem: FC<TProps> = ({
@@ -24,9 +25,10 @@ export const SectionItem: FC<TProps> = ({
   projects = [],
   image,
   small = false,
+  colorLess = false,
 }) => {
   return (
-    <div className={cx(s.wrapper, { [s.small]: small })}>
+    <div className={cx(s.wrapper, { [s.small]: small, [s.colorLess]: colorLess })}>
       <div className={s.headerRow}>
         <div className={s.leftSide}>
           {image && (

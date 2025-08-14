@@ -56,6 +56,18 @@ export const COMPANIES = [
     image: '/images/companies/seo-tlt.png',
     isLead: false,
   },
+  {
+    id: 'c0',
+    name: 'KT.Team',
+    descriptionKey: 'profile.companyDescriptions.c0',
+    countries: ['Russia'],
+    startDate: '2017-12-01',
+    endDate: '2018-07-01',
+    position: 'Project Manager',
+    technologies: [],
+    image: '/images/companies/kt-team.png',
+    isLead: false,
+  },
 ];
 
 export const PROJECTS = [
@@ -150,17 +162,4 @@ export const LANGUAGES = [
     levelKey: 'profile.languageList.russian.level',
     levelCode: 'C1',
   },
-];
-
-export const SOFT_SKILLS = [
-  { id: 's1', nameKey: 'profile.softs.communicativeness' },
-  { id: 's2', nameKey: 'profile.softs.attentiveness' },
-  { id: 's3', nameKey: 'profile.softs.selfAnalysis' },
-  { id: 's4', nameKey: 'profile.softs.independence' },
-  { id: 's5', nameKey: 'profile.softs.argumentation' },
-  { id: 's6', nameKey: 'profile.softs.mentorship' },
-  { id: 's7', nameKey: 'profile.softs.onboarding' },
-  { id: 's8', nameKey: 'profile.softs.scrum' },
-  { id: 's9', nameKey: 'profile.softs.teamwork' },
-  { id: 's10', nameKey: 'profile.softs.discipline' },
 ];

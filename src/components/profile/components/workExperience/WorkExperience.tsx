@@ -24,6 +24,7 @@ export const WorkExperience: FC = () => {
         description: t(company.descriptionKey),
         projects,
         image: company.image,
+        colorLess: company.id === 'c0',
       };
     });
   }, [t, i18n.language]);
