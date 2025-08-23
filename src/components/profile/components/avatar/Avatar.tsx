@@ -1,50 +1,63 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
+
+import { IMAGES } from './photos';
 
 import s from './s.module.styl';
 
-const images = [
-  { src: '/images/photos/vest_side.jpg', durationMs: 9000 },
-  { src: '/images/photos/vest_up.jpg', durationMs: 250 },
-  { src: '/images/photos/vest_smile.jpg', durationMs: 200 },
-  { src: '/images/photos/jacket_smile.jpg', durationMs: 150 },
-  { src: '/images/photos/jacket_kind.jpg', durationMs: 100 },
-  { src: '/images/photos/jacket_active.jpg', durationMs: 200 },
-  { src: '/images/photos/jacket_active_close.jpg', durationMs: 250 },
-];
-
 export const Avatar: FC = () => {
-  // Preload images once for smooth transitions
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<number | null>(null);
+  const nextIndex = (currentIndex + 1) % IMAGES.length;
+  const prevIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
+
+  // Preload images with priority on vest_side.jpg
   useEffect(() => {
-    images.forEach(({ src }) => {
+    let loadedCount = 0;
+    const totalImages = IMAGES.length;
+
+    const onImageLoad = () => {
+      loadedCount++;
+      if (loadedCount === totalImages) {
+        setIsLoaded(true);
+      }
+    };
+
+    // Load vest_side.jpg first (priority image)
+    const priorityImg = new Image();
+    priorityImg.onload = onImageLoad;
+    priorityImg.src = IMAGES[0].src;
+
+    // Load other images after priority
+    IMAGES.slice(1).forEach(({ src }) => {
       const img = new Image();
+      img.onload = onImageLoad;
       img.src = src;
     });
   }, []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const timerRef = useRef<number | null>(null);
-  const nextIndex = (currentIndex + 1) % images.length;
-  const prevIndex = (currentIndex - 1 + images.length) % images.length;
-
+  // Start animation only after all images are loaded
   useEffect(() => {
+    if (!isLoaded) return;
+
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    const delay = images[currentIndex]?.durationMs ?? 3000;
+    const delay = IMAGES[currentIndex]?.durationMs ?? 3000;
     timerRef.current = setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % IMAGES.length);
     }, delay);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [currentIndex]);
+  }, [currentIndex, isLoaded]);
 
   return (
     <div className={s.photo}>
-      {images.map(({ src }, index) => {
-        const className = cx(s.image, {
+      {IMAGES.map(({ src }, index) => {
+        const className = cn(s.image, {
           [s.active]: index === currentIndex,
           [s.next]: index === nextIndex,
           [s.prev]: index === prevIndex,

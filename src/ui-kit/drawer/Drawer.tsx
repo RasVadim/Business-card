@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 
 import { useTranslation } from '@/hooks';
 import { useOpenDrawerKey } from '@/store/atoms';
@@ -41,10 +41,10 @@ export const Drawer: FC<DrawerProps> = ({
   return (
     <>
       <div
-        className={cx(s.drawerBlackout, { [s.isOpen]: isOpen })}
+        className={cn(s.drawerBlackout, { [s.isOpen]: isOpen })}
         onClick={disabledClose ? undefined : onClose}
       />
-      <div className={cx(s.drawerWrap, { [s.hidden]: !isOpen })}>
+      <div className={cn(s.drawerWrap, { [s.hidden]: !isOpen })}>
         <div className={s.drawerHeader}>
           {closeButton && (
             <Button onClick={onClose} label={t('layout.close')} disabled={disabledClose} />

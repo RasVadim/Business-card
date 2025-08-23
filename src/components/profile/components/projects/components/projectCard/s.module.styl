@@ -1,0 +1,90 @@
+.wrapper
+  display block
+  width 100%
+  border-radius 40px
+  background var(--contrast-bg-color)
+  border 1px solid var(--border-color)
+  overflow hidden
+  box-shadow 0 12px 30px rgba(0,0,0,.15)
+
+.media
+  position relative
+  width 100%
+  padding-top 40% // smaller video height
+  background linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0))
+
+.video
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  object-fit cover
+  border-bottom 1px solid var(--border-color)
+
+.videoPlaceholder
+  position absolute
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,0))
+
+.footer
+  display flex
+  align-items flex-start
+  justify-content space-between
+  gap 12px
+  padding 14px 16px
+
+.iconAndTitle
+  display flex
+  align-items center
+  gap 12px
+
+.icon
+  width 36px
+  height 36px
+  border-radius 8px
+  object-fit cover
+  border 1px solid var(--border-color)
+  background var(--contrast-bg-color)
+
+.title
+  font-weight 600
+  font-size 18px
+  color var(--opposite-contrast-color)
+
+.skills
+  display flex
+  flex-wrap wrap
+  gap 8px
+  align-content flex-start
+  max-width 50%
+
+.skill
+  padding 4px 10px
+  border-radius 999px
+  border 1px solid var(--border-color)
+  color var(--opposite-contrast-color)
+  font-size 12px
+
+.tooltipContent
+  display flex
+  flex-direction column
+  gap 10px
+
+.tooltipDescription
+  color var(--opposite-contrast-color)
+  opacity .9
+
+.techList
+  display flex
+  flex-wrap wrap
+  gap 6px
+
+.tech
+  padding 4px 8px
+  border-radius 12px
+  border 1px solid var(--border-color)
+  color var(--opposite-contrast-color)

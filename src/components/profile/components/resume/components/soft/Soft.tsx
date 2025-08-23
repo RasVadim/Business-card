@@ -4,7 +4,7 @@ import { SOFT_SKILLS } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { Tag } from '@/ui-kit';
 
-import { Section } from '../../components';
+import { Section } from '../../..';
 
 import s from './s.module.styl';
 

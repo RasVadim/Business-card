@@ -13,6 +13,7 @@ export { NavigationButton } from './navigationButton/NavigationButton';
 
 // Modals
 export { Drawer } from './drawer/Drawer';
+export { Tooltip } from './tooltip/Tooltip';
 
 // Segmented
 export { Segmented } from './segmented/Segmented';

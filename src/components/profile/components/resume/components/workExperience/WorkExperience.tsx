@@ -1,30 +1,25 @@
 import { FC, useMemo } from 'react';
 
-import { COMPANIES, PROJECTS } from '@/constants';
+import { COMPANIES } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { formatMonthYear } from '@/utils';
 
-import { Section, SectionItem } from '../../components';
+import { Section, SectionItem } from '../../..';
 
 export const WorkExperience: FC = () => {
   const { t, i18n } = useTranslation();
 
   const items = useMemo(() => {
-    return COMPANIES.map((company) => {
-      const projectList = PROJECTS.filter(
-        (p) => p.companyId === Number(company.id?.replace('c', '')),
-      );
-      const projects = projectList.map((p) => t(p.name));
-
+    return Object.values(COMPANIES).map((company) => {
       return {
         title: company.position,
         company: company.name,
         period: `${formatMonthYear(company.startDate)} - ${formatMonthYear(company.endDate)}`,
         location: company.countries?.join(', '),
         description: t(company.descriptionKey),
-        projects,
+        projects: company.projects,
         image: company.image,
-        colorLess: company.id === 'c0',
+        colorLess: company.isPM,
       };
     });
   }, [t, i18n.language]);

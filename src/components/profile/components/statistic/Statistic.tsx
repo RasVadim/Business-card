@@ -19,8 +19,10 @@ export const Statistic: FC = () => {
     const diffMs = Number.isNaN(start) ? 0 : now - start;
     const experience = '+' + Math.floor(diffMs / YEAR_MS);
 
-    const projectsTotal = '+' + (PROJECTS.length + OWN_PROJECTS.length);
-    const leadershipTotal = String(PROJECTS.filter((project) => project.isLead).length);
+    const projectsTotal = '+' + (Object.keys(PROJECTS).length + Object.keys(OWN_PROJECTS).length);
+    const leadershipTotal = String(
+      Object.values(PROJECTS).filter((project) => project.isLead).length,
+    );
 
     return [
       {

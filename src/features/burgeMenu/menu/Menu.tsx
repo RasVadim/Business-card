@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 
 import { LanguageSwitcher, ThemeSwitcher } from '@/features';
 
@@ -12,7 +12,7 @@ type PropsType = {
 
 export const Menu: FC<PropsType> = ({ isOpen }) => {
   return (
-    <div className={cx(s.menu, { [s.hidden]: !isOpen })}>
+    <div className={cn(s.menu, { [s.hidden]: !isOpen })}>
       <div className={s.menu__content}>
         <ThemeSwitcher />
         <LanguageSwitcher />

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-import { Education, Languages, Soft, Technical, WorkExperience } from '..';
+import { Education, Languages, Soft, Technical, WorkExperience } from './components';
 
 import s from './s.module.styl';
 
-export const PortfolioGrid: FC = () => {
+export const Resume: FC = () => {
   // Static placeholder content that mirrors the PDF layout structure
   return (
     <div className={s.wrapper}>

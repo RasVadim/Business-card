@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 
 import s from './s.module.styl';
 
@@ -84,7 +84,7 @@ export const Select: FC<TProps> = ({
   return (
     <div
       ref={wrapperRef}
-      className={cx(s.wrapper, className, {
+      className={cn(s.wrapper, className, {
         [s.open]: isOpen,
         [s.disabled]: disabled || isDisabledStyle,
       })}
@@ -106,7 +106,7 @@ export const Select: FC<TProps> = ({
           {options.map((option) => (
             <div
               key={option.value}
-              className={cx(s.option, {
+              className={cn(s.option, {
                 [s.selected]: option.value === value,
               })}
               role="option"

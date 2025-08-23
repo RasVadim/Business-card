@@ -3,7 +3,7 @@ import { FC, useMemo } from 'react';
 import { LANGUAGES } from '@/constants';
 import { useTranslation } from '@/hooks';
 
-import { Section, SectionItem } from '../../components';
+import { Section, SectionItem } from '../../..';
 
 import './s.module.styl';
 

@@ -1,6 +1,6 @@
 import { FC, useRef, useState, useEffect } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 import { Menu } from '../menu/Menu';
@@ -48,15 +48,15 @@ export const BurgerMenuButton: FC<BurgerMenuProps> = ({ backButton = false, onBa
     <div className={s.wrapper}>
       <nav>
         <div className={s.menuButton} onClick={handleClick}>
-          <div className={cx(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
-          <div className={cx(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
-          <div className={cx(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
+          <div className={cn(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
+          <div className={cn(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
+          <div className={cn(s.buttonStick, { [s.open]: isOpen, [s.back]: backButton })}></div>
         </div>
       </nav>
 
       {!backButton && !!firstOpen.current && (
         <>
-          <div className={cx(s.menuBackground, { [s.hidden]: !isOpen })} onClick={updateMenu} />
+          <div className={cn(s.menuBackground, { [s.hidden]: !isOpen })} onClick={updateMenu} />
           <Menu isOpen={isOpen} />
         </>
       )}

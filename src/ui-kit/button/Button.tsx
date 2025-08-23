@@ -1,6 +1,6 @@
 import { FC, memo, ReactElement } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 
 import { BUTTON_ICONS, type TIconName } from './buttonIcons';
 
@@ -71,14 +71,14 @@ export const Button: FC<PropsType> = memo(
       iconElement = icon;
     }
 
-    const labelClasses = cx(s.label, {
+    const labelClasses = cn(s.label, {
       [s.hidden]: hideNonActiveLabel && !active,
       [s.activeLabel]: active,
     });
 
     return (
       <button
-        className={cx(s.button, className, {
+        className={cn(s.button, className, {
           [s.active]: active,
           [s.disabled]: disabled,
           [s.gost]: gost,
@@ -96,7 +96,7 @@ export const Button: FC<PropsType> = memo(
       >
         {labelShiftAnimation ? (
           <div
-            className={cx(s.contentWrapper, {
+            className={cn(s.contentWrapper, {
               [s.rightWrapper]: labelShiftAnimation === 'right-start' && !active,
               [s.leftWrapper]: labelShiftAnimation === 'right-start' && active,
             })}

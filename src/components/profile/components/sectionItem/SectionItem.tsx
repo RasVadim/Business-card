@@ -1,6 +1,8 @@
 import { FC } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
+
+import { TProject } from '@/types';
 
 import s from './s.module.styl';
 
@@ -10,7 +12,7 @@ type TProps = {
   period?: string;
   location?: string;
   description?: string;
-  projects?: string[];
+  projects?: TProject[];
   image?: string;
   small?: boolean;
   colorLess?: boolean;
@@ -28,7 +30,7 @@ export const SectionItem: FC<TProps> = ({
   colorLess = false,
 }) => {
   return (
-    <div className={cx(s.wrapper, { [s.small]: small, [s.colorLess]: colorLess })}>
+    <div className={cn(s.wrapper, { [s.small]: small, [s.colorLess]: colorLess })}>
       <div className={s.headerRow}>
         <div className={s.leftSide}>
           {image && (
@@ -49,8 +51,8 @@ export const SectionItem: FC<TProps> = ({
         <div className={s.period}>{period}</div>
         {projects.length > 0 && (
           <ul className={s.projects}>
-            {projects.map((b, i) => (
-              <li key={i}>{b}</li>
+            {projects.map((project) => (
+              <li key={project.name}>{project.name}</li>
             ))}
           </ul>
         )}

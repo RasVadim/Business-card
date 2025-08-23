@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 
 import s from './s.module.styl';
 
@@ -49,7 +49,7 @@ export const Segmented: FC<TProps> = ({ tabs, onSelection, defaultValue, value }
         {tabs.map((tab) => (
           <button
             key={tab.value}
-            className={cx({
+            className={cn({
               [s.tab]: tab.value !== localValue,
               [s.selected]: tab.value === localValue,
             })}

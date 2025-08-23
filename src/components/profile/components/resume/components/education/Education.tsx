@@ -4,7 +4,7 @@ import { EDUCATION } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { formatMonthYear } from '@/utils';
 
-import { Section, SectionItem } from '../../components';
+import { Section, SectionItem } from '../../..';
 
 export const Education: FC = () => {
   const { t, i18n } = useTranslation();

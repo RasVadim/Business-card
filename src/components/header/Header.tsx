@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import cx from 'classnames';
+import cn from 'classnames';
 import { useLocation } from 'react-router-dom';
 
 import { BurgerMenu } from '@/features';
@@ -31,7 +31,7 @@ export const Header: FC<TProps> = ({ preview = false }) => {
   const title = t(`layout.${pageName || 'profile'}`);
 
   return (
-    <div className={cx(s.container, { [s.preview]: preview })}>
+    <div className={cn(s.container, { [s.preview]: preview })}>
       <div className={s.header}>
         {!isMedium && <Actions />}
         {pending && <SyncingLine />}
