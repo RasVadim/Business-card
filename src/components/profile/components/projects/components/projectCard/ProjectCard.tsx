@@ -2,13 +2,14 @@ import { FC, ReactNode, useState } from 'react';
 
 import cn from 'classnames';
 
-import { THardSkill } from '@/types';
+import { TCompany, THardSkill } from '@/types';
 import { Tooltip } from '@/ui-kit';
 
 import s from './s.module.styl';
 
 type TProps = {
   name: string;
+  company?: TCompany;
   description: string;
   technologies?: THardSkill[];
   icon?: string;
@@ -20,6 +21,7 @@ type TProps = {
 
 export const ProjectCard: FC<TProps> = ({
   name,
+  company,
   description,
   technologies = [],
   icon,
@@ -46,6 +48,29 @@ export const ProjectCard: FC<TProps> = ({
       maxWidth={tooltipMaxWidth}
     >
       <div className={cn(s.wrapper, className)}>
+        <div className={s.info}>
+          <div className={s.iconAndTitle}>
+            {showIcon && icon ? (
+              <img
+                className={s.icon}
+                src={icon}
+                alt={`${name} icon`}
+                onError={() => setShowIcon(false)}
+              />
+            ) : null}
+            <div className={s.title}>{name}</div>
+          </div>
+          {company?.name && <div className={s.companyTitle}>{company?.name}</div>}
+          {technologies.length > 0 && (
+            <div className={s.skills}>
+              {technologies.map((tech) => (
+                <span key={tech.name} className={s.skill}>
+                  {tech.name}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
         <div className={s.media}>
           {showVideo ? (
             <video
@@ -59,28 +84,6 @@ export const ProjectCard: FC<TProps> = ({
             />
           ) : (
             <div className={s.videoPlaceholder} />
-          )}
-        </div>
-        <div className={s.footer}>
-          <div className={s.iconAndTitle}>
-            {showIcon && icon ? (
-              <img
-                className={s.icon}
-                src={icon}
-                alt={`${name} icon`}
-                onError={() => setShowIcon(false)}
-              />
-            ) : null}
-            <div className={s.title}>{name}</div>
-          </div>
-          {technologies.length > 0 && (
-            <div className={s.skills}>
-              {technologies.map((tech) => (
-                <span key={tech.name} className={s.skill}>
-                  {tech.name}
-                </span>
-              ))}
-            </div>
           )}
         </div>
       </div>

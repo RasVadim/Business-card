@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { PROJECTS, OWN_PROJECTS, COMPANIES } from '@/constants/profile';
 import { useTranslation } from '@/hooks';
-import { TProject } from '@/types';
+import { TCompany, TProject } from '@/types';
 
 import { ProjectCard } from './components/projectCard/ProjectCard';
 
@@ -13,7 +13,7 @@ type TProps = Record<string, never>;
 export const Projects: FC<TProps> = () => {
   const { t } = useTranslation();
 
-  type TProjectView = TProject & { description: string; companyName?: string };
+  type TProjectView = TProject & { description: string; company?: TCompany };
 
   const companyProjects: TProjectView[] = useMemo(() => {
     return Object.values(PROJECTS).map((project) => {
@@ -21,7 +21,7 @@ export const Projects: FC<TProps> = () => {
       return {
         ...project,
         description: t(project.descriptionKey),
-        companyName: company?.name,
+        company,
       };
     });
   }, [t]);
@@ -40,14 +40,15 @@ export const Projects: FC<TProps> = () => {
         {companyProjects.map((project) => (
           <ProjectCard
             key={project.name}
-            name={project.companyName ? `${project.name} — ${project.companyName}` : project.name}
+            name={project.name}
+            company={project?.company}
             description={project.description}
             technologies={project.technologies}
           />
         ))}
       </div>
 
-      <div className={s.sectionTitle}>Own Projects</div>
+      <div className={`${s.sectionTitle} ${s.secondTitle}`}>Own Projects</div>
       <div className={s.list}>
         {ownProjects.map((project) => (
           <ProjectCard
