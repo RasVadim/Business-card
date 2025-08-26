@@ -1,0 +1,1 @@
+export { getContactsData } from './getContactsData';

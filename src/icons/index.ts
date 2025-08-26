@@ -17,3 +17,13 @@ export { DocsIcon } from './docsIcon';
 export { SunIcon } from './sunIcon';
 
 export { MoonIcon } from './moonIcon';
+
+export { GithubIcon } from './githubIcon';
+
+export { LinkedinIcon } from './linkedinIcon';
+
+export { MailIcon } from './mailIcon';
+
+export { TelegramIcon } from './telegramIcon';
+
+export { WhatsappIcon } from './whatsappIcon';

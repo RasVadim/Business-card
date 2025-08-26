@@ -11,3 +11,5 @@ export enum ELanguage {
 export enum EModalKeys {
   SOME_DRAWER = 'some-drawer',
 }
+
+export type TPosition = 'top' | 'bottom' | 'left' | 'right';

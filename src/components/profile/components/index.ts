@@ -11,3 +11,5 @@ export { Avatar } from './avatar/Avatar';
 export { Resume } from './resume/Resume';
 
 export { Projects } from './projects/Projects';
+
+export { ContactsBlock } from './ContactsBlock/ContactsBlock';

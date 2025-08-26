@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { HeaderCard, Projects, Resume, Statistic } from './components';
+import { ContactsBlock, HeaderCard, Projects, Resume, Statistic } from './components';
 
 import s from './s.module.styl';
 
@@ -11,6 +11,7 @@ export const Profile: FC = () => {
       <Statistic />
       <Resume />
       <Projects />
+      <ContactsBlock />
     </div>
   );
 };

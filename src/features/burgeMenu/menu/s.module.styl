@@ -1,3 +1,5 @@
+@import '../../../styles/vars.styl'
+
 .menu
   display flex
   flex-direction column
@@ -16,6 +18,10 @@
   animation-fill-mode forwards
   border-radius 0 0 24px 24px
 
+  @media (min-width $medium-width)
+    min-height 50px
+    height calc(100vh - 90%)
+
   @keyframes showMenu
     from
       transform translateY(-100%)
@@ -25,10 +31,19 @@
       transform translateY(0)
       opacity 100%
 
-.menu__content
+.menuContent
   display flex
-  justify-content space-around
+  justify-content center
+  gap 28px
+  padding-top 24px
+
+.menuContentSwitchers
+  display flex
+  position absolute
+  align-items center
   gap 10px
+  left 24px
+  top 50px
 
 /* ------------- sliding menu ------------------ */
 .hidden

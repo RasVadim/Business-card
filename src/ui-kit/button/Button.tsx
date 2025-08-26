@@ -54,13 +54,13 @@ export const Button: FC<PropsType> = memo(
     disabled = false,
     gost = false,
     circle = false,
+    link = false,
     empty = false,
     hideNonActiveLabel = false,
     labelShiftAnimation = '',
     onlyIcon = false,
     selected = false,
     className,
-    link,
   }) => {
     let iconElement: ReactElement | null = null;
 

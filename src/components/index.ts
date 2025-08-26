@@ -7,3 +7,5 @@ export { TabBar } from './tabBar/TabBar';
 export { Profile } from './profile/Profile';
 
 export { CV } from './cv/CV';
+
+export { Contacts } from './contacts/Contacts';

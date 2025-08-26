@@ -2,9 +2,11 @@ import { TCompany } from '@/types';
 
 export const CONTACTS = {
   mail: 'rasstriginv@gmail.com',
-  phone: '+7 92777-999-30',
+  phone: '+79277799930',
   linkedin: 'linkedin.com/in/vadim-ra',
   github: 'github.com/RasVadim',
+  telegram: 't.me/rsvadim',
+  whatsapp: '+7 92777-999-30',
 };
 
 export const FIRST_JOB_DATE = '2018-08-01';

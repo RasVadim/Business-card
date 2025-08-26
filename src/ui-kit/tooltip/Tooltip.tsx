@@ -2,13 +2,15 @@ import { FC, ReactNode, useState } from 'react';
 
 import cn from 'classnames';
 
+import { TPosition } from '@/types';
+
 import s from './s.module.styl';
 
 type TProps = {
   header?: ReactNode;
   content: ReactNode;
   children: ReactNode;
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  position?: TPosition;
   delay?: number;
   arrow?: boolean;
   maxWidth?: number;
