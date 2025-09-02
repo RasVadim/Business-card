@@ -7,7 +7,8 @@ import { Button, TIconName, Tooltip } from '@/ui-kit';
 
 import s from './s.module.styl';
 
-const SECTION_OFFSET = 120;
+const AUTO_SCROLL_SECTION_OFFSET = 80;
+const DETECTION_SECTION_OFFSET = 500;
 
 export const ProfileNavigation: FC = () => {
   const { t } = useTranslation();
@@ -20,13 +21,12 @@ export const ProfileNavigation: FC = () => {
   // Track scroll position to determine active section
   useEffect(() => {
     const handleScroll = () => {
-      // Skip if it's programmatic scroll
       if (isProgrammaticScroll) {
         return;
       }
 
       const sections = Object.values(ESection);
-      const scrollPosition = window.scrollY + SECTION_OFFSET; // offset for better detection
+      const scrollPosition = window.scrollY + DETECTION_SECTION_OFFSET; // offset for better detection
 
       // Find which section is currently visible
       for (const section of sections) {
@@ -44,31 +44,20 @@ export const ProfileNavigation: FC = () => {
     // Set initial section
     handleScroll();
 
-    // Add scroll listener
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isProgrammaticScroll]);
 
-  const handleSectionClick = (section: ESection) => {
-    // Set flag to indicate programmatic scroll
+  const handleSectionClick = async (section: ESection) => {
     setIsProgrammaticScroll(true);
     setCurrentSection(section);
 
-    scrollTo(section, 80);
-
-    // Listen for scroll end to reset flag
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleScrollEnd = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setIsProgrammaticScroll(false);
-        window.removeEventListener('scroll', handleScrollEnd);
-      }, 150); // Small delay to ensure scroll has truly stopped
-    };
-
-    window.addEventListener('scroll', handleScrollEnd);
+    try {
+      await scrollTo(section, AUTO_SCROLL_SECTION_OFFSET);
+    } finally {
+      setIsProgrammaticScroll(false);
+    }
   };
 
   return (
