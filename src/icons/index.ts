@@ -6,8 +6,6 @@ export { ProfileIcon } from './profileIcon';
 
 export { HouseIcon } from './houseIcon';
 
-export { OutlineProfileIcon } from './outlineProfileIcon';
-
 export { ChevronIcon } from './chevronIcon';
 
 export { CheckIcon } from './checkIcon';
@@ -27,3 +25,9 @@ export { MailIcon } from './mailIcon';
 export { TelegramIcon } from './telegramIcon';
 
 export { WhatsappIcon } from './whatsappIcon';
+
+export { LinkIcon } from './linkIcon';
+
+export { ResumeIcon } from './resumeIcon';
+
+export { ProjectsIcon } from './projectsIcon';

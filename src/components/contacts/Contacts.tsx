@@ -29,7 +29,6 @@ export const Contacts: FC<PropsType> = ({ tooltipPosition = 'top' }) => {
             key={contact.label}
             content={<div className={s.tooltip}>{contact.tooltip}</div>}
             position={tooltipPosition}
-            delay={300}
           >
             <Button
               onClick={() => handleContactClick(contact.href)}

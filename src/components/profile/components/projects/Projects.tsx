@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { PROJECTS, OWN_PROJECTS, COMPANIES } from '@/constants/profile';
 import { useTranslation } from '@/hooks';
-import { TCompany, TProject } from '@/types';
+import { ESection, TCompany, TProject } from '@/types';
 
 import { ProjectCard } from './components/projectCard/ProjectCard';
 
@@ -34,7 +34,7 @@ export const Projects: FC<TProps> = () => {
   }, [t]);
 
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} id={ESection.PROJECTS}>
       <div className={s.sectionTitle}>Projects</div>
       <div className={s.list}>
         {companyProjects.map((project) => (

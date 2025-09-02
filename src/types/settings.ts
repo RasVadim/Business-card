@@ -12,4 +12,10 @@ export enum EModalKeys {
   SOME_DRAWER = 'some-drawer',
 }
 
-export type TPosition = 'top' | 'bottom' | 'left' | 'right';
+export type TPosition = 'top' | 'bottom' | 'left' | 'right' | 'bottom-left';
+
+export enum ESection {
+  RESUME = 'resume',
+  PROJECTS = 'projects',
+  CONTACTS = 'contacts',
+}

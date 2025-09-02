@@ -1,26 +1,95 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-import { Button } from '@/ui-kit';
+import { TOOLTIP_DELAY } from '@/constants';
+import { useScrollTo, useTranslation } from '@/hooks';
+import { ESection } from '@/types';
+import { Button, TIconName, Tooltip } from '@/ui-kit';
 
 import s from './s.module.styl';
 
-const modes = ['A1', 'B2', 'C3'];
+const SECTION_OFFSET = 120;
 
 export const ProfileNavigation: FC = () => {
-  const [currentMode, setMode] = useState<string>('');
+  const { t } = useTranslation();
+
+  const [currentSection, setCurrentSection] = useState<string>('');
+  const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false);
+
+  const { scrollTo } = useScrollTo();
+
+  // Track scroll position to determine active section
+  useEffect(() => {
+    const handleScroll = () => {
+      // Skip if it's programmatic scroll
+      if (isProgrammaticScroll) {
+        return;
+      }
+
+      const sections = Object.values(ESection);
+      const scrollPosition = window.scrollY + SECTION_OFFSET; // offset for better detection
+
+      // Find which section is currently visible
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setCurrentSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    // Set initial section
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isProgrammaticScroll]);
+
+  const handleSectionClick = (section: ESection) => {
+    // Set flag to indicate programmatic scroll
+    setIsProgrammaticScroll(true);
+    setCurrentSection(section);
+
+    scrollTo(section, 80);
+
+    // Listen for scroll end to reset flag
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScrollEnd = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsProgrammaticScroll(false);
+        window.removeEventListener('scroll', handleScrollEnd);
+      }, 150); // Small delay to ensure scroll has truly stopped
+    };
+
+    window.addEventListener('scroll', handleScrollEnd);
+  };
 
   return (
     <div className={s.container}>
-      {modes.map((mode) => (
-        <Button
-          key={mode}
-          onClick={() => setMode(mode)}
-          icon="home"
-          active={currentMode === mode}
-          gost={currentMode !== mode}
-          size="small"
-          onlyIcon
-        />
+      {Object.values(ESection).map((section) => (
+        <Tooltip
+          content={t(`layout.${section}`)}
+          key={section}
+          position="bottom-left"
+          delay={TOOLTIP_DELAY.slow}
+        >
+          <Button
+            key={section}
+            onClick={() => handleSectionClick(section)}
+            icon={section as TIconName}
+            active={currentSection === section}
+            gost={currentSection !== section}
+            size="small"
+            onlyIcon
+          />
+        </Tooltip>
       ))}
     </div>
   );

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { HARD_SKILL_CATEGORIES } from '@/constants';
+import { HARD_SKILL_CATEGORIES, TOOLTIP_DELAY } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { useThemeMode } from '@/store/atoms';
 import { EThemeMode } from '@/types';
@@ -36,6 +36,7 @@ export const Technical: FC = () => {
                   content={<div className={s.tooltipDescription}>{t(skill.descriptionKey)}</div>}
                   key={skill.name}
                   maxWidth={400}
+                  delay={TOOLTIP_DELAY.fast}
                 >
                   <span className={s.skill} key={`${category.id}-${skill.name}`}>
                     {skill.icon && <img className={s.icon} src={icon} alt={skill.name} />}

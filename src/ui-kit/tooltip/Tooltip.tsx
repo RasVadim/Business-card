@@ -2,6 +2,7 @@ import { FC, ReactNode, useState } from 'react';
 
 import cn from 'classnames';
 
+import { TOOLTIP_DELAY } from '@/constants';
 import { TPosition } from '@/types';
 
 import s from './s.module.styl';
@@ -21,7 +22,7 @@ export const Tooltip: FC<TProps> = ({
   content,
   children,
   position = 'top',
-  delay = 200,
+  delay = TOOLTIP_DELAY.normal,
   arrow = false,
   maxWidth,
 }) => {

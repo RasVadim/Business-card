@@ -15,3 +15,9 @@ export const YEAR_MS = 1000 * 60 * 60 * 24 * 365.25;
 
 export const LINK_BEGINNING = 'https://';
 export const WATSAPP_PREFIX = 'wa.me/';
+
+export const TOOLTIP_DELAY = {
+  fast: 200,
+  normal: 300,
+  slow: 600,
+};

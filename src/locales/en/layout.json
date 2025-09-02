@@ -4,6 +4,9 @@
     "cv": "CV",
     "light": "Light",
     "dark": "Dark",
-    "loading": "LOADNG..."
+    "loading": "LOADNG...",
+    "resume": "Resume",
+    "projects": "Projects",
+    "contacts": "Contacts"
   }
 }

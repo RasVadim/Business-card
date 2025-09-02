@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { FIRST_JOB_DATE, OWN_PROJECTS, PROJECTS, YEAR_MS } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { ESection } from '@/types';
 
 import s from './s.module.styl';
 
@@ -44,7 +45,7 @@ export const Statistic: FC = () => {
   }, [i18n.language]);
 
   return (
-    <section className={s.wrapper}>
+    <section className={s.wrapper} id={ESection.RESUME}>
       {stats.map((stat) => (
         <div key={stat.value} className={s.card}>
           <div className={s.value}>{stat.value}</div>
