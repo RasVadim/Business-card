@@ -30,14 +30,22 @@ export { LinkIcon } from './linkIcon';
 
 export { ExperienceIcon } from './experienceIcon';
 
+// experience sections
 export { ProjectsIcon } from './projectsIcon';
-
 export { EducationIcon } from './educationIcon';
-
 export { WorkExperienceIcon } from './workExperienceIcon';
-
 export { LanguagesIcon } from './languagesIcon';
-
 export { TechnicalSkillsIcon } from './technicalSkillsIcon';
-
 export { SoftSkillsIcon } from './softSkillsIcon';
+
+// projects
+export { VPNExtensionIcon } from './VPNExtensionIcon';
+export { VPNDesktopAppIcon } from './VPNDesktopAppIcon';
+export { BuilderPlatformIcon } from './builderPlatformIcon';
+export { GUSADesktopIcon } from './GUSADesktopIcon';
+export { GUSAMobileIcon } from './GUSAMobileIcon';
+export { PassportDealerIcon } from './passportDealerIcon';
+export { MegePlanIcon } from './megePlanIcon';
+export { LifeCalendarIcon } from './lifeCalendarIcon';
+export { SubscriptionTGBotIcon } from './subscriptionTGBotIcon';
+export { AutoFillExtensionIcon } from './autoFillExtensionIcon';

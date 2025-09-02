@@ -3,7 +3,7 @@ export type TProject = {
   descriptionKey: string;
   companyId?: string;
   isLead?: boolean;
-  icon?: string;
+  icon?: React.ComponentType<{ className?: string; size?: string }>;
   video?: string;
   technologies?: THardSkill[];
 };

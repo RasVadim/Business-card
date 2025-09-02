@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 
-import { PROJECTS, OWN_PROJECTS, COMPANIES } from '@/constants/profile';
+import { PROJECTS, OWN_PROJECTS, COMPANIES } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { ESection, TCompany, TProject } from '@/types';
 
@@ -36,25 +36,14 @@ export const Projects: FC = () => {
       <div className={s.sectionTitle}>Projects</div>
       <div className={s.list}>
         {companyProjects.map((project) => (
-          <ProjectCard
-            key={project.name}
-            name={project.name}
-            company={project?.company}
-            description={project.description}
-            technologies={project.technologies}
-          />
+          <ProjectCard key={project.name} project={project} />
         ))}
       </div>
 
       <div className={`${s.sectionTitle} ${s.secondTitle}`}>Own Projects</div>
       <div className={s.list}>
         {ownProjects.map((project) => (
-          <ProjectCard
-            key={project.name}
-            name={project.name}
-            description={project.description}
-            technologies={project.technologies}
-          />
+          <ProjectCard key={project.name} project={project} />
         ))}
       </div>
     </div>

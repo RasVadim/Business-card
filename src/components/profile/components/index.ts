@@ -13,3 +13,5 @@ export { Experience } from './experience/Experience';
 export { Projects } from './projects/Projects';
 
 export { ContactsBlock } from './ContactsBlock/ContactsBlock';
+
+export { Skill } from './skill/Skill';

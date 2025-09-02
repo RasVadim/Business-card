@@ -15,6 +15,7 @@ type TProps = {
   delay?: number;
   arrow?: boolean;
   maxWidth?: number;
+  fillSpaace?: boolean;
 };
 
 export const Tooltip: FC<TProps> = ({
@@ -25,6 +26,7 @@ export const Tooltip: FC<TProps> = ({
   delay = TOOLTIP_DELAY.normal,
   arrow = false,
   maxWidth,
+  fillSpaace = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [timeoutId, setTimeoutId] = useState<number | null>(null);
@@ -45,11 +47,17 @@ export const Tooltip: FC<TProps> = ({
   };
 
   return (
-    <div className={s.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className={cn(s.wrapper, { [s.fillSpaace]: fillSpaace })}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {children}
       {isVisible && (
         <div
-          className={cn(s.tooltip, s[position], s.visible, { [s.arrow]: arrow })}
+          className={cn(s.tooltip, s[position], s.visible, {
+            [s.arrow]: arrow,
+          })}
           style={{ maxWidth }}
         >
           {header && <div className={s.header}>{header}</div>}

@@ -87,6 +87,7 @@
       "storybook": "Component development and documentation",
       "nodejs": "JavaScript runtime for server-side development",
       "github": "Git hosting and collaboration platform",
+      "pwa": "Progressive web application",
       "gitlab": "DevOps platform with Git repository management",
       "bitbucket": "Git code hosting and collaboration",
       "html": "Semantic HTML5 markup",

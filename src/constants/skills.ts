@@ -99,6 +99,13 @@ export const HARD_SKILLS: Record<string, THardSkill> = {
     showLabel: true,
     descriptionKey: 'profile.hardSkillDescriptions.storybook',
   },
+  PWA: {
+    name: 'PWA',
+    icon: '/images/skills/PWA.png',
+    darkIcon: '/images/skills/PWADark.png',
+    showLabel: false,
+    descriptionKey: 'profile.hardSkillDescriptions.pwa',
+  },
   Nodejs: {
     name: 'Nodejs',
     icon: '/images/skills/Nodejs.png',
@@ -299,6 +306,7 @@ export const HARD_SKILL_CATEGORIES = [
       HARD_SKILLS.Lua,
       HARD_SKILLS.Storybook,
       HARD_SKILLS.Nodejs,
+      HARD_SKILLS.PWA,
       HARD_SKILLS.HTML,
       HARD_SKILLS.GitHub,
       HARD_SKILLS.GitLab,
