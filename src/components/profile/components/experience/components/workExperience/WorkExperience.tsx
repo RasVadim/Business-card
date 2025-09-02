@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { COMPANIES } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { WorkExperienceIcon } from '@/icons';
 import { formatMonthYear } from '@/utils';
 
 import { Section, SectionItem } from '../../..';
@@ -25,7 +26,7 @@ export const WorkExperience: FC = () => {
   }, [t, i18n.language]);
 
   return (
-    <Section title={t('profile.workExperience')}>
+    <Section title={t('profile.workExperience')} icon={<WorkExperienceIcon />}>
       {items.map((it) => (
         <SectionItem key={`${it.company}-${it.period}`} {...it} />
       ))}

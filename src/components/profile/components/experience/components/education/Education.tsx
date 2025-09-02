@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { EDUCATION } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { EducationIcon } from '@/icons';
 import { formatMonthYear } from '@/utils';
 
 import { Section, SectionItem } from '../../..';
@@ -20,7 +21,7 @@ export const Education: FC = () => {
   }, [i18n.language]);
 
   return (
-    <Section title={t('profile.education')}>
+    <Section title={t('profile.education')} icon={<EducationIcon />}>
       <SectionItem key={`${item.company}-${item.period}`} {...item} />
     </Section>
   );

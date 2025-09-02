@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { LANGUAGES } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { LanguagesIcon } from '@/icons';
 
 import { Section, SectionItem } from '../../..';
 
@@ -19,7 +20,7 @@ export const Languages: FC = () => {
   }, [i18n.language]);
 
   return (
-    <Section title={t('profile.languages')} dark>
+    <Section title={t('profile.languages')} dark icon={<LanguagesIcon />}>
       {items.map((it) => (
         <SectionItem key={`${it.title}-${it.location}`} {...it} small />
       ))}

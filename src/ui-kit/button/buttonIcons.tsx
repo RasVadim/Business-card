@@ -7,7 +7,7 @@ import {
   LinkIcon,
   MenuIcon,
   ProfileIcon,
-  ResumeIcon,
+  ExperienceIcon,
   ProjectsIcon,
 } from '@/icons';
 
@@ -17,7 +17,7 @@ type TBaseIconName =
   | 'profile'
   | 'docs'
   | 'home'
-  | 'resume'
+  | 'experience'
   | 'projects'
   | 'contacts';
 export type TIconName = TBaseIconName;
@@ -32,7 +32,7 @@ export const BUTTON_ICONS: Record<TIconName, FC<TIconProps>> = {
   profile: ProfileIcon,
   home: HouseIcon,
   docs: DocsIcon,
-  resume: ResumeIcon,
+  experience: ExperienceIcon,
   projects: ProjectsIcon,
   contacts: LinkIcon,
 };

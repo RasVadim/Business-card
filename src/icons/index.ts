@@ -28,6 +28,16 @@ export { WhatsappIcon } from './whatsappIcon';
 
 export { LinkIcon } from './linkIcon';
 
-export { ResumeIcon } from './resumeIcon';
+export { ExperienceIcon } from './experienceIcon';
 
 export { ProjectsIcon } from './projectsIcon';
+
+export { EducationIcon } from './educationIcon';
+
+export { WorkExperienceIcon } from './workExperienceIcon';
+
+export { LanguagesIcon } from './languagesIcon';
+
+export { TechnicalSkillsIcon } from './technicalSkillsIcon';
+
+export { SoftSkillsIcon } from './softSkillsIcon';

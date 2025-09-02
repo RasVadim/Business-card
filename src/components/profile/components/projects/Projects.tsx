@@ -8,9 +8,7 @@ import { ProjectCard } from './components/projectCard/ProjectCard';
 
 import s from './s.module.styl';
 
-type TProps = Record<string, never>;
-
-export const Projects: FC<TProps> = () => {
+export const Projects: FC = () => {
   const { t } = useTranslation();
 
   type TProjectView = TProject & { description: string; company?: TCompany };

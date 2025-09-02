@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 
 import { SOFT_SKILLS } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { SoftSkillsIcon } from '@/icons';
 import { Tag } from '@/ui-kit';
 
 import { Section } from '../../..';
@@ -14,7 +15,7 @@ export const Soft: FC = () => {
   const items = useMemo(() => SOFT_SKILLS.map((s) => t(s.nameKey)), [i18n.language]);
 
   return (
-    <Section title={t('profile.soft')} dark>
+    <Section title={t('profile.soft')} dark icon={<SoftSkillsIcon />}>
       <div className={s.list}>
         {items.map((label) => (
           <Tag key={label}>{label}</Tag>

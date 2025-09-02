@@ -45,7 +45,7 @@ export const Statistic: FC = () => {
   }, [i18n.language]);
 
   return (
-    <section className={s.wrapper} id={ESection.RESUME}>
+    <section className={s.wrapper} id={ESection.EXPERIENCE}>
       {stats.map((stat) => (
         <div key={stat.value} className={s.card}>
           <div className={s.value}>{stat.value}</div>

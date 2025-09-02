@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ContactsBlock, HeaderCard, Projects, Resume, Statistic } from './components';
+import { ContactsBlock, HeaderCard, Projects, Experience, Statistic } from './components';
 
 import s from './s.module.styl';
 
@@ -9,7 +9,7 @@ export const Profile: FC = () => {
     <div className={s.wrapper}>
       <HeaderCard />
       <Statistic />
-      <Resume />
+      <Experience />
       <Projects />
       <ContactsBlock />
     </div>

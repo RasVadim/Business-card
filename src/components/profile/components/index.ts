@@ -8,7 +8,7 @@ export { Statistic } from './statistic/Statistic';
 
 export { Avatar } from './avatar/Avatar';
 
-export { Resume } from './resume/Resume';
+export { Experience } from './experience/Experience';
 
 export { Projects } from './projects/Projects';
 

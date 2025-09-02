@@ -15,7 +15,7 @@ export enum EModalKeys {
 export type TPosition = 'top' | 'bottom' | 'left' | 'right' | 'bottom-left';
 
 export enum ESection {
-  RESUME = 'resume',
+  EXPERIENCE = 'experience',
   PROJECTS = 'projects',
   CONTACTS = 'contacts',
 }

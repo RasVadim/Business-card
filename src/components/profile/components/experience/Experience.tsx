@@ -4,7 +4,7 @@ import { Education, Languages, Soft, Technical, WorkExperience } from './compone
 
 import s from './s.module.styl';
 
-export const Resume: FC = () => {
+export const Experience: FC = () => {
   // Static placeholder content that mirrors the PDF layout structure
   return (
     <div className={s.wrapper}>

@@ -7,7 +7,7 @@ type PropsType = {
   isActive?: boolean;
 };
 
-export const ResumeIcon: FC<PropsType> = ({
+export const ExperienceIcon: FC<PropsType> = ({
   size = '20',
   color = '#9DB2CE',
   secondaryColor = '#FFFFFF',

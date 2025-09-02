@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { HARD_SKILL_CATEGORIES, TOOLTIP_DELAY } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { TechnicalSkillsIcon } from '@/icons';
 import { useThemeMode } from '@/store/atoms';
 import { EThemeMode } from '@/types';
 import { Tooltip } from '@/ui-kit';
@@ -15,7 +16,7 @@ export const Technical: FC = () => {
   const [theme] = useThemeMode();
 
   return (
-    <Section title="TECHNICAL" dark>
+    <Section title="TECHNICAL" dark icon={<TechnicalSkillsIcon />}>
       {HARD_SKILL_CATEGORIES.map((category) => (
         <div className={s.category} key={category.id}>
           <div className={s.categoryTitle}>{t(category.titleKey)}</div>
