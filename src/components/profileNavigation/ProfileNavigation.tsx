@@ -10,7 +10,11 @@ import s from './s.module.styl';
 const AUTO_SCROLL_SECTION_OFFSET = 80;
 const DETECTION_SECTION_OFFSET = 500;
 
-export const ProfileNavigation: FC = () => {
+type PropsType = {
+  isMobile?: boolean;
+};
+
+export const ProfileNavigation: FC<PropsType> = ({ isMobile = false }) => {
   const { t } = useTranslation();
 
   const [currentSection, setCurrentSection] = useState<string>('');
@@ -75,7 +79,7 @@ export const ProfileNavigation: FC = () => {
             icon={section as TIconName}
             active={currentSection === section}
             gost={currentSection !== section}
-            size="small"
+            size={isMobile ? 'medium' : 'small'}
             onlyIcon
           />
         </Tooltip>

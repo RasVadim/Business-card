@@ -3,13 +3,14 @@ import { FC } from 'react';
 import cn from 'classnames';
 import { useLocation } from 'react-router-dom';
 
+import { ProfileNavigation } from '@/components';
 import { BurgerMenu } from '@/features';
 import { useDevice, useTranslation } from '@/hooks';
 import { useSyncPending } from '@/store/atoms';
 import { SyncingLine } from '@/ui-kit';
 import { getDepth } from '@/utils';
 
-import { Actions, ProfileNavigation } from './components';
+import { Actions } from './components';
 
 import s from './s.module.styl';
 

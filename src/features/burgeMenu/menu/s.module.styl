@@ -4,8 +4,8 @@
   display flex
   flex-direction column
   width 100vw
-  min-height 300px
-  height calc(100vh - 65%)
+  min-height 150px
+  height calc(100vh - 80%)
   padding 15px
   background-color var(--background-front-color)
   position fixed
@@ -17,6 +17,7 @@
   animation 0.23s showMenu ease
   animation-fill-mode forwards
   border-radius 0 0 24px 24px
+  justify-content flex-end
 
   @media (min-width $medium-width)
     min-height 50px
@@ -36,14 +37,13 @@
   justify-content center
   gap 28px
   padding-top 24px
-
-.menuContentSwitchers
-  display flex
-  position absolute
+  flex-direction column
   align-items center
-  gap 10px
-  left 24px
-  top 50px
+
+.navigation
+  border 1px dotted var(--border-color)
+  padding 10px 14px
+  border-radius 24px
 
 /* ------------- sliding menu ------------------ */
 .hidden
