@@ -4,6 +4,8 @@ export { SyncingLine } from './syncingLine/SyncingLine';
 
 export { PageLoadingHolder } from './pageLoadingHolder/PageLoadingHolder';
 
+export { SkeletonIcon } from './skeletonIcon/SkeletonIcon';
+
 //buttons
 export { Button } from './button/Button';
 

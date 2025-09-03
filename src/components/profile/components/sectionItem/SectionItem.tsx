@@ -3,6 +3,7 @@ import { FC } from 'react';
 import cn from 'classnames';
 
 import { TProject } from '@/types';
+import { SkeletonIcon } from '@/ui-kit';
 
 import s from './s.module.styl';
 
@@ -35,7 +36,7 @@ export const SectionItem: FC<TProps> = ({
         <div className={s.leftSide}>
           {image && (
             <div className={s.image}>
-              <img src={image} alt={company} />
+              <SkeletonIcon src={image} alt={company} />
             </div>
           )}
           <div className={s.leftTitle}>
