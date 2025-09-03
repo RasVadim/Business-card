@@ -13,13 +13,13 @@ type PropsType = {
 };
 
 export const Menu: FC<PropsType> = ({ isOpen }) => {
-  const { isMobile } = useDevice();
+  const { isMedium } = useDevice();
 
   return (
     <div className={cn(s.menu, { [s.hidden]: !isOpen })}>
       <div className={s.menuContent}>
         <Contacts tooltipPosition="bottom" />
-        {isMobile && (
+        {isMedium && (
           <div className={s.navigation}>
             <ProfileNavigation isMobile />
           </div>
