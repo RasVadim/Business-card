@@ -3,15 +3,15 @@ import { FC, ReactNode, useState } from 'react';
 import cn from 'classnames';
 
 import { TOOLTIP_DELAY } from '@/constants';
-import { TCompany, TProject } from '@/types';
 import { Tooltip } from '@/ui-kit';
 
 import { Skill } from '../../../skill/Skill';
+import { TProjectView } from '../../Projects';
 
 import s from './s.module.styl';
 
 type TProps = {
-  project: TProject & { description: string; company?: TCompany };
+  project: TProjectView;
   video?: string;
   className?: string;
   tooltipMaxWidth?: number;
@@ -28,11 +28,18 @@ export const ProjectCard: FC<TProps> = ({
   // Local flags to hide media if assets are missing
   const [showVideo, setShowVideo] = useState(Boolean(video));
 
-  const { name, description, icon: IconComponent, company, technologies = [] } = project;
+  const {
+    name,
+    description,
+    fullDescription,
+    icon: IconComponent,
+    company,
+    technologies = [],
+  } = project;
 
   const tooltipContent = (
     <div className={s.tooltipContent}>
-      <div className={s.tooltipDescription}>{description}</div>
+      <div className={s.tooltipDescription}>{fullDescription}</div>
     </div>
   );
 
@@ -49,6 +56,7 @@ export const ProjectCard: FC<TProps> = ({
             {company?.name}
           </div>
         )}
+        {description && <div className={s.description}>{description}</div>}
         {technologies.length > 0 && (
           <div className={s.skills}>
             {technologies.map((tech) => (
@@ -66,7 +74,6 @@ export const ProjectCard: FC<TProps> = ({
           maxWidth={tooltipMaxWidth}
           delay={TOOLTIP_DELAY.slow}
           fillSpaace
-          position="bottom"
         >
           {showVideo ? (
             <video

@@ -16,7 +16,8 @@ import { HARD_SKILLS } from './skills';
 export const PROJECTS = {
   p1: {
     name: 'VPN Desktop App',
-    descriptionKey: 'profile.projectDescriptions.p7',
+    descriptionKey: 'profile.projectDescriptions.p1',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p1',
     companyId: 'c4',
     icon: VPNDesktopAppIcon,
     isLead: false,
@@ -37,7 +38,8 @@ export const PROJECTS = {
 
   p2: {
     name: 'VPN Browser Extension',
-    descriptionKey: 'profile.projectDescriptions.p6',
+    descriptionKey: 'profile.projectDescriptions.p2',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p2',
     companyId: 'c4',
     icon: VPNExtensionIcon,
     isLead: false,
@@ -56,7 +58,8 @@ export const PROJECTS = {
   },
   p3: {
     name: 'Federal Builder Platform',
-    descriptionKey: 'profile.projectDescriptions.p5',
+    descriptionKey: 'profile.projectDescriptions.p3',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p3',
     companyId: 'c3',
     icon: BuilderPlatformIcon,
     isLead: true,
@@ -76,7 +79,8 @@ export const PROJECTS = {
   },
   p4: {
     name: 'Glasses Store Desktop',
-    descriptionKey: 'profile.projectDescriptions.p3',
+    descriptionKey: 'profile.projectDescriptions.p4',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p4',
     companyId: 'c2',
     icon: GUSADesktopIcon,
     isLead: true,
@@ -95,7 +99,8 @@ export const PROJECTS = {
   },
   p5: {
     name: 'Glasses Store Mobile',
-    descriptionKey: 'profile.projectDescriptions.p4',
+    descriptionKey: 'profile.projectDescriptions.p5',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p5',
     companyId: 'c2',
     icon: GUSAMobileIcon,
     isLead: true,
@@ -114,7 +119,8 @@ export const PROJECTS = {
   },
   p6: {
     name: 'Dealer Passport',
-    descriptionKey: 'profile.projectDescriptions.p2',
+    descriptionKey: 'profile.projectDescriptions.p6',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p6',
     companyId: 'c1',
     icon: PassportDealerIcon,
     isLead: true,
@@ -133,7 +139,8 @@ export const PROJECTS = {
   },
   p7: {
     name: 'MegaPlan',
-    descriptionKey: 'profile.projectDescriptions.p1',
+    descriptionKey: 'profile.projectDescriptions.p7',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p7',
     companyId: 'c1',
     icon: MegePlanIcon,
     isLead: false,
@@ -156,6 +163,7 @@ export const OWN_PROJECTS = {
   op1: {
     name: 'Auto Fill chrome extension',
     descriptionKey: 'profile.ownProjectDescriptions.op1',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op1',
     icon: AutoFillExtensionIcon,
     technologies: [
       HARD_SKILLS.JavaScript,
@@ -168,6 +176,7 @@ export const OWN_PROJECTS = {
   op2: {
     name: 'Subscription Telegram Bot',
     descriptionKey: 'profile.ownProjectDescriptions.op2',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op2',
     icon: SubscriptionTGBotIcon,
     technologies: [
       HARD_SKILLS.JavaScript,
@@ -180,6 +189,7 @@ export const OWN_PROJECTS = {
   op3: {
     name: 'Life Calendar',
     descriptionKey: 'profile.ownProjectDescriptions.op3',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
     icon: LifeCalendarIcon,
     technologies: [
       HARD_SKILLS.React,

@@ -8,10 +8,14 @@ import { ProjectCard } from './components/projectCard/ProjectCard';
 
 import s from './s.module.styl';
 
+export type TProjectView = TProject & {
+  description: string;
+  fullDescription: string;
+  company?: TCompany;
+};
+
 export const Projects: FC = () => {
   const { t } = useTranslation();
-
-  type TProjectView = TProject & { description: string; company?: TCompany };
 
   const companyProjects: TProjectView[] = useMemo(() => {
     return Object.values(PROJECTS).map((project) => {
@@ -19,6 +23,7 @@ export const Projects: FC = () => {
       return {
         ...project,
         description: t(project.descriptionKey),
+        fullDescription: t(project.fullDescriptionKey),
         company,
       };
     });
@@ -28,6 +33,7 @@ export const Projects: FC = () => {
     return Object.values(OWN_PROJECTS).map((project) => ({
       ...project,
       description: t(project.descriptionKey),
+      fullDescription: t(project.fullDescriptionKey),
     }));
   }, [t]);
 

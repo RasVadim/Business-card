@@ -18,6 +18,6 @@ export const WATSAPP_PREFIX = 'wa.me/';
 
 export const TOOLTIP_DELAY = {
   fast: 200,
-  normal: 300,
+  normal: 350,
   slow: 600,
 };
