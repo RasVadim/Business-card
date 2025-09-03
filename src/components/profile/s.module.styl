@@ -1,7 +1,12 @@
+@import '../../styles/vars.styl'
+
 .wrapper
   display flex
   flex-direction column
   gap 16px
-  padding: 16px 100px 120px 0;
+  padding 16px
   margin 0 auto
   max-width 980px
+
+  @media (min-width $medium-width)
+    padding 16px 100px 120px 0

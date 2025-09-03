@@ -58,7 +58,7 @@ export const ProjectCard: FC<TProps> = ({
         )}
         {description && <div className={s.description}>{description}</div>}
         {technologies.length > 0 && (
-          <div className={s.skills}>
+          <div className={s.techList}>
             {technologies.map((tech) => (
               <Skill key={tech.name} skill={tech} showLabel={false} />
             ))}

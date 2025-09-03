@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import cn from 'classnames';
 
@@ -16,6 +16,13 @@ export const SkeletonIcon: FC<TProps> = ({ src, alt, className }) => {
   const [retryCount, setRetryCount] = useState(0);
   const [showFallback, setShowFallback] = useState(false);
   const [imageSrc, setImageSrc] = useState(src);
+
+  // Reset state when src prop changes (theme switch)
+  useEffect(() => {
+    setRetryCount(0);
+    setShowFallback(false);
+    setImageSrc(src);
+  }, [src]);
 
   const handleImageLoad = () => {
     setShowFallback(false);

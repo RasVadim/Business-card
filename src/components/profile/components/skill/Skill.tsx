@@ -28,7 +28,7 @@ export const Skill: FC<TProps> = ({ skill, showLabel = true, tooltipPosition = '
     <Tooltip
       header={
         <div className={s.tooltipTitle}>
-          {skill.icon && <SkeletonIcon className={s.icon} src={tooltipIcon} alt={skill.name} />}
+          {tooltipIcon && <SkeletonIcon className={s.icon} src={tooltipIcon} alt={skill.name} />}
           {skill.name}
         </div>
       }
@@ -39,7 +39,7 @@ export const Skill: FC<TProps> = ({ skill, showLabel = true, tooltipPosition = '
       delay={TOOLTIP_DELAY.fast}
     >
       <span className={cn(s.skill, { [s.wider]: showLabel && skill.showLabel })} key={skill.name}>
-        {skill.icon && <SkeletonIcon className={s.icon} src={icon} alt={skill.name} />}
+        {icon && <SkeletonIcon className={s.icon} src={icon} alt={skill.name} />}
         {showLabel && skill.showLabel && <span>{skill.name}</span>}
       </span>
     </Tooltip>

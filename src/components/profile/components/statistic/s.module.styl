@@ -1,8 +1,15 @@
+@import '../../../../styles/vars.styl'
+
 .wrapper
   display grid
   grid-template-columns repeat(3, 1fr)
   gap 24px
-  padding 10px 50px 200px 100px
+  padding 10px 5px 200px 5px
+  margin 0 auto
+
+  @media (min-width $mobile-width)
+    padding 10px 50px 200px 100px
+    margin 0
 
 .card
   display grid
@@ -19,6 +26,9 @@
 .labels
   color var(--text-color)
   opacity 0.75
-  font-size 15px
+  font-size 13px
   letter-spacing 1.5px
   text-transform uppercase
+
+  @media (min-width $mobile-width)
+    font-size 15px

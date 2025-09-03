@@ -1,16 +1,26 @@
+@import '../../../../styles/vars.styl'
+
 .wrapper
   display grid
-  grid-template-columns 2fr 1fr
-  gap 18px
+  grid-template-columns 1fr
+  gap 46px
+
+  @media (min-width $medium-width)
+    grid-template-columns 2fr 1fr
+    gap 18px
 
 .left
   display flex
   flex-direction column
-  gap 30px
+  gap 46px
+
+  @media (min-width $medium-width)
+    gap 30px
 
 .right
   display flex
   flex-direction column
-  gap 18px
+  gap 46px
 
-
+  @media (min-width $medium-width)
+    gap 18px

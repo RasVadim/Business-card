@@ -1,3 +1,5 @@
+@import '../../../../styles/vars.styl'
+
 .wrapper
   padding 16px
   border 1px dotted var(--secondary-border-color)
@@ -7,7 +9,7 @@
 .small
   padding 6px 24px 0
   margin 10px 0 4px
-  border-radius: 28px;
+  border-radius 28px
 
   .position
     font-size 16px
@@ -25,6 +27,10 @@
   display flex
   justify-content space-between
   align-items flex-start
+  flex-direction column
+
+  @media (min-width $mobile-width)
+    flex-direction row
 
 .leftSide
   display flex
@@ -68,9 +74,12 @@
 
 .subRow
   display grid
-  grid-template-columns 160px 1fr
+  grid-template-columns 120px 1fr
   gap 16px
   margin-top 8px
+
+  @media (min-width $mobile-width)
+    grid-template-columns 160px 1fr
 
 .period
   color var(--secondary-color)
