@@ -1,9 +1,15 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
 import { TOOLTIP_DELAY } from '@/constants';
 import { Tooltip } from '@/ui-kit';
+
+enum EMediaState {
+  PLACEHOLDER = 'placeholder',
+  PHOTO = 'photo',
+  VIDEO = 'video',
+}
 
 import { Skill } from '../../../skill/Skill';
 import { TProjectView } from '../../Projects';
@@ -12,7 +18,6 @@ import s from './s.module.styl';
 
 type TProps = {
   project: TProjectView;
-  video?: string;
   className?: string;
   tooltipMaxWidth?: number;
   tooltipHeader?: ReactNode;
@@ -20,22 +25,45 @@ type TProps = {
 
 export const ProjectCard: FC<TProps> = ({
   project,
-  video,
   className,
   tooltipMaxWidth = 520,
   tooltipHeader,
 }) => {
-  // Local flags to hide media if assets are missing
-  const [showVideo, setShowVideo] = useState(Boolean(video));
-
   const {
     name,
     description,
     fullDescription,
     icon: IconComponent,
     company,
+    photo,
+    video,
     technologies = [],
   } = project;
+
+  // Media loading state - single enum instead of 4 booleans
+  const [mediaState, setMediaState] = useState<EMediaState>(EMediaState.PLACEHOLDER);
+
+  // Preload photo first, then video
+  useEffect(() => {
+    if (!photo) return;
+
+    const img = new Image();
+    img.onload = () => {
+      setMediaState(EMediaState.PHOTO);
+      // Start video preload after photo loads
+      if (video) {
+        const videoEl = document.createElement('video');
+        videoEl.oncanplaythrough = () => setMediaState(EMediaState.VIDEO);
+        videoEl.onerror = () => {}; // Stay on photo if video fails
+        videoEl.src = video;
+        videoEl.load();
+      }
+    };
+    img.onerror = () => {}; // Stay on placeholder if photo fails
+    img.src = photo;
+  }, [photo, video]);
+
+  // Determine what to render based on current state
 
   const tooltipContent = (
     <div className={s.tooltipContent}>
@@ -75,7 +103,7 @@ export const ProjectCard: FC<TProps> = ({
           delay={TOOLTIP_DELAY.slow}
           fillSpaace
         >
-          {showVideo ? (
+          {mediaState === EMediaState.VIDEO ? (
             <video
               className={s.video}
               src={video}
@@ -83,7 +111,14 @@ export const ProjectCard: FC<TProps> = ({
               loop
               playsInline
               autoPlay
-              onError={() => setShowVideo(false)}
+              onError={() => setMediaState(EMediaState.PHOTO)}
+            />
+          ) : mediaState === EMediaState.PHOTO ? (
+            <img
+              className={s.photo}
+              src={photo}
+              alt={name}
+              onError={() => setMediaState(EMediaState.PLACEHOLDER)}
             />
           ) : (
             <div className={s.videoPlaceholder} />

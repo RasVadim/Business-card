@@ -20,6 +20,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p1',
     companyId: 'c4',
     icon: VPNDesktopAppIcon,
+    photo: '/images/projects/VPNDesktopAppPhoto.jpg',
+    video: '/videos/projects/VPNDesktopAppClip.mp4',
     isLead: false,
     technologies: [
       HARD_SKILLS.React,
@@ -42,6 +44,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p2',
     companyId: 'c4',
     icon: VPNExtensionIcon,
+    photo: '/images/projects/VPNExtensionPhoto.jpg',
+    video: '/videos/projects/VPNExtensionClip.mp4',
     isLead: false,
     technologies: [
       HARD_SKILLS.Lit,
@@ -83,6 +87,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p4',
     companyId: 'c2',
     icon: GUSADesktopIcon,
+    photo: '/images/projects/GUSADesktopPhoto.jpg',
+    video: '/videos/projects/GUSADesktopClip.mp4',
     isLead: true,
     technologies: [
       HARD_SKILLS.React,
@@ -103,6 +109,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p5',
     companyId: 'c2',
     icon: GUSAMobileIcon,
+    photo: '/images/projects/GUSAMobilePhoto.jpg',
+    video: '/videos/projects/GUSAMobileClip.mp4',
     isLead: true,
     technologies: [
       HARD_SKILLS.React,

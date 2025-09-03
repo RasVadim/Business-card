@@ -5,6 +5,7 @@ export type TProject = {
   isLead?: boolean;
   icon?: React.ComponentType<{ className?: string; size?: string }>;
   video?: string;
+  photo?: string;
   technologies?: THardSkill[];
 };
 
