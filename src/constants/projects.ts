@@ -131,6 +131,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p6',
     companyId: 'c1',
     icon: PassportDealerIcon,
+    photo: '/images/projects/passportDealerPhoto.jpg',
+    video: '/videos/projects/passportDealerClip.mp4',
     isLead: true,
     technologies: [
       HARD_SKILLS.React,
