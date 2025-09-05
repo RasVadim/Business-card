@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
+    "html2canvas": "^1.4.1",
     "i18next": "^23.11.2",
     "jotai": "^2.7.2",
+    "jspdf": "^3.0.2",
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
     "react-activation": "^0.12.4",
+    "react-dom": "^19.1.1",
     "react-i18next": "^14.1.0",
     "react-router-dom": "^6.22.3"
   },
@@ -33,9 +35,9 @@
     "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
     "prettier": "^3.5.3",
     "prettier-plugin-stylus": "^0.1.0",
-    "globals": "^16.3.0",
     "stylus": "^0.59.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"

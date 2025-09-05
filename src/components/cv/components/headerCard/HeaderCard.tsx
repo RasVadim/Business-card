@@ -1,15 +1,26 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { CONTACTS } from '@/constants';
 
 import s from './s.module.styl';
 
 export const HeaderCard: FC = () => {
+  const [showImage, setShowImage] = useState(false);
+
+  const firstLetter = 'V';
+
   // Static skeleton matching the PDF header; replace texts later by i18n/data if needed
   return (
     <section className={s.wrapper}>
       <div className={s.photo}>
-        <img src="/images/vest_side.jpg" alt="avatar" />
+        {!showImage && <div className={s.placeholder}>{firstLetter}</div>}
+        <img
+          src="/images/photos/vest_side.jpg"
+          alt="avatar"
+          onLoad={() => setShowImage(true)}
+          onError={() => setShowImage(false)}
+          style={{ display: showImage ? 'block' : 'none' }}
+        />
       </div>
       <div className={s.titleBlock}>
         <h1 className={s.name}>Vadim Rasstrigin</h1>

@@ -12,6 +12,10 @@
   will-change transform, background-color
   transition background-color 0.1s ease, opacity 0.1s ease
 
+  svg
+    width 20px
+    height 20px
+
   &:hover
     filter brightness(1.2)
 
@@ -36,36 +40,35 @@
       height 18px
 
   &.customIcon
-    svg
-      width 16px
-      height 16px
-
     .label
       padding 0 5px 0 3px
 
 .small
   height 24px
 
+  &.onlyIcon, &.customIcon
+    svg
+      width 16px
+      height 16px
+
   &.onlyIcon
     width 24px
     height 24px
     padding 3px
 
-    svg
-      width 16px
-      height 16px
-
 .large
   height 44px
+  padding 4px 18px
+
+  &.onlyIcon, &.customIcon
+    svg
+      width 24px
+      height 24px
 
   &.onlyIcon
     width 44px
     height 44px
     padding 6px
-
-    svg
-      width 24px
-      height 24px
 
 .selected
   filter brightness(0.65)
@@ -82,6 +85,50 @@
 .empty
   background transparent
   border 1px solid var(--brand-g1-color) !important
+
+  &.gradient
+    position relative
+    border none !important
+    border-radius 28px
+    background linear-gradient(to top right, var(--brand-g1-color), var(--brand-g2-color))
+    filter brightness(1.05)
+
+    &:hover
+      border none !important
+      filter brightness(1.2)
+
+    &:active
+      border none !important
+
+    &::before
+      content ''
+      position absolute
+      top 2px
+      left 2px
+      right 2px
+      bottom 2px
+      background var(--background-color)
+      border-radius 28px
+      z-index -1
+
+    &.large
+      &::before
+        top 3px
+        left 3px
+        right 3px
+        bottom 3px
+
+    p
+      font-size 14px
+      font-weight 700
+      background linear-gradient(to top right, #e63e1a, var(--brand-g2-color))
+      -webkit-background-clip text
+      -webkit-text-fill-color transparent
+      background-clip text
+      color transparent
+
+    &:not(.onlyIcon) svg
+      padding-right 5px
 
   &:hover
     border 2px solid var(--brand-g1-color) !important

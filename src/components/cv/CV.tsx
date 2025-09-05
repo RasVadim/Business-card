@@ -1,15 +1,19 @@
 import { FC } from 'react';
 
-import { HeaderCard } from './components/headerCard/HeaderCard';
-import { MainGrid } from './components/mainGrid/MainGrid';
+import { ExportButton, HeaderCard, MainGrid } from './components';
 
 import s from './s.module.styl';
 
 export const CV: FC = () => {
   return (
     <div className={s.wrapper}>
-      <HeaderCard />
-      <MainGrid />
+      <ExportButton targetElementId="cv-content" filename="Vadim_Rasstrigin_CV.pdf" />
+      <div className={s.cvTable}>
+        <div id="cv-content" className={s.cvList}>
+          <HeaderCard />
+          <MainGrid />
+        </div>
+      </div>
     </div>
   );
 };

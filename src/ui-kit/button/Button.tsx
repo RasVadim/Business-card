@@ -16,6 +16,7 @@ type PropsType = {
   gost?: boolean;
   circle?: boolean;
   empty?: boolean;
+  gradient?: boolean;
   selected?: boolean;
   hideNonActiveLabel?: boolean;
   labelShiftAnimation?: 'right-start' | 'left-start';
@@ -56,6 +57,7 @@ export const Button: FC<PropsType> = memo(
     circle = false,
     link = false,
     empty = false,
+    gradient = false,
     hideNonActiveLabel = false,
     labelShiftAnimation = '',
     onlyIcon = false,
@@ -83,6 +85,7 @@ export const Button: FC<PropsType> = memo(
           [s.disabled]: disabled,
           [s.gost]: gost,
           [s.empty]: empty,
+          [s.gradient]: gradient,
           [s.customIcon]: icon && typeof icon !== 'string',
           [s.small]: size === 'small',
           [s.large]: size === 'large',

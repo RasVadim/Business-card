@@ -2,6 +2,7 @@
 export { HeaderCard } from './headerCard/HeaderCard';
 export { MainGrid } from './mainGrid/MainGrid';
 export { Section } from './section/Section';
+export { ExportButton } from './exportButton/ExportButton';
 
 // sections
 export { Education } from './education/Education';
