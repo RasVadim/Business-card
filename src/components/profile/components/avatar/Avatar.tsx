@@ -18,7 +18,9 @@ export const Avatar: FC = () => {
   // Preload images with priority on vest_side.jpg
   useEffect(() => {
     let loadedCount = 0;
-    const totalImages = IMAGES.length;
+    // Считаем только реальные изображения (не лого паузы)
+    const realImages = IMAGES.filter((item) => item.type === 'image');
+    const totalImages = realImages.length;
 
     const onImageLoad = () => {
       loadedCount++;
@@ -32,11 +34,13 @@ export const Avatar: FC = () => {
     priorityImg.onload = onImageLoad;
     priorityImg.src = IMAGES[0].src;
 
-    // Load other images after priority
-    IMAGES.slice(1).forEach(({ src }) => {
-      const img = new Image();
-      img.onload = onImageLoad;
-      img.src = src;
+    // Load other real images after priority
+    IMAGES.slice(1).forEach(({ src, type }) => {
+      if (type === 'image') {
+        const img = new Image();
+        img.onload = onImageLoad;
+        img.src = src;
+      }
     });
   }, []);
 
@@ -56,15 +60,20 @@ export const Avatar: FC = () => {
     };
   }, [currentIndex, isLoaded]);
 
+  const isLogoPause = IMAGES[currentIndex]?.type === 'logo';
+
   return (
     <div className={s.photo}>
-      {!isLoaded && <LogoIcon size="250" />}
-      {IMAGES.map(({ src }, index) => {
+      {(!isLoaded || isLogoPause) && <LogoIcon size="250" />}
+      {IMAGES.map(({ src, type }, index) => {
+        // Показываем только реальные изображения
+        if (type !== 'image') return null;
         const className = cn(s.image, {
-          [s.active]: index === currentIndex,
-          [s.next]: index === nextIndex,
-          [s.prev]: index === prevIndex,
-          [s.hidden]: index !== currentIndex && index !== nextIndex && index !== prevIndex,
+          [s.active]: index === currentIndex && !isLogoPause,
+          [s.next]: index === nextIndex && IMAGES[nextIndex]?.type === 'image',
+          [s.prev]: index === prevIndex && IMAGES[prevIndex]?.type === 'image',
+          [s.hidden]:
+            (index !== currentIndex && index !== nextIndex && index !== prevIndex) || isLogoPause,
         });
         return (
           <img
@@ -72,7 +81,7 @@ export const Avatar: FC = () => {
             src={src}
             alt="avatar"
             className={className}
-            aria-hidden={index !== currentIndex}
+            aria-hidden={index !== currentIndex || isLogoPause}
           />
         );
       })}
