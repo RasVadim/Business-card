@@ -2,6 +2,8 @@ import { FC, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
+import { LogoIcon } from '@/icons';
+
 import { IMAGES } from './photos';
 
 import s from './s.module.styl';
@@ -56,6 +58,7 @@ export const Avatar: FC = () => {
 
   return (
     <div className={s.photo}>
+      {!isLoaded && <LogoIcon size="250" />}
       {IMAGES.map(({ src }, index) => {
         const className = cn(s.image, {
           [s.active]: index === currentIndex,
