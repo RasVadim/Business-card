@@ -29,9 +29,10 @@
       "p7": "A large portal similar to a CRM for car dealers, suppliers, and AvtoVAZ contractors."
     },
     "ownProjectDescriptions": {
-      "op1": "Browser extension to manage application submissions with window tracking and auto‑fill.",
+      "op1": "A project that visualizes your whole life by weeks.",
       "op2": "Telegram bot to manage extension subscriptions, including key generation and payments.",
-      "op3": "A project that visualizes your whole life by weeks."
+      "op3": "Browser extension to manage application submissions with window tracking and auto‑fill.",
+      "op4": "Interactive business card with candidate's experience data."
     },
     "projectFullDescriptions": {
       "p1": "- Full desktop application for Windows, macOS, Linux with OS API integration, Remote configuration",
@@ -43,9 +44,10 @@
       "p7": "- First commercial project providing foundational professional experience"
     },
     "ownProjectFullDescriptions": {
-      "op1": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation",
+      "op1": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization",
       "op2": "- Telegram API, key hash generation, crypto wallet integration",
-      "op3": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization"
+      "op3": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation",
+      "op4": "- Connected Telegram bot, micro backend on node.js"
     },
     "educationData": {
       "degree": "Service specialist of microprocessor technology",

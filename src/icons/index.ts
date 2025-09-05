@@ -1,3 +1,5 @@
+export { LogoIcon } from './logoIcon';
+
 export { BackIcon } from './backIcon';
 
 export { MenuIcon } from './menuIcon';
