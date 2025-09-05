@@ -65,7 +65,7 @@ export const Avatar: FC = () => {
   return (
     <div className={s.photo}>
       {(!isLoaded || isLogoPause) && <LogoIcon size="250" />}
-      {IMAGES.map(({ src, type }, index) => {
+      {IMAGES.map(({ src, type, key = '' }, index) => {
         // Показываем только реальные изображения
         if (type !== 'image') return null;
         const className = cn(s.image, {
@@ -77,7 +77,7 @@ export const Avatar: FC = () => {
         });
         return (
           <img
-            key={src}
+            key={src + key}
             src={src}
             alt="avatar"
             className={className}

@@ -8,6 +8,6 @@ export const IMAGES = [
   { src: '/images/photos/jacket_kind.jpg', durationMs: 100, type: 'image' },
   { src: '/images/photos/jacket_active.jpg', durationMs: 200, type: 'image' },
   { src: '/images/photos/jacket_active_close.jpg', durationMs: 250, type: 'image' },
-  { src: '/images/photos/vest_side.jpg', durationMs: MIN_DURATION_MS, type: 'image' },
+  { src: '/images/photos/vest_side.jpg', durationMs: MIN_DURATION_MS, type: 'image', key: 'main2' },
   { src: 'logo-pause', durationMs: MIN_DURATION_MS, type: 'logo' },
 ];
