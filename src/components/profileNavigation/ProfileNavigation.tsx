@@ -30,7 +30,9 @@ export const ProfileNavigation: FC<PropsType> = ({ isMobile = false }) => {
       }
 
       const sections = Object.values(ESection);
-      const scrollPosition = window.scrollY + DETECTION_SECTION_OFFSET; // offset for better detection
+      // Find the scrollable container (motionWrap with overflow-y: auto)
+      const scrollContainer = document.querySelector('[data-scroll-container="true"]');
+      const scrollPosition = (scrollContainer?.scrollTop || 0) + DETECTION_SECTION_OFFSET;
 
       // Find which section is currently visible
       for (const section of sections) {
@@ -45,12 +47,22 @@ export const ProfileNavigation: FC<PropsType> = ({ isMobile = false }) => {
       }
     };
 
-    // Set initial section
-    handleScroll();
+    // Set initial section with delay to ensure container is ready
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 100);
 
-    window.addEventListener('scroll', handleScroll);
+    // Find the scrollable container and add event listener
+    const scrollContainer = document.querySelector('[data-scroll-container="true"]');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+      return () => {
+        clearTimeout(timer);
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      };
+    }
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => clearTimeout(timer);
   }, [isProgrammaticScroll]);
 
   const handleSectionClick = async (section: ESection) => {

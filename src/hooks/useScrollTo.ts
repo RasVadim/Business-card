@@ -4,20 +4,25 @@ export const useScrollTo = () => {
   const scrollTo = useCallback((elementId: string, offset = 0): Promise<void> => {
     return new Promise((resolve) => {
       const element = document.getElementById(elementId);
-      if (element) {
-        const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({
+      const scrollContainer = document.querySelector('[data-scroll-container="true"]');
+      
+      if (element && scrollContainer) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        const y = elementRect.top - containerRect.top + scrollContainer.scrollTop - offset;
+        
+        scrollContainer.scrollTo({
           top: y,
           behavior: 'smooth',
         });
 
         // Use scrollend event (modern browsers)
         const handleScrollEnd = () => {
-          window.removeEventListener('scrollend', handleScrollEnd);
+          scrollContainer.removeEventListener('scrollend', handleScrollEnd);
           resolve();
         };
 
-        window.addEventListener('scrollend', handleScrollEnd);
+        scrollContainer.addEventListener('scrollend', handleScrollEnd);
       } else {
         resolve();
       }
