@@ -15,7 +15,7 @@ export const WorkExperience: FC = () => {
   );
 
   return (
-    <Section title={t('profile.workExperience')} hight="766px">
+    <Section title={t('profile.workExperience')} hight="790px">
       {sortedCompanies.map((company, index) => (
         <ExpierienceItem key={`${company.name}-${index}`} company={company} />
       ))}

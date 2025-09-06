@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 
 import { CONTACTS } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { GithubIcon, LinkedinIcon, MailIcon, TelegramIcon } from '@/icons';
 
 import s from './s.module.styl';
 
@@ -31,10 +32,21 @@ export const HeaderCard: FC = () => {
         <p className={s.summary}>{t('profile.cvBigDescription')}</p>
       </div>
       <div className={s.contacts}>
-        <span className={s.contact}>{CONTACTS.mail}</span>
-        <span className={s.contact}>{CONTACTS.phone}</span>
-        <span className={s.contact}>{CONTACTS.linkedin}</span>
-        <span className={s.contact}>{CONTACTS.github}</span>
+        <span className={s.contact}>
+          <MailIcon />
+          {CONTACTS.mail}
+        </span>
+        <span className={s.contact}>
+          <TelegramIcon monochrome />
+          {CONTACTS.phone}
+        </span>
+        <span className={s.contact}>
+          <LinkedinIcon monochrome size="16" /> &nbsp;{CONTACTS.linkedin}
+        </span>
+        <span className={s.contact}>
+          <GithubIcon size="24" />
+          {CONTACTS.github}
+        </span>
       </div>
     </section>
   );
