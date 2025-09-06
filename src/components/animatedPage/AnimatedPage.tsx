@@ -69,7 +69,7 @@ export const AnimatedPage: FC = () => {
   }
 
   return (
-    <AnimatePresence mode="sync" custom={{ direction, isFirstEntry }}>
+    <AnimatePresence mode="popLayout" custom={{ direction, isFirstEntry }}>
       <motion.div
         key={location.key || location.pathname}
         custom={{ direction, isFirstEntry }}
@@ -77,7 +77,13 @@ export const AnimatedPage: FC = () => {
         animate="animate"
         exit="exit"
         variants={PAGE_ANIMATION_VARIANTS}
-        transition={{ type: 'tween', ease: 'easeInOut', duration: 0.35 }}
+        transition={{
+          type: 'tween',
+          ease: 'easeInOut',
+          duration: 0.3,
+          x: { type: 'tween', ease: 'easeInOut', duration: 0.3 },
+          opacity: { type: 'tween', ease: 'easeInOut', duration: 0.2 },
+        }}
         className={s.motionWrap}
         data-scroll-container="true"
       >

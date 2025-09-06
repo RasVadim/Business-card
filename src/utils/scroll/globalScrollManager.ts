@@ -82,9 +82,6 @@ class GlobalScrollManager {
 
     // Re-add all listeners to new container
     this.addAllListeners();
-
-    // Notify about container change
-    this.notifyContainerChange();
   }
 
   /**
@@ -107,13 +104,6 @@ class GlobalScrollManager {
         this.currentContainer!.addEventListener('scroll', listener);
       });
     }
-  }
-
-  /**
-   * Notifies about container change (can be used for debugging)
-   */
-  private notifyContainerChange(): void {
-    console.log('Scroll container changed:', this.currentContainer);
   }
 
   /**
