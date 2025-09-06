@@ -13,6 +13,6 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
 }) => (
   <section className={cn(s.section, { [s.hight]: hight !== 'auto' })} style={{ height: hight }}>
     <h3 className={s.sectionTitle}>{title}</h3>
-    <div>{children}</div>
+    <div className={s.sectionContent}>{children}</div>
   </section>
 );

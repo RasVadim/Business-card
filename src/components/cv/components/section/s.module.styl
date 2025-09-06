@@ -9,10 +9,15 @@
   font-weight 700
   color var(--c-text-color)
 
+.sectionContent
+  display flex
+  flex-direction column
+  gap 16px
+
 .hight
   overflow hidden
   position relative
-  
+
   &::after
     content ''
     position absolute
@@ -22,4 +27,3 @@
     height 30px
     background linear-gradient(transparent, var(--c-white-color))
     pointer-events none
-  
