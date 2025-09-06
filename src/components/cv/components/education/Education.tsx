@@ -18,7 +18,7 @@ export const Education: FC = () => {
   })}`;
 
   return (
-    <Section title={t('profile.education')}>
+    <Section title={t('layout.education')}>
       <SectionItem
         title={t(EDUCATION.degreeKey)}
         subtitle={t(EDUCATION.universityKey)}

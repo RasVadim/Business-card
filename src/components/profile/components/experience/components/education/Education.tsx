@@ -21,7 +21,7 @@ export const Education: FC = () => {
   }, [i18n.language]);
 
   return (
-    <Section title={t('profile.education')} icon={<EducationIcon />}>
+    <Section title={t('layout.education')} icon={<EducationIcon />}>
       <SectionItem key={`${item.company}-${item.period}`} {...item} />
     </Section>
   );

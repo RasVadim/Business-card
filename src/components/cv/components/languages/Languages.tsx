@@ -11,7 +11,7 @@ export const Languages: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Section title="LANGUAGES" dark>
+    <Section title={t('layout.languages')} dark>
       <div className={s.languagesList}>
         {LANGUAGES.map((language) => (
           <div key={language.id} className={s.languageItem}>

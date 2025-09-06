@@ -26,7 +26,7 @@ export const WorkExperience: FC = () => {
   }, [t, i18n.language]);
 
   return (
-    <Section title={t('profile.workExperience')} icon={<WorkExperienceIcon />}>
+    <Section title={t('layout.workExperience')} icon={<WorkExperienceIcon />}>
       {items.map((it) => (
         <SectionItem key={`${it.company}-${it.period}`} {...it} />
       ))}

@@ -20,7 +20,7 @@ export const Languages: FC = () => {
   }, [i18n.language]);
 
   return (
-    <Section title={t('profile.languages')} dark icon={<LanguagesIcon />}>
+    <Section title={t('layout.languages')} dark icon={<LanguagesIcon />}>
       {items.map((it) => (
         <SectionItem key={`${it.title}-${it.location}`} {...it} small />
       ))}

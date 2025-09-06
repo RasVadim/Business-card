@@ -8,6 +8,11 @@
     "experience": "Опыт",
     "projects": "Проекты",
     "contacts": "Контакты",
-    "save": "Сохранить"
+    "save": "Сохранить",
+    "languages": "ЯЗЫКИ",
+    "education": "ОБРАЗОВАНИЕ",
+    "soft": "СОФТ",
+    "technical": "ТЕХНОЛОГИИ",
+    "workExperience": "ОПЫТ РАБОТЫ"
   }
 }

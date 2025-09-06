@@ -11,7 +11,7 @@ export const Technical: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Section title="TECHNICAL" dark>
+    <Section title={t('layout.technical')} dark>
       <div className={s.skillsList}>
         {HARD_SKILL_CATEGORIES.map((category) => (
           <div key={category.id} className={s.skillCategory}>

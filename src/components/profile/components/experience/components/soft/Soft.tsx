@@ -15,7 +15,7 @@ export const Soft: FC = () => {
   const items = useMemo(() => SOFT_SKILLS.map((s) => t(s.nameKey)), [i18n.language]);
 
   return (
-    <Section title={t('profile.soft')} dark icon={<SoftSkillsIcon />}>
+    <Section title={t('layout.soft')} dark icon={<SoftSkillsIcon />}>
       <div className={s.list}>
         {items.map((label) => (
           <Tag key={label}>{label}</Tag>

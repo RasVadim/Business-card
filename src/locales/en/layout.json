@@ -8,6 +8,11 @@
     "experience": "Experience",
     "projects": "Projects",
     "contacts": "Contacts",
-    "save": "SAVE"
+    "save": "SAVE",
+    "languages": "LANGUAGES",
+    "education": "EDUCATION",
+    "soft": "SOFT",
+    "technical": "TECHNICAL",
+    "workExperience": "WORK EXPERIENCE"
   }
 }

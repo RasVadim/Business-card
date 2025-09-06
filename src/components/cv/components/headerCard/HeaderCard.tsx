@@ -27,7 +27,7 @@ export const HeaderCard: FC = () => {
         />
       </div>
       <div className={s.titleBlock}>
-        <h1 className={s.name}>Vadim Rasstrigin</h1>
+        <h1 className={s.name}>{t('profile.name')}</h1>
         <div className={s.role}>Senior Frontend Engineer</div>
         <p className={s.summary}>{t('profile.cvBigDescription')}</p>
       </div>
