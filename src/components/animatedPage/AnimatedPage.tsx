@@ -41,16 +41,6 @@ export const AnimatedPage: FC = () => {
     }
   }
 
-  // Debug information
-  console.log('Animation debug:', {
-    prevPath,
-    currentPath,
-    isFirstEntry,
-    direction,
-    locationKey: location.key,
-    locationPathname: location.pathname,
-  });
-
   return (
     <AnimatePresence mode="sync" custom={{ direction, isFirstEntry }}>
       <motion.div

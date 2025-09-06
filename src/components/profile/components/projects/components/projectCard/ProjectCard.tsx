@@ -1,8 +1,9 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useState, useRef } from 'react';
 
 import cn from 'classnames';
 
 import { TOOLTIP_DELAY } from '@/constants';
+import { useScrollDetection } from '@/hooks';
 import { Tooltip } from '@/ui-kit';
 
 enum EMediaState {
@@ -43,6 +44,10 @@ export const ProjectCard: FC<TProps> = ({
   // Media loading state - single enum instead of 4 booleans
   const [mediaState, setMediaState] = useState<EMediaState>(EMediaState.PLACEHOLDER);
 
+  // Video control
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { isScrolling } = useScrollDetection();
+
   // Preload photo first, then video
   useEffect(() => {
     if (!photo) return;
@@ -62,6 +67,19 @@ export const ProjectCard: FC<TProps> = ({
     img.onerror = () => {}; // Stay on placeholder if photo fails
     img.src = photo;
   }, [photo, video]);
+
+  // Control video playback based on scroll state
+  useEffect(() => {
+    if (!videoRef.current || mediaState !== EMediaState.VIDEO) return;
+
+    if (isScrolling) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play().catch(() => {
+        // Ignore play errors (e.g., if video is not ready)
+      });
+    }
+  }, [isScrolling, mediaState]);
 
   // Determine what to render based on current state
 
@@ -105,6 +123,7 @@ export const ProjectCard: FC<TProps> = ({
         >
           {mediaState === EMediaState.VIDEO ? (
             <video
+              ref={videoRef}
               className={s.video}
               src={video}
               muted

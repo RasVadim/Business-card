@@ -47,22 +47,14 @@ export const ProfileNavigation: FC<PropsType> = ({ isMobile = false }) => {
       }
     };
 
-    // Set initial section with delay to ensure container is ready
-    const timer = setTimeout(() => {
-      handleScroll();
-    }, 100);
-
     // Find the scrollable container and add event listener
     const scrollContainer = document.querySelector('[data-scroll-container="true"]');
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll);
       return () => {
-        clearTimeout(timer);
         scrollContainer.removeEventListener('scroll', handleScroll);
       };
     }
-
-    return () => clearTimeout(timer);
   }, [isProgrammaticScroll]);
 
   const handleSectionClick = async (section: ESection) => {
