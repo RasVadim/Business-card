@@ -1,6 +1,7 @@
 .wrapper
   display grid
   grid-template-columns 120px 1fr
+  grid-template-rows auto auto
   gap 16px
   background var(--c-dark-background-color)
   border-radius 8px
@@ -36,7 +37,7 @@
 .titleBlock
   display flex
   flex-direction column
-  gap 8px
+  gap 4px
 
 .name
   margin 0
@@ -59,6 +60,7 @@
   grid-auto-flow column
   gap 12px
   align-items center
+  grid-column 1 / -1
 
 .contact
   font-size 12px
