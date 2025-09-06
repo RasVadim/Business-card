@@ -29,20 +29,18 @@ export const Tooltip: FC<TProps> = ({
   fillSpaace = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [timeoutId, setTimeoutId] = useState<number | null>(null);
+  const [shouldShow, setShouldShow] = useState(false);
 
   const handleMouseEnter = () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    const id = setTimeout(() => setIsVisible(true), delay);
-    setTimeoutId(id);
+    setShouldShow(true);
+    // Use CSS transition delay instead of setTimeout
+    requestAnimationFrame(() => {
+      setIsVisible(true);
+    });
   };
 
   const handleMouseLeave = () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
+    setShouldShow(false);
     setIsVisible(false);
   };
 
@@ -53,17 +51,21 @@ export const Tooltip: FC<TProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       {children}
-      {isVisible && (
-        <div
-          className={cn(s.tooltip, s[position], s.visible, {
-            [s.arrow]: arrow,
-          })}
-          style={{ maxWidth }}
-        >
-          {header && <div className={s.header}>{header}</div>}
-          <div className={s.content}>{content}</div>
-        </div>
-      )}
+      <div
+        className={cn(s.tooltip, s[position], {
+          [s.visible]: isVisible,
+          [s.arrow]: arrow,
+        })}
+        style={{
+          maxWidth,
+          transitionDelay: shouldShow ? `${delay}ms` : '0ms',
+          transitionDuration: '200ms',
+          transitionProperty: 'opacity, transform',
+        }}
+      >
+        {header && <div className={s.header}>{header}</div>}
+        <div className={s.content}>{content}</div>
+      </div>
     </div>
   );
 };

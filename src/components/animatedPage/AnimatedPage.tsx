@@ -34,11 +34,28 @@ export const AnimatedPage: FC = () => {
 
   // Force scroll container detection after animation completes
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleAnimationEnd = () => {
       globalScrollManager.forceDetection();
-    }, 400); // Animation duration + small buffer
+    };
 
-    return () => clearTimeout(timer);
+    // Listen for animation end events
+    const motionElement = document.querySelector('[data-scroll-container="true"]');
+    if (motionElement) {
+      motionElement.addEventListener('animationend', handleAnimationEnd);
+      motionElement.addEventListener('transitionend', handleAnimationEnd);
+    }
+
+    // Fallback with requestAnimationFrame for immediate detection
+    requestAnimationFrame(() => {
+      globalScrollManager.forceDetection();
+    });
+
+    return () => {
+      if (motionElement) {
+        motionElement.removeEventListener('animationend', handleAnimationEnd);
+        motionElement.removeEventListener('transitionend', handleAnimationEnd);
+      }
+    };
   }, [currentPath]);
 
   // Direction logic: Profile (/) -> CV (/cv) = direction 1, CV (/cv) -> Profile (/) = direction -1
