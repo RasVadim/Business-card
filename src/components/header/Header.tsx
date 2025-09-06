@@ -24,6 +24,8 @@ export const Header: FC<TProps> = ({ preview = false }) => {
   const { pathname } = useLocation();
   const { isMedium } = useDevice();
 
+  const isProfile = pathname === '/';
+
   const pathSegments = pathname.split('/').filter(Boolean);
   const pageName = pathSegments[pathSegments.length - 1] || '';
 
@@ -40,7 +42,9 @@ export const Header: FC<TProps> = ({ preview = false }) => {
           <BurgerMenu backButton={currentDepth > 1} />
         </div>
         <span className={s.title}>{title}</span>
-        <div className={s.rightSide}>{isMedium ? <Actions /> : <ProfileNavigation />}</div>
+        <div className={s.rightSide}>
+          {isMedium ? <Actions /> : isProfile ? <ProfileNavigation /> : ''}
+        </div>
       </div>
     </div>
   );
