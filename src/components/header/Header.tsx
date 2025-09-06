@@ -6,8 +6,8 @@ import { useLocation } from 'react-router-dom';
 import { ProfileNavigation } from '@/components';
 import { BurgerMenu } from '@/features';
 import { useDevice, useTranslation } from '@/hooks';
-import { useSyncPending } from '@/store/atoms';
-import { SyncingLine } from '@/ui-kit';
+// import { useSyncPending } from '@/store/atoms';
+// import { SyncingLine } from '@/ui-kit';
 import { getDepth } from '@/utils';
 
 import { Actions } from './components';
@@ -20,7 +20,7 @@ type TProps = {
 
 export const Header: FC<TProps> = ({ preview = false }) => {
   const { t } = useTranslation();
-  const [pending] = useSyncPending();
+  // const [pending] = useSyncPending();
   const { pathname } = useLocation();
   const { isMedium } = useDevice();
 
@@ -37,7 +37,7 @@ export const Header: FC<TProps> = ({ preview = false }) => {
     <div className={cn(s.container, { [s.preview]: preview })}>
       <div className={s.header}>
         {!isMedium && <Actions />}
-        {pending && <SyncingLine />}
+        {/* {pending && <SyncingLine />} */}
         <div className={s.leftSide}>
           <BurgerMenu backButton={currentDepth > 1} />
         </div>

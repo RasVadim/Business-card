@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { globalScrollManager } from '@/utils';
+
 export const useScrollDetection = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -9,28 +11,20 @@ export const useScrollDetection = () => {
     const handleScroll = () => {
       setIsScrolling(true);
 
-      // Clear existing timeout
       clearTimeout(scrollTimeout);
 
-      // Set scrolling to false after scroll ends
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
-      }, 150); // 150ms delay after scroll stops
+      }, 150);
     };
 
-    // Find the scrollable container
-    const scrollContainer = document.querySelector('[data-scroll-container="true"]');
+    // Add scroll listener to global manager
+    globalScrollManager.addScrollListener(handleScroll);
 
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleScroll);
-
-      return () => {
-        clearTimeout(scrollTimeout);
-        scrollContainer.removeEventListener('scroll', handleScroll);
-      };
-    }
-
-    return () => clearTimeout(scrollTimeout);
+    return () => {
+      clearTimeout(scrollTimeout);
+      globalScrollManager.removeScrollListener(handleScroll);
+    };
   }, []);
 
   return { isScrolling };

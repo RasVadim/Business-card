@@ -7,6 +7,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { PAGE_NAMES } from '@/constants/paths';
 import { Profile, CV } from '@/pages';
 import { PAGE_ANIMATION_VARIANTS } from '@/pages/constants/animation';
+import { globalScrollManager } from '@/utils';
 
 import s from './s.module.styl';
 
@@ -29,6 +30,15 @@ export const AnimatedPage: FC = () => {
   // Update previous path after calculating direction
   useEffect(() => {
     prevPathRef.current = currentPath;
+  }, [currentPath]);
+
+  // Force scroll container detection after animation completes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      globalScrollManager.forceDetection();
+    }, 400); // Animation duration + small buffer
+
+    return () => clearTimeout(timer);
   }, [currentPath]);
 
   // Direction logic: Profile (/) -> CV (/cv) = direction 1, CV (/cv) -> Profile (/) = direction -1
@@ -55,7 +65,7 @@ export const AnimatedPage: FC = () => {
         data-scroll-container="true"
       >
         <Routes location={location} key={location.key || location.pathname}>
-          <Route index element={<Profile />} />
+          <Route path="/" element={<Profile />} />
           <Route path={PAGE_NAMES.CV} element={<CV />} />
           <Route path="*" element={<div>Need beautiful page</div>} />
         </Routes>
