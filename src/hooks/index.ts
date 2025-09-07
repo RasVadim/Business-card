@@ -1,3 +1,5 @@
+export { useCVScale } from './useCVScale';
+
 export { useDevice } from './useDevice';
 
 export { useTranslation } from './useTranslation';
