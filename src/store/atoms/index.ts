@@ -6,3 +6,11 @@ export { useLanguage, useSetLanguage } from './language/useLanguage';
 export { useSyncPending, useSetSyncPending } from './syncPending/useSyncPending';
 
 export { useOpenDrawerKey, useSetOpenDrawerKey } from './openDrawer/useOpenDrawerKey';
+
+export {
+  useChatState,
+  useSetChatState,
+  useAddMessage,
+  useSetLoading,
+  useSetConnected,
+} from './chat/useChatState';

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
-import { Header, TabBar, ExportButton } from '@/components';
+import { Header, TabBar, ExportButton, ChatButton, ChatDrawer } from '@/components';
 import { AnimatedPage } from '@/components/animatedPage/AnimatedPage';
 
 import s from './s.module.styl';
@@ -18,6 +18,8 @@ export const Layout: FC = () => {
         <AnimatedPage />
       </div>
       {isCVPage && <ExportButton targetElementId="cv-content" filename="Vadim_Rasstrigin_CV.pdf" />}
+      <ChatButton />
+      <ChatDrawer />
       <TabBar />
     </>
   );

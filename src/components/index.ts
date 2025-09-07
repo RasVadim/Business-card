@@ -13,3 +13,7 @@ export { CV } from './cv/CV';
 export { ExportButton } from './exportButton/ExportButton';
 
 export { Contacts } from './contacts/Contacts';
+
+export { ChatButton } from './chatButton/ChatButton';
+
+export { ChatDrawer } from './chat/ChatDrawer';

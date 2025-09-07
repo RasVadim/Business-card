@@ -11,3 +11,7 @@ export { useScrollTo } from './useScrollTo';
 export { useScrollDetection } from './useScrollDetection';
 
 export { useExportPDF } from './useExportPDF';
+
+export { useTelegramBot } from './useTelegramBot';
+
+export { useSSE } from './useSSE';

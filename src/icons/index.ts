@@ -53,3 +53,4 @@ export { MegePlanIcon } from './megePlanIcon';
 export { LifeCalendarIcon } from './lifeCalendarIcon';
 export { SubscriptionTGBotIcon } from './subscriptionTGBotIcon';
 export { AutoFillExtensionIcon } from './autoFillExtensionIcon';
+export { ChatBotIcon } from './chatBotIcon';

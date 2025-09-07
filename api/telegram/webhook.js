@@ -1,0 +1,40 @@
+// Webhook endpoint for receiving messages from Telegram Bot
+// This endpoint will be called by Telegram when you reply to the bot
+
+import { broadcastMessage } from '../chat/sse.js';
+
+export default async function handler(req, res) {
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { message } = req.body;
+
+    if (!message || !message.text) {
+      return res.status(400).json({ error: 'Invalid message format' });
+    }
+
+    // Check if this is a reply to our bot
+    if (message.reply_to_message && message.reply_to_message.from.is_bot) {
+      // This is a reply to our bot, broadcast it to all connected clients
+      const chatMessage = {
+        id: message.message_id.toString(),
+        text: message.text,
+        timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
+      };
+
+      // Broadcast to all connected SSE clients
+      broadcastMessage(chatMessage);
+
+      return res.status(200).json({ success: true });
+    }
+
+    // If it's not a reply to our bot, ignore it
+    return res.status(200).json({ success: true, ignored: true });
+  } catch (error) {
+    console.error('Error processing Telegram webhook:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

@@ -8,7 +8,11 @@ export { getYearsWordDative } from './getRightWordEnd/getYearsWordDative';
 // common
 export { getDepth } from './common/getDepth';
 export { formatMonthYear } from './common/formatYearMonth';
+export { getUserMetadata } from './common/getUserMetadata';
 
 // scroll
 export { createSectionScrollHandler } from './scroll/sectionDetection';
 export { globalScrollManager } from './scroll/globalScrollManager';
+
+// telegram
+export { formatMessageForTelegram } from './telegram/formatMessageForTelegram';
