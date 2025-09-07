@@ -16,34 +16,34 @@
       "c4": "A major international VPN service."
     },
     "projectDescriptions": {
-      "p1": "Cross‑platform desktop VPN application built on Electron and React.",
-      "p2": "Cross-browser VPN extension with over 6M users in the Chrome Web Store.",
-      "p3": "Federal platform for developers, suppliers, designers, architects, builders, and more.",
-      "p4": "Mobile version of the Glasses Store Desktop with equally high load and complexity.",
-      "p5": "International online store with complex architecture and high daily traffic (132,000 unique users/day).",
-      "p6": "A platform with analytics for senior managers and the CEO of AvtoVAZ.",
-      "p7": "A large portal similar to a CRM for car dealers, suppliers, and AvtoVAZ contractors."
+      "p1": "A large portal similar to a CRM for car dealers, suppliers, and AvtoVAZ contractors.",
+      "p2": "A platform with analytics for senior managers and the CEO of AvtoVAZ.",
+      "p3": "Mobile version of the Glasses Store Desktop with equally high load and complexity.",
+      "p4": "International online store with complex architecture and high daily traffic (132,000 unique users/day).",
+      "p5": "Federal platform for developers, suppliers, designers, architects, builders, and more.",
+      "p6": "Cross-browser VPN extension with over 6M users in the Chrome Web Store.",
+      "p7": "Cross‑platform desktop VPN application built on Electron and React."
     },
     "ownProjectDescriptions": {
-      "op1": "A project that visualizes your whole life by weeks.",
-      "op2": "Telegram bot to manage extension subscriptions, including key generation and payments.",
-      "op3": "Browser extension to manage application submissions with window tracking and auto‑fill.",
-      "op4": "Interactive business card with candidate's experience data."
+      "op1": "Interactive business card with candidate's experience data.",
+      "op2": "Browser extension to manage application submissions with window tracking and auto‑fill.",
+      "op3": "Telegram bot to manage extension subscriptions, including key generation and payments.",
+      "op4": "A project that visualizes your whole life by weeks."
     },
     "projectFullDescriptions": {
-      "p1": "- Full desktop application for Windows, macOS, Linux with OS API integration, Remote configuration",
-      "p2": "- Dynamic functionality changes and feature retasking based on user requirements",
-      "p3": "- Microfrontend architecture, responsible for 2 major modules, Team Lead role managing 6 developers",
+      "p1": "- First commercial project providing foundational professional experience",
+      "p2": "- Solo frontend development from scratch, later transitioned to mentoring junior developers",
+      "p3": "- Mobile version development with different architecture, optimized performance indicators, and specialized module set",
       "p4": "- Large-scale project with modular architecture, Redux and React Query, SSR, testing, analytics, and custom dependencies",
-      "p5": "- Mobile version development with different architecture, optimized performance indicators, and specialized module set",
-      "p6": "- Solo frontend development from scratch, later transitioned to mentoring junior developers",
-      "p7": "- First commercial project providing foundational professional experience"
+      "p5": "- Microfrontend architecture, responsible for 2 major modules, Team Lead role managing 6 people team",
+      "p6": "- Dynamic functionality changes and feature retasking based on user requirements",
+      "p7": "- Full desktop application for Windows, macOS, Linux with OS API integration, Remote configuration"
     },
     "ownProjectFullDescriptions": {
-      "op1": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization",
-      "op2": "- Telegram API, key hash generation, crypto wallet integration",
-      "op3": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation",
-      "op4": "- Connected Telegram bot, micro backend on node.js"
+      "op1": "- Connected Telegram bot, mini backend on node.js",
+      "op2": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation",
+      "op3": "- Telegram API, key hash generation, crypto wallet integration",
+      "op4": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization"
     },
     "educationData": {
       "degree": "Service specialist of microprocessor technology",

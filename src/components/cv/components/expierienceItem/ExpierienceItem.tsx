@@ -32,7 +32,7 @@ export const ExpierienceItem: FC<TProps> = ({ company }) => {
   };
 
   const formatResponsibilities = (company: TCompany) => {
-    return company.projects.map((project) => t(project.descriptionKey)).join('\n');
+    return company.projects.map((project) => t(project.descriptionKey));
   };
 
   return (

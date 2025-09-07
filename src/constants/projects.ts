@@ -15,10 +15,10 @@ import {
 import { HARD_SKILLS } from './skills';
 
 export const PROJECTS = {
-  p1: {
+  p7: {
     name: 'VPN Desktop App',
-    descriptionKey: 'profile.projectDescriptions.p1',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p1',
+    descriptionKey: 'profile.projectDescriptions.p7',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p7',
     companyId: 'c4',
     icon: VPNDesktopAppIcon,
     photo: '/images/projects/VPNDesktopAppPhoto.jpg',
@@ -39,10 +39,10 @@ export const PROJECTS = {
     ],
   },
 
-  p2: {
+  p6: {
     name: 'VPN Browser Extension',
-    descriptionKey: 'profile.projectDescriptions.p2',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p2',
+    descriptionKey: 'profile.projectDescriptions.p6',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p6',
     companyId: 'c4',
     icon: VPNExtensionIcon,
     photo: '/images/projects/VPNExtensionPhoto.jpg',
@@ -61,10 +61,10 @@ export const PROJECTS = {
       HARD_SKILLS.Firebase,
     ],
   },
-  p3: {
+  p5: {
     name: 'Federal Builder Platform',
-    descriptionKey: 'profile.projectDescriptions.p3',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p3',
+    descriptionKey: 'profile.projectDescriptions.p5',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p5',
     companyId: 'c3',
     icon: BuilderPlatformIcon,
     isLead: true,
@@ -104,10 +104,10 @@ export const PROJECTS = {
       HARD_SKILLS.NPM,
     ],
   },
-  p5: {
+  p3: {
     name: 'Glasses Store Mobile',
-    descriptionKey: 'profile.projectDescriptions.p5',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p5',
+    descriptionKey: 'profile.projectDescriptions.p3',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p3',
     companyId: 'c2',
     icon: GUSAMobileIcon,
     photo: '/images/projects/GUSAMobilePhoto.jpg',
@@ -126,10 +126,10 @@ export const PROJECTS = {
       HARD_SKILLS.GitHub,
     ],
   },
-  p6: {
+  p2: {
     name: 'Dealer Passport',
-    descriptionKey: 'profile.projectDescriptions.p6',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p6',
+    descriptionKey: 'profile.projectDescriptions.p2',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p2',
     companyId: 'c1',
     icon: PassportDealerIcon,
     photo: '/images/projects/passportDealerPhoto.jpg',
@@ -148,10 +148,10 @@ export const PROJECTS = {
       HARD_SKILLS.GitLab,
     ],
   },
-  p7: {
+  p1: {
     name: 'MegaPlan',
-    descriptionKey: 'profile.projectDescriptions.p7',
-    fullDescriptionKey: 'profile.projectFullDescriptions.p7',
+    descriptionKey: 'profile.projectDescriptions.p1',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p1',
     companyId: 'c1',
     icon: MegePlanIcon,
     isLead: false,
@@ -171,10 +171,10 @@ export const PROJECTS = {
 };
 
 export const OWN_PROJECTS = {
-  op1: {
+  op4: {
     name: 'Life Calendar',
-    descriptionKey: 'profile.ownProjectDescriptions.op1',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op1',
+    descriptionKey: 'profile.ownProjectDescriptions.op4',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op4',
     icon: LifeCalendarIcon,
     technologies: [
       HARD_SKILLS.React,
@@ -189,10 +189,10 @@ export const OWN_PROJECTS = {
       HARD_SKILLS.GitHub,
     ],
   },
-  op2: {
+  op3: {
     name: 'Subscription Telegram Bot',
-    descriptionKey: 'profile.ownProjectDescriptions.op2',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op2',
+    descriptionKey: 'profile.ownProjectDescriptions.op3',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
     icon: SubscriptionTGBotIcon,
     technologies: [
       HARD_SKILLS.JavaScript,
@@ -202,10 +202,10 @@ export const OWN_PROJECTS = {
       HARD_SKILLS.GitHub,
     ],
   },
-  op3: {
+  op2: {
     name: 'Auto Fill chrome extension',
-    descriptionKey: 'profile.ownProjectDescriptions.op3',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
+    descriptionKey: 'profile.ownProjectDescriptions.op2',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op2',
     icon: AutoFillExtensionIcon,
     technologies: [
       HARD_SKILLS.JavaScript,
@@ -215,10 +215,10 @@ export const OWN_PROJECTS = {
       HARD_SKILLS.GitHub,
     ],
   },
-  op4: {
+  op1: {
     name: 'Bussines Card',
-    descriptionKey: 'profile.ownProjectDescriptions.op4',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op4',
+    descriptionKey: 'profile.ownProjectDescriptions.op1',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op1',
     icon: LogoIcon,
     technologies: [
       HARD_SKILLS.React,

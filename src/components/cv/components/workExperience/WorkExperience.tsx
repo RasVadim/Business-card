@@ -9,14 +9,9 @@ import { Section } from '../section/Section';
 export const WorkExperience: FC = () => {
   const { t } = useTranslation();
 
-  // Sort companies by start date (newest first)
-  const sortedCompanies = Object.values(COMPANIES).sort(
-    (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
-  );
-
   return (
-    <Section title={t('layout.workExperience')} hight="776px">
-      {sortedCompanies.map((company, index) => (
+    <Section title={t('layout.workExperience')} hight="780px">
+      {Object.values(COMPANIES).map((company, index) => (
         <ExpierienceItem key={`${company.name}-${index}`} company={company} />
       ))}
     </Section>
