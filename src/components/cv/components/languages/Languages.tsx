@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import { LANGUAGES } from '@/constants';
+import { CV_ICON_COLOR, LANGUAGES } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { LanguagesIcon } from '@/icons';
 
 import { Section } from '../../components';
 
@@ -11,7 +12,11 @@ export const Languages: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Section title={t('layout.languages')} dark>
+    <Section
+      title={t('layout.languages')}
+      dark
+      icon={<LanguagesIcon isActive color1={CV_ICON_COLOR} />}
+    >
       <div className={s.languagesList}>
         {LANGUAGES.map((language) => (
           <div key={language.id} className={s.languageItem}>

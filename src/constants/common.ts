@@ -21,3 +21,5 @@ export const TOOLTIP_DELAY = {
   normal: 350,
   slow: 600,
 };
+
+export const CV_ICON_COLOR = '#484848';

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import { HARD_SKILL_CATEGORIES } from '@/constants';
+import { CV_ICON_COLOR, HARD_SKILL_CATEGORIES } from '@/constants';
 import { useTranslation } from '@/hooks';
+import { TechnicalSkillsIcon } from '@/icons';
 
 import { Section } from '../../components';
 
@@ -11,7 +12,11 @@ export const Technical: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Section title={t('layout.technical')} dark>
+    <Section
+      title={t('layout.technical')}
+      dark
+      icon={<TechnicalSkillsIcon isActive color1={CV_ICON_COLOR} />}
+    >
       <div className={s.skillsList}>
         {HARD_SKILL_CATEGORIES.map((category) => (
           <div key={category.id} className={s.skillCategory}>

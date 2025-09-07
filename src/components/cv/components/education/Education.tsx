@@ -1,7 +1,9 @@
 import { FC } from 'react';
 
+import { CV_ICON_COLOR } from '@/constants';
 import { EDUCATION } from '@/constants/profile';
 import { useTranslation } from '@/hooks';
+import { EducationIcon } from '@/icons';
 
 import { Section } from '../section/Section';
 import { SectionItem } from '../sectionItem/SectionItem';
@@ -18,7 +20,7 @@ export const Education: FC = () => {
   })}`;
 
   return (
-    <Section title={t('layout.education')}>
+    <Section title={t('layout.education')} icon={<EducationIcon isActive color1={CV_ICON_COLOR} />}>
       <SectionItem
         title={t(EDUCATION.degreeKey)}
         subtitle={t(EDUCATION.universityKey)}
