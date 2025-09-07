@@ -10,4 +10,6 @@ export { ProfileNavigation } from './profileNavigation/ProfileNavigation';
 
 export { CV } from './cv/CV';
 
+export { ExportButton } from './exportButton/ExportButton';
+
 export { Contacts } from './contacts/Contacts';
