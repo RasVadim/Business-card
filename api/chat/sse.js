@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   // Send initial connection event
   res.write('data: {"type":"status","data":{"status":"connected"}}\n\n');
 
-  // Keep connection alive with less frequent pings
+  // Keep connection alive with more frequent pings for Vercel
   const keepAlive = setInterval(() => {
     try {
       res.write('data: {"type":"ping"}\n\n');
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       clearInterval(keepAlive);
       clients.delete(res);
     }
-  }, 60000); // Ping every minute instead of 30 seconds
+  }, 30000); // Ping every 30 seconds for Vercel compatibility
 
   // Cleanup on disconnect
   req.on('close', () => {
