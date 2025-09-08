@@ -11,10 +11,12 @@ export const usePolling = () => {
   useEffect(() => {
     const pollMessages = async () => {
       try {
+        console.log('Polling for messages since ID:', lastMessageIdRef.current);
         const response = await fetch(`/api/chat/messages?since=${lastMessageIdRef.current}`);
         
         if (response.ok) {
           const data = await response.json();
+          console.log('Polling response:', data);
           
           if (data.success && data.messages.length > 0) {
             console.log('Received messages via polling:', data.messages);
@@ -30,7 +32,11 @@ export const usePolling = () => {
             });
             
             lastMessageIdRef.current = data.lastMessageId;
+          } else {
+            console.log('No new messages via polling');
           }
+        } else {
+          console.error('Polling failed with status:', response.status);
         }
       } catch (error) {
         console.error('Polling error:', error);

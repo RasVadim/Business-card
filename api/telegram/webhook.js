@@ -41,14 +41,22 @@ export default async function handler(req, res) {
           ? `https://${process.env.VERCEL_URL}` 
           : 'http://localhost:3000';
           
+        console.log('Attempting to store message for polling at:', `${baseUrl}/api/chat/messages`);
+        
         const response = await fetch(`${baseUrl}/api/chat/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: chatMessage })
         });
         
+        console.log('Polling storage response status:', response.status);
+        
         if (response.ok) {
-          console.log('Message stored for polling');
+          const result = await response.json();
+          console.log('Message stored for polling successfully:', result);
+        } else {
+          const errorText = await response.text();
+          console.error('Failed to store message for polling. Status:', response.status, 'Error:', errorText);
         }
       } catch (error) {
         console.error('Failed to store message for polling:', error);
