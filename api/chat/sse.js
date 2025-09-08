@@ -52,6 +52,8 @@ export default async function handler(req, res) {
 
 // Function to broadcast message to all connected clients
 export function broadcastMessage(message) {
+  console.log('Broadcasting to', clients.size, 'clients:', message);
+  
   const data = JSON.stringify({
     type: 'message',
     data: {
@@ -61,9 +63,12 @@ export function broadcastMessage(message) {
     },
   });
 
+  console.log('SSE data to send:', data);
+
   clients.forEach((client) => {
     try {
       client.write(`data: ${data}\n\n`);
+      console.log('Message sent to client');
     } catch (error) {
       console.error('Error sending SSE message:', error);
       clients.delete(client);

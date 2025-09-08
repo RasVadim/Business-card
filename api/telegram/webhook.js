@@ -11,13 +11,18 @@ export default async function handler(req, res) {
 
   try {
     const { message } = req.body;
+    
+    console.log('Webhook received:', JSON.stringify(req.body, null, 2));
 
     if (!message || !message.text) {
+      console.log('Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
     }
 
     // Check if this is a message from a user (not from bot itself)
     if (message.from && !message.from.is_bot) {
+      console.log('Processing user message:', message.text);
+      
       // This is a message from user, broadcast it to all connected clients
       const chatMessage = {
         id: message.message_id.toString(),
@@ -25,12 +30,15 @@ export default async function handler(req, res) {
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
       };
 
+      console.log('Broadcasting message:', chatMessage);
+      
       // Broadcast to all connected SSE clients
       broadcastMessage(chatMessage);
 
       return res.status(200).json({ success: true });
     }
 
+    console.log('Ignoring message from bot or invalid sender');
     // If it's from bot itself, ignore it
     return res.status(200).json({ success: true, ignored: true });
   } catch (error) {
