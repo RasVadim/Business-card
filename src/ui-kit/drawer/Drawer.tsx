@@ -47,7 +47,7 @@ export const Drawer: FC<DrawerProps> = ({
       <div className={cn(s.drawerWrap, { [s.hidden]: !isOpen })}>
         <div className={s.drawerHeader}>
           {closeButton && (
-            <Button onClick={onClose} label={t('layout.close')} disabled={disabledClose} />
+            <Button onClick={onClose} label={t('layout.close')} disabled={disabledClose} active />
           )}
           {actions ?? actions}
         </div>

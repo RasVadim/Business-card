@@ -1,9 +1,11 @@
+@import '../../styles/vars.styl'
+
 .drawerWrap
   position fixed
   left 0
   bottom 0
   width 100vw
-  height 95dvh
+  height 80dvh
   background-color var(--background-front-color)
   opacity 0.97
   border-top-left-radius 24px
@@ -33,7 +35,10 @@
 .drawerContent
   flex 1
   overflow auto
-  padding: 5px 15px;
+  padding 5px 12px
+
+  @media (min-width $mobile-width)
+    padding 5px 20px
 
 .drawerBlackout
   position fixed

@@ -1,3 +1,5 @@
+@import '../../styles/vars.styl'
+
 .chatContainer
   display flex
   flex-direction column
@@ -10,6 +12,9 @@
   align-items center
   padding 16px
   border-bottom 1px solid var(--border-color)
+
+  @media (min-width $mobile-width)
+    padding 16px 60px
 
 .chatTitle
   font-size 16px
@@ -124,6 +129,10 @@
   padding 16px
   border-top 1px solid var(--border-color)
   background-color var(--background-front-color)
+  align-items center
+
+  @media (min-width $mobile-width)
+    padding 16px 60px
 
 .messageInput
   flex 1
@@ -147,9 +156,7 @@
     color var(--text-secondary-color)
 
 .sendButton
-  min-width 80px
   height 40px
-  border-radius 20px
   font-size 14px
   font-weight 500
 

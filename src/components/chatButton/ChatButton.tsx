@@ -14,11 +14,11 @@ export const ChatButton: FC = () => {
   };
 
   return (
-    <button className={s.chatButton} onClick={handleOpenChat} aria-label="Open chat">
-      <div className={s.chatButtonIcon}>
-        <ChatBotIcon size="24" />
-      </div>
+    <button className={s.chatButton} onClick={handleOpenChat} aria-label="Open chat" type="button">
       <div className={s.chatButtonPulse} />
+      <div className={s.chatButtonIcon}>
+        <ChatBotIcon size="32" />
+      </div>
     </button>
   );
 };
