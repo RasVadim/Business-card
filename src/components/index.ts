@@ -16,4 +16,4 @@ export { Contacts } from './contacts/Contacts';
 
 export { ChatButton } from './chatButton/ChatButton';
 
-export { ChatDrawer } from './chat/ChatDrawer';
+export { ChatDrawer } from './chatDrawer/ChatDrawer';

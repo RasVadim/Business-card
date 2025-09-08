@@ -6,7 +6,7 @@ import { useSetOpenDrawerKey } from '@/store/atoms';
 import { EModalKeys } from '@/types';
 import { Drawer } from '@/ui-kit';
 
-import { Chat } from './Chat';
+import { Chat } from './components';
 
 export const ChatDrawer: FC = () => {
   const setOpenDrawerKey = useSetOpenDrawerKey();

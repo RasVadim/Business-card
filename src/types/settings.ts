@@ -9,7 +9,6 @@ export enum ELanguage {
 }
 
 export enum EModalKeys {
-  SOME_DRAWER = 'some-drawer',
   CHAT_DRAWER = 'chat-drawer',
 }
 

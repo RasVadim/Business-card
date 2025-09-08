@@ -1,0 +1,39 @@
+@import '../../../../styles/vars.styl'
+
+.inputContainer
+  display flex
+  align-items flex-end
+  gap 8px
+  padding 16px
+  border-top 1px solid var(--border-color)
+  background-color var(--background-front-color)
+  align-items center
+
+  @media (min-width $mobile-width)
+    padding 16px 60px
+
+.messageInput
+  flex 1
+  min-height 40px
+  max-height 120px
+  padding 12px 16px
+  border 1px solid var(--border-color)
+  border-radius 20px
+  background-color var(--background-secondary-color)
+  color var(--text-color)
+  font-size 14px
+  font-family inherit
+  resize none
+  outline none
+  transition border-color 0.3s ease
+
+  &:focus
+    border-color var(--primary-color)
+
+  &::placeholder
+    color var(--text-secondary-color)
+
+.sendButton
+  height 40px
+  font-size 14px
+  font-weight 500
