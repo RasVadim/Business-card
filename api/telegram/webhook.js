@@ -26,6 +26,7 @@ export default async function handler(req, res) {
 
       // Also store message for polling fallback
       try {
+        // eslint-disable-next-line no-undef
         const baseUrl = process.env.VERCEL_URL
           ? `https://${process.env.VERCEL_URL}`
           : 'http://localhost:3000';

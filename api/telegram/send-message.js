@@ -15,7 +15,10 @@ export default async function handler(req, res) {
     }
 
     // Get bot token from server environment (secure!)
+
+    // eslint-disable-next-line no-undef
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+    // eslint-disable-next-line no-undef
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
