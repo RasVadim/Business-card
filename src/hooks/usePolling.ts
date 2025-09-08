@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react';
 import { useAddMessage } from '@/store/atoms';
 import { IChatMessage } from '@/types';
 
+const POLLING_INTERVAL = 4000;
+
 export const usePolling = () => {
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
@@ -17,7 +19,7 @@ export const usePolling = () => {
           const data = await response.json();
 
           if (data.success && data.messages.length > 0) {
-            data.messages.forEach((msg: any) => {
+            data.messages.forEach((msg: { id: number; text: string; timestamp: number }) => {
               const chatMessage: IChatMessage = {
                 id: msg.id.toString(),
                 text: msg.text,
@@ -28,7 +30,6 @@ export const usePolling = () => {
             });
 
             lastMessageIdRef.current = data.lastMessageId;
-          } else {
           }
         } else {
           console.error('Polling failed with status:', response.status);
@@ -38,8 +39,8 @@ export const usePolling = () => {
       }
     };
 
-    // Start polling every 2 seconds
-    intervalRef.current = setInterval(pollMessages, 2000);
+    // Start polling every POLLING_INTERVAL seconds
+    intervalRef.current = setInterval(pollMessages, POLLING_INTERVAL);
 
     // Cleanup
     return () => {
