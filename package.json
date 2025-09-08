@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "sse-dev": "node sse-dev-server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "classnames": "^2.5.1",
@@ -42,8 +41,6 @@
     "prettier-plugin-stylus": "^0.1.0",
     "stylus": "^0.59.0",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "vite": "^5.2.0"
   }
 }
