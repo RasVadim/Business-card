@@ -37,7 +37,11 @@ export default async function handler(req, res) {
       
       // Also store message for polling fallback
       try {
-        const response = await fetch(`${process.env.VERCEL_URL || 'http://localhost:3000'}/api/chat/messages`, {
+        const baseUrl = process.env.VERCEL_URL 
+          ? `https://${process.env.VERCEL_URL}` 
+          : 'http://localhost:3000';
+          
+        const response = await fetch(`${baseUrl}/api/chat/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: chatMessage })
