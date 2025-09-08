@@ -12,10 +12,22 @@ export const useAddMessage = () => {
   const setChatState = useSetChatState();
 
   return (message: IChatMessage) => {
-    setChatState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, message],
-    }));
+    setChatState((prev) => {
+      // Check if message already exists to prevent duplicates
+      const messageExists = prev.messages.some(
+        (existingMessage) => existingMessage.id === message.id,
+      );
+
+      if (messageExists) {
+        console.log('Message already exists, skipping:', message.id);
+        return prev;
+      }
+
+      return {
+        ...prev,
+        messages: [...prev.messages, message],
+      };
+    });
   };
 };
 
