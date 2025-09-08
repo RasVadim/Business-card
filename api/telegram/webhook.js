@@ -16,9 +16,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid message format' });
     }
 
-    // Check if this is a reply to our bot
-    if (message.reply_to_message && message.reply_to_message.from.is_bot) {
-      // This is a reply to our bot, broadcast it to all connected clients
+    // Check if this is a message from a user (not from bot itself)
+    if (message.from && !message.from.is_bot) {
+      // This is a message from user, broadcast it to all connected clients
       const chatMessage = {
         id: message.message_id.toString(),
         text: message.text,
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true });
     }
 
-    // If it's not a reply to our bot, ignore it
+    // If it's from bot itself, ignore it
     return res.status(200).json({ success: true, ignored: true });
   } catch (error) {
     console.error('Error processing Telegram webhook:', error);
