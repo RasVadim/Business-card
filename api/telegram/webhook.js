@@ -32,8 +32,23 @@ export default async function handler(req, res) {
 
       console.log('Broadcasting message:', chatMessage);
       
-      // Broadcast to all connected SSE clients
+      // Try SSE broadcast first
       broadcastMessage(chatMessage);
+      
+      // Also store message for polling fallback
+      try {
+        const response = await fetch(`${process.env.VERCEL_URL || 'http://localhost:3000'}/api/chat/messages`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: chatMessage })
+        });
+        
+        if (response.ok) {
+          console.log('Message stored for polling');
+        }
+      } catch (error) {
+        console.error('Failed to store message for polling:', error);
+      }
 
       return res.status(200).json({ success: true });
     }

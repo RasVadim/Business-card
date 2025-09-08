@@ -2,7 +2,7 @@ import { FC, useState, useRef, useEffect } from 'react';
 
 import cn from 'classnames';
 
-import { useTelegramBot, useSSE } from '@/hooks';
+import { useTelegramBot, usePolling } from '@/hooks';
 import { useChatState, useAddMessage } from '@/store/atoms';
 import { IChatMessage } from '@/types';
 import { Button } from '@/ui-kit';
@@ -13,7 +13,7 @@ export const Chat: FC = () => {
   const [chatState] = useChatState();
   const addMessage = useAddMessage();
   const { sendMessage } = useTelegramBot();
-  useSSE(); // SSE automatically handles receiving messages
+  usePolling(); // Polling automatically handles receiving messages
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +42,7 @@ export const Chat: FC = () => {
     // Send message to Telegram bot
     await sendMessage(messageText);
 
-    // SSE automatically handles receiving responses
+    // Polling automatically handles receiving responses
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

@@ -15,3 +15,5 @@ export { useExportPDF } from './useExportPDF';
 export { useTelegramBot } from './useTelegramBot';
 
 export { useSSE } from './useSSE';
+
+export { usePolling } from './usePolling';
