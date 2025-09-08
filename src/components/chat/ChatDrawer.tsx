@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { useSetOpenDrawerKey } from '@/store/atoms';
 import { EModalKeys } from '@/types';
 import { Drawer } from '@/ui-kit';
@@ -8,7 +10,7 @@ import { Chat } from './Chat';
 
 export const ChatDrawer: FC = () => {
   const setOpenDrawerKey = useSetOpenDrawerKey();
-
+  const { t } = useTranslation();
   const handleClose = () => {
     setOpenDrawerKey(null);
   };
@@ -17,7 +19,7 @@ export const ChatDrawer: FC = () => {
     <Drawer
       keyProp={EModalKeys.CHAT_DRAWER}
       onClose={handleClose}
-      title="Чат с владельцем"
+      title={t('layout.writeMe')}
       closeButton={true}
     >
       <Chat />

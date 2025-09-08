@@ -2,8 +2,9 @@ import { useEffect, useRef } from 'react';
 
 import { useAddMessage } from '@/store/atoms';
 import { IChatMessage } from '@/types';
+import { getUserSiteId } from '@/utils';
 
-const POLLING_INTERVAL = 4000;
+const POLLING_INTERVAL = 10 * 1000;
 
 export const usePolling = () => {
   const addMessage = useAddMessage();
@@ -13,21 +14,27 @@ export const usePolling = () => {
   useEffect(() => {
     const pollMessages = async () => {
       try {
-        const response = await fetch(`/api/chat/messages?since=${lastMessageIdRef.current}`);
+        const userSiteId = getUserSiteId();
+        const response = await fetch(
+          `/api/chat/messages?since=${lastMessageIdRef.current}&userSiteId=${userSiteId}`,
+        );
 
         if (response.ok) {
           const data = await response.json();
 
           if (data.success && data.messages.length > 0) {
-            data.messages.forEach((msg: { id: number; text: string; timestamp: number }) => {
-              const chatMessage: IChatMessage = {
-                id: msg.id.toString(),
-                text: msg.text,
-                timestamp: msg.timestamp,
-                isFromUser: false,
-              };
-              addMessage(chatMessage);
-            });
+            data.messages.forEach(
+              (msg: { id: number; text: string; timestamp: number; userSiteId?: string }) => {
+                const chatMessage: IChatMessage = {
+                  id: msg.id.toString(),
+                  text: msg.text,
+                  timestamp: msg.timestamp,
+                  isFromUser: false,
+                  userSiteId: msg.userSiteId, // Include userSiteId for personal messages
+                };
+                addMessage(chatMessage);
+              },
+            );
 
             lastMessageIdRef.current = data.lastMessageId;
           }

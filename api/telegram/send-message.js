@@ -61,6 +61,10 @@ function formatMessageForTelegram(message, userMetadata) {
   if (userMetadata) {
     formattedMessage += `📊 <b>Метаданные:</b>\n`;
 
+    if (userMetadata.userSiteId) {
+      formattedMessage += `🆔 <b>userSiteId:</b> ${userMetadata.userSiteId}\n`;
+    }
+
     if (userMetadata.timestamp) {
       formattedMessage += `🕐 <b>Время:</b> ${new Date(userMetadata.timestamp).toLocaleString('ru-RU')}\n`;
     }

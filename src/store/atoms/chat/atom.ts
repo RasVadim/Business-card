@@ -1,10 +1,17 @@
-import { atom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
 
 import { IChatState } from '@/types';
 
-export const chatStateAtom = atom<IChatState>({
-  messages: [],
-  isLoading: false,
-  isConnected: false,
-  userId: undefined,
-});
+export const ChatStateAtom = atomWithStorage<IChatState>(
+  'chatState',
+  {
+    messages: [],
+    isLoading: false,
+    isConnected: false,
+    userId: undefined,
+  },
+  undefined,
+  {
+    getOnInit: true,
+  },
+);

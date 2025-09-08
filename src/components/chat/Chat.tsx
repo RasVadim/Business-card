@@ -2,7 +2,7 @@ import { FC, useState, useRef, useEffect } from 'react';
 
 import cn from 'classnames';
 
-import { useTelegramBot, usePolling } from '@/hooks';
+import { useTelegramBot, usePolling, useTranslation } from '@/hooks';
 import { useChatState, useAddMessage } from '@/store/atoms';
 import { IChatMessage } from '@/types';
 import { Button } from '@/ui-kit';
@@ -16,7 +16,7 @@ export const Chat: FC = () => {
   usePolling(); // Polling automatically handles receiving messages
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
+  const { t } = useTranslation();
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -55,17 +55,19 @@ export const Chat: FC = () => {
   return (
     <div className={s.chatContainer}>
       <div className={s.chatHeader}>
-        <h3 className={s.chatTitle}>Чат с владельцем</h3>
+        <h3 className={s.chatTitle}>{t('profile.name')}</h3>
         <div className={s.chatStatus}>
           <div className={cn(s.statusDot, { [s.connected]: chatState.isConnected })} />
-          <span className={s.statusText}>{chatState.isConnected ? 'Онлайн' : 'Офлайн'}</span>
+          <span className={s.statusText}>
+            {chatState.isConnected ? t('layout.online') : t('layout.offline')}
+          </span>
         </div>
       </div>
 
       <div className={s.messagesContainer}>
         {chatState.messages.length === 0 ? (
           <div className={s.emptyState}>
-            <p>Напишите сообщение, и я передам его владельцу сайта!</p>
+            <p>{t('layout.yourMessageWillBeSent')}</p>
           </div>
         ) : (
           chatState.messages.map((message) => (
@@ -106,7 +108,7 @@ export const Chat: FC = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="Введите ваше сообщение..."
+          placeholder={t('layout.enterYourMessage')}
           className={s.messageInput}
           rows={1}
         />
@@ -114,7 +116,9 @@ export const Chat: FC = () => {
           onClick={handleSendMessage}
           disabled={!inputValue.trim() || chatState.isLoading}
           className={s.sendButton}
-          label="Отправить"
+          active
+          label={t('layout.send')}
+          size="large"
         />
       </div>
     </div>

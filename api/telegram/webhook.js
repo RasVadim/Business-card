@@ -17,11 +17,25 @@ export default async function handler(req, res) {
 
     // Check if this is a message from a user (not from bot itself)
     if (message.from && !message.from.is_bot) {
-      // This is a message from user, broadcast it to all connected clients
+      // Extract userSiteId from reply if this is a reply to a message with userSiteId
+      let userSiteId = null;
+
+      if (message.reply_to_message && message.reply_to_message.text) {
+        // Look for userSiteId in the replied message
+        const userSiteIdMatch = message.reply_to_message.text.match(
+          /🆔.*?userSiteId.*?:\s*([^\n]+)/,
+        );
+        if (userSiteIdMatch) {
+          userSiteId = userSiteIdMatch[1].trim();
+        }
+      }
+
+      // This is a message from user
       const chatMessage = {
         id: message.message_id.toString(),
         text: message.text,
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
+        userSiteId: userSiteId, // Add userSiteId for personal messages
       };
 
       // Also store message for polling fallback
@@ -31,20 +45,13 @@ export default async function handler(req, res) {
           ? `https://${process.env.VERCEL_URL}`
           : 'http://localhost:3000';
 
-        console.log('Attempting to store message for polling at:', `${baseUrl}/api/chat/messages`);
-
         const response = await fetch(`${baseUrl}/api/chat/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: chatMessage }),
         });
 
-        console.log('Polling storage response status:', response.status);
-
-        if (response.ok) {
-          const result = await response.json();
-          console.log('Message stored for polling successfully:', result);
-        } else {
+        if (!response.ok) {
           const errorText = await response.text();
           console.error(
             'Failed to store message for polling. Status:',

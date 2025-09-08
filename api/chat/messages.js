@@ -7,14 +7,25 @@ let lastMessageId = 0;
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     // Get messages since lastMessageId
-    const { since } = req.query;
+    const { since, userSiteId } = req.query;
     const sinceId = since ? parseInt(since) : 0;
 
-    const newMessages = messages.filter((msg) => msg.id > sinceId);
+    // Filter messages: show only personal messages for this user OR global messages (without userSiteId)
+    let filteredMessages = messages.filter((msg) => {
+      if (msg.id <= sinceId) return false;
+
+      // If message has userSiteId, show only to that user
+      if (msg.userSiteId) {
+        return msg.userSiteId === userSiteId;
+      }
+
+      // If message has no userSiteId, it's a global message - show to everyone
+      return true;
+    });
 
     return res.status(200).json({
       success: true,
-      messages: newMessages,
+      messages: filteredMessages,
       lastMessageId: messages.length > 0 ? messages[messages.length - 1].id : 0,
     });
   }
@@ -32,6 +43,7 @@ export default async function handler(req, res) {
       text: message.text,
       timestamp: message.timestamp || Date.now(),
       isFromUser: false,
+      userSiteId: message.userSiteId || null, // Add userSiteId for personal messages
     };
 
     messages.push(newMessage);
