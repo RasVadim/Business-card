@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
 
-    console.log('Webhook received message:', JSON.stringify(message, null, 2));
-
     if (!message || !message.text) {
       console.log('Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
@@ -29,13 +27,7 @@ export default async function handler(req, res) {
         );
         if (userSiteIdMatch) {
           userSiteId = userSiteIdMatch[1].trim();
-          console.log('Extracted userSiteId from reply:', userSiteId);
         }
-      }
-
-      // If no userSiteId found, this is a global message (no reply or reply without userSiteId)
-      if (!userSiteId) {
-        console.log('No userSiteId found - this will be a global message');
       }
 
       // This is a message from user
@@ -46,8 +38,6 @@ export default async function handler(req, res) {
         userSiteId: userSiteId, // Add userSiteId for personal messages
       };
 
-      console.log('Final chatMessage:', chatMessage);
-
       // Also store message for polling fallback
       try {
         // eslint-disable-next-line no-undef
@@ -55,20 +45,13 @@ export default async function handler(req, res) {
           ? `https://${process.env.VERCEL_URL}`
           : 'http://localhost:3000';
 
-        console.log('Attempting to store message for polling at:', `${baseUrl}/api/chat/messages`);
-
         const response = await fetch(`${baseUrl}/api/chat/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: chatMessage }),
         });
 
-        console.log('Polling storage response status:', response.status);
-
-        if (response.ok) {
-          const result = await response.json();
-          console.log('Message stored for polling successfully:', result);
-        } else {
+        if (!response.ok) {
           const errorText = await response.text();
           console.error(
             'Failed to store message for polling. Status:',
