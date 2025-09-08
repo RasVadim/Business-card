@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
 
+    console.log('Webhook received message:', JSON.stringify(message, null, 2));
+
     if (!message || !message.text) {
       console.log('Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
@@ -43,6 +45,8 @@ export default async function handler(req, res) {
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
         userSiteId: userSiteId, // Add userSiteId for personal messages
       };
+
+      console.log('Final chatMessage:', chatMessage);
 
       // Also store message for polling fallback
       try {
