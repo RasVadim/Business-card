@@ -14,5 +14,5 @@ export { getUserMetadata } from './common/getUserMetadata';
 export { createSectionScrollHandler } from './scroll/sectionDetection';
 export { globalScrollManager } from './scroll/globalScrollManager';
 
-// telegram
-export { formatMessageForTelegram } from './telegram/formatMessageForTelegram';
+// userSiteId
+export { getUserSiteId, clearUserSiteId } from './userSiteId';
