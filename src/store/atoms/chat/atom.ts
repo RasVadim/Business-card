@@ -2,7 +2,7 @@ import { atomWithStorage } from 'jotai/utils';
 
 import { IChatState } from '@/types';
 
-export const chatStateAtom = atomWithStorage<IChatState>(
+export const ChatStateAtom = atomWithStorage<IChatState>(
   'chatState',
   {
     messages: [],

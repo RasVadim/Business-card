@@ -2,10 +2,10 @@ import { useAtom, useSetAtom } from 'jotai';
 
 import { IChatMessage } from '@/types';
 
-import { chatStateAtom } from './atom';
+import { ChatStateAtom } from './atom';
 
-export const useChatState = () => useAtom(chatStateAtom);
-export const useSetChatState = () => useSetAtom(chatStateAtom);
+export const useChatState = () => useAtom(ChatStateAtom);
+export const useSetChatState = () => useSetAtom(ChatStateAtom);
 
 // Helper hooks for specific actions
 export const useAddMessage = () => {
