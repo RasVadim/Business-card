@@ -16,6 +16,7 @@ export default async function handler(req, res) {
 
   // Add this client to the set
   clients.add(res);
+  console.log('New SSE client connected. Total clients:', clients.size);
 
   // Send initial connection event
   res.write('data: {"type":"status","data":{"status":"connected"}}\n\n');
@@ -33,18 +34,21 @@ export default async function handler(req, res) {
 
   // Cleanup on disconnect
   req.on('close', () => {
+    console.log('SSE client disconnected. Remaining clients:', clients.size - 1);
     clearInterval(keepAlive);
     clients.delete(res);
   });
 
   // Handle client disconnect
   req.on('aborted', () => {
+    console.log('SSE client aborted. Remaining clients:', clients.size - 1);
     clearInterval(keepAlive);
     clients.delete(res);
   });
 
   // Handle errors
   req.on('error', () => {
+    console.log('SSE client error. Remaining clients:', clients.size - 1);
     clearInterval(keepAlive);
     clients.delete(res);
   });
