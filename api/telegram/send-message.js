@@ -62,14 +62,6 @@ function formatMessageForTelegram(message, userMetadata) {
   let formattedMessage = `💬 <b>Новое сообщение с сайта</b>\n\n`;
   formattedMessage += `📝 <b>Сообщение:</b>\n${message}\n\n`;
 
-  // Add userSiteId for reply functionality
-  if (userMetadata.userSiteId) {
-    formattedMessage += `🆔 <b>userSiteId:</b> ${userMetadata.userSiteId}\n\n`;
-    console.log('Added userSiteId to message:', userMetadata.userSiteId);
-  } else {
-    console.log('No userSiteId in userMetadata');
-  }
-
   if (userMetadata) {
     formattedMessage += `📊 <b>Метаданные:</b>\n`;
 

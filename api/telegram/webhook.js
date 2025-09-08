@@ -17,11 +17,31 @@ export default async function handler(req, res) {
 
     // Check if this is a message from a user (not from bot itself)
     if (message.from && !message.from.is_bot) {
-      // This is a message from user, broadcast it to all connected clients
+      // Extract userSiteId from reply if this is a reply to a message with userSiteId
+      let userSiteId = null;
+
+      if (message.reply_to_message && message.reply_to_message.text) {
+        // Look for userSiteId in the replied message
+        const userSiteIdMatch = message.reply_to_message.text.match(
+          /🆔.*?userSiteId.*?:\s*([^\n]+)/,
+        );
+        if (userSiteIdMatch) {
+          userSiteId = userSiteIdMatch[1].trim();
+          console.log('Extracted userSiteId from reply:', userSiteId);
+        }
+      }
+
+      // If no userSiteId found, this is a global message (no reply or reply without userSiteId)
+      if (!userSiteId) {
+        console.log('No userSiteId found - this will be a global message');
+      }
+
+      // This is a message from user
       const chatMessage = {
         id: message.message_id.toString(),
         text: message.text,
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
+        userSiteId: userSiteId, // Add userSiteId for personal messages
       };
 
       // Also store message for polling fallback

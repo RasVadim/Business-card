@@ -4,6 +4,7 @@ export interface IChatMessage {
   timestamp: number;
   isFromUser: boolean;
   isRead?: boolean;
+  userSiteId?: string; // For personal messages
 }
 
 export interface IChatState {

@@ -17,10 +17,3 @@ export const getUserSiteId = (): string => {
 
   return userSiteId;
 };
-
-/**
- * Clear user site ID (for testing purposes)
- */
-export const clearUserSiteId = (): void => {
-  localStorage.removeItem(USER_SITE_ID_KEY);
-};

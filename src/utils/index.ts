@@ -15,4 +15,4 @@ export { createSectionScrollHandler } from './scroll/sectionDetection';
 export { globalScrollManager } from './scroll/globalScrollManager';
 
 // userSiteId
-export { getUserSiteId, clearUserSiteId } from './userSiteId';
+export { getUserSiteId } from './userSiteId';
