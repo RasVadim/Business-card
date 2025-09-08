@@ -13,7 +13,6 @@ export const useExportPDF = () => {
       try {
         const element = document.getElementById(elementId);
         if (!element) {
-          console.error('Element not found');
           return;
         }
 

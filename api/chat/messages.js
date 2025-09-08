@@ -41,7 +41,6 @@ export default async function handler(req, res) {
       messages = messages.slice(-50);
     }
     
-    console.log('Message stored:', newMessage);
     
     return res.status(200).json({ success: true, messageId: newMessage.id });
   }

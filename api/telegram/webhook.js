@@ -1,8 +1,6 @@
 // Webhook endpoint for receiving messages from Telegram Bot
 // This endpoint will be called by Telegram when you reply to the bot
 
-import { broadcastMessage } from '../chat/sse.js';
-
 export default async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -11,8 +9,6 @@ export default async function handler(req, res) {
 
   try {
     const { message } = req.body;
-    
-    console.log('Webhook received:', JSON.stringify(req.body, null, 2));
 
     if (!message || !message.text) {
       console.log('Invalid message format:', message);
@@ -21,8 +17,6 @@ export default async function handler(req, res) {
 
     // Check if this is a message from a user (not from bot itself)
     if (message.from && !message.from.is_bot) {
-      console.log('Processing user message:', message.text);
-      
       // This is a message from user, broadcast it to all connected clients
       const chatMessage = {
         id: message.message_id.toString(),
@@ -30,33 +24,33 @@ export default async function handler(req, res) {
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
       };
 
-      console.log('Broadcasting message:', chatMessage);
-      
-      // Try SSE broadcast first
-      broadcastMessage(chatMessage);
-      
       // Also store message for polling fallback
       try {
-        const baseUrl = process.env.VERCEL_URL 
-          ? `https://${process.env.VERCEL_URL}` 
+        const baseUrl = process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
           : 'http://localhost:3000';
-          
+
         console.log('Attempting to store message for polling at:', `${baseUrl}/api/chat/messages`);
-        
+
         const response = await fetch(`${baseUrl}/api/chat/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: chatMessage })
+          body: JSON.stringify({ message: chatMessage }),
         });
-        
+
         console.log('Polling storage response status:', response.status);
-        
+
         if (response.ok) {
           const result = await response.json();
           console.log('Message stored for polling successfully:', result);
         } else {
           const errorText = await response.text();
-          console.error('Failed to store message for polling. Status:', response.status, 'Error:', errorText);
+          console.error(
+            'Failed to store message for polling. Status:',
+            response.status,
+            'Error:',
+            errorText,
+          );
         }
       } catch (error) {
         console.error('Failed to store message for polling:', error);
@@ -65,7 +59,6 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true });
     }
 
-    console.log('Ignoring message from bot or invalid sender');
     // If it's from bot itself, ignore it
     return res.status(200).json({ success: true, ignored: true });
   } catch (error) {
