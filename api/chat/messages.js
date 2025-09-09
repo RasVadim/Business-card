@@ -9,9 +9,6 @@ export default async function handler(req, res) {
     // Get messages since lastMessageId
     const { since, userSiteId } = req.query;
     const sinceId = since ? parseInt(since) : 0;
-    
-    console.log('📥 GET messages request:', { since, userSiteId, sinceId });
-    console.log('📊 All messages:', messages);
 
     // Filter messages: show only personal messages for this user OR global messages (without userSiteId)
     let filteredMessages = messages.filter((msg) => {
@@ -25,11 +22,8 @@ export default async function handler(req, res) {
       // If message has no userSiteId, it's a global message - show to everyone
       return true;
     });
-    
-    console.log('🔍 Filtered messages:', filteredMessages);
 
     const responseLastMessageId = messages.length > 0 ? messages[messages.length - 1].id : 0;
-    console.log('📤 Sending response with lastMessageId:', responseLastMessageId);
     
     return res.status(200).json({
       success: true,
@@ -40,11 +34,10 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     // Add new message (called by webhook)
-    console.log('📨 Messages API POST called:', req.body);
     const { message } = req.body;
 
     if (!message || !message.text) {
-      console.log('❌ Invalid message format:', message);
+      console.error('❌ Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
     }
 
@@ -56,9 +49,7 @@ export default async function handler(req, res) {
       userSiteId: message.userSiteId || null, // Add userSiteId for personal messages
     };
 
-    console.log('💾 Storing new message:', newMessage);
     messages.push(newMessage);
-    console.log('📊 Total messages count:', messages.length);
 
     // Keep only last 50 messages
     if (messages.length > 50) {

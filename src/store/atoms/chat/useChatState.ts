@@ -19,7 +19,6 @@ export const useAddMessage = () => {
       );
 
       if (messageExists) {
-        console.log('Message already exists, skipping:', message.id);
         return prev;
       }
 

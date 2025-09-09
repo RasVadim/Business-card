@@ -7,17 +7,14 @@ import { getUserSiteId } from '@/utils';
 const POLLING_INTERVAL = 10 * 1000;
 
 export const usePolling = () => {
-  console.log('🚀 usePolling hook initialized');
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
   const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
-    console.log('⏰ Setting up polling interval');
     const pollMessages = async () => {
       try {
         const userSiteId = getUserSiteId();
-        console.log('🔄 Polling messages, since:', lastMessageIdRef.current, 'userSiteId:', userSiteId);
         
         const response = await fetch(
           `/api/chat/messages?since=${lastMessageIdRef.current}&userSiteId=${userSiteId}`,
@@ -25,11 +22,8 @@ export const usePolling = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('📥 Polling response:', data);
 
           if (data.success && data.messages.length > 0) {
-            console.log('📨 Found', data.messages.length, 'new messages');
-            
             data.messages.forEach(
               (msg: {
                 id: number;
@@ -38,7 +32,6 @@ export const usePolling = () => {
                 type: string;
                 userSiteId?: string;
               }) => {
-                console.log('💬 Processing message:', msg);
                 const chatMessage: IChatMessage = {
                   id: msg.id.toString(),
                   text: msg.text,
@@ -46,16 +39,11 @@ export const usePolling = () => {
                   type: msg.type as EMessageType,
                   userSiteId: msg.userSiteId, // Include userSiteId for personal messages
                 };
-                console.log('➕ Adding message to chat:', chatMessage);
                 addMessage(chatMessage);
               },
             );
 
-            console.log('📊 Before update - lastMessageId:', lastMessageIdRef.current, 'new lastMessageId:', data.lastMessageId);
             lastMessageIdRef.current = data.lastMessageId;
-            console.log('📊 After update - lastMessageId:', lastMessageIdRef.current);
-          } else {
-            console.log('📭 No new messages');
           }
         } else {
           console.error('❌ Polling failed with status:', response.status);
