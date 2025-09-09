@@ -49,9 +49,12 @@ export const MessageList: FC = () => {
             <p>{t('layout.yourMessageWillBeSent')}</p>
           </div>
         ) : (
-          groupedMessages.map((messageGroup, groupIndex) => (
-            <MessageGroup key={`group-${groupIndex}`} messages={messageGroup} />
-          ))
+          <>
+            {groupedMessages.map((messageGroup, groupIndex) => (
+              <MessageGroup key={`group-${groupIndex}`} messages={messageGroup} />
+            ))}
+            <div className={s.plug} />
+          </>
         )}
 
         {chatState.isLoading && (
