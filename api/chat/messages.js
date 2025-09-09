@@ -32,9 +32,11 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     // Add new message (called by webhook)
+    console.log('📨 Messages API POST called:', req.body);
     const { message } = req.body;
 
     if (!message || !message.text) {
+      console.log('❌ Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
     }
 
@@ -46,7 +48,9 @@ export default async function handler(req, res) {
       userSiteId: message.userSiteId || null, // Add userSiteId for personal messages
     };
 
+    console.log('💾 Storing new message:', newMessage);
     messages.push(newMessage);
+    console.log('📊 Total messages count:', messages.length);
 
     // Keep only last 50 messages
     if (messages.length > 50) {

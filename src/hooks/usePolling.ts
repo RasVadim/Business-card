@@ -15,34 +15,50 @@ export const usePolling = () => {
     const pollMessages = async () => {
       try {
         const userSiteId = getUserSiteId();
+        console.log('🔄 Polling messages, since:', lastMessageIdRef.current, 'userSiteId:', userSiteId);
+        
         const response = await fetch(
           `/api/chat/messages?since=${lastMessageIdRef.current}&userSiteId=${userSiteId}`,
         );
 
         if (response.ok) {
           const data = await response.json();
+          console.log('📥 Polling response:', data);
 
           if (data.success && data.messages.length > 0) {
+            console.log('📨 Found', data.messages.length, 'new messages');
+            
             data.messages.forEach(
-              (msg: { id: number; text: string; timestamp: number; userSiteId?: string }) => {
+              (msg: {
+                id: number;
+                text: string;
+                timestamp: number;
+                type: string;
+                userSiteId?: string;
+              }) => {
+                console.log('💬 Processing message:', msg);
                 const chatMessage: IChatMessage = {
                   id: msg.id.toString(),
                   text: msg.text,
                   timestamp: msg.timestamp,
-                  type: EMessageType.BOT,
+                  type: msg.type as EMessageType,
                   userSiteId: msg.userSiteId, // Include userSiteId for personal messages
                 };
+                console.log('➕ Adding message to chat:', chatMessage);
                 addMessage(chatMessage);
               },
             );
 
             lastMessageIdRef.current = data.lastMessageId;
+            console.log('📊 Updated lastMessageId to:', lastMessageIdRef.current);
+          } else {
+            console.log('📭 No new messages');
           }
         } else {
-          console.error('Polling failed with status:', response.status);
+          console.error('❌ Polling failed with status:', response.status);
         }
       } catch (error) {
-        console.error('Polling error:', error);
+        console.error('❌ Polling error:', error);
       }
     };
 
