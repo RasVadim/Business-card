@@ -9,6 +9,9 @@ export default async function handler(req, res) {
     // Get messages since lastMessageId
     const { since, userSiteId } = req.query;
     const sinceId = since ? parseInt(since) : 0;
+    
+    console.log('📥 GET messages request:', { since, userSiteId, sinceId });
+    console.log('📊 All messages:', messages);
 
     // Filter messages: show only personal messages for this user OR global messages (without userSiteId)
     let filteredMessages = messages.filter((msg) => {
@@ -22,6 +25,8 @@ export default async function handler(req, res) {
       // If message has no userSiteId, it's a global message - show to everyone
       return true;
     });
+    
+    console.log('🔍 Filtered messages:', filteredMessages);
 
     return res.status(200).json({
       success: true,
@@ -44,7 +49,7 @@ export default async function handler(req, res) {
       id: ++lastMessageId,
       text: message.text,
       timestamp: message.timestamp || Date.now(),
-      type: 'bot', // Messages from webhook are always from bot
+      type: message.type || 'bot', // Use the type from the message, default to 'bot'
       userSiteId: message.userSiteId || null, // Add userSiteId for personal messages
     };
 

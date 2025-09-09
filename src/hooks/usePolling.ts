@@ -7,11 +7,13 @@ import { getUserSiteId } from '@/utils';
 const POLLING_INTERVAL = 10 * 1000;
 
 export const usePolling = () => {
+  console.log('🚀 usePolling hook initialized');
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
   const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
+    console.log('⏰ Setting up polling interval');
     const pollMessages = async () => {
       try {
         const userSiteId = getUserSiteId();

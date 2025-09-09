@@ -13,6 +13,9 @@ export const getUserSiteId = (): string => {
     // Generate new unique ID
     userSiteId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     localStorage.setItem(USER_SITE_ID_KEY, userSiteId);
+    console.log('🆔 Generated new userSiteId:', userSiteId);
+  } else {
+    console.log('🆔 Using existing userSiteId:', userSiteId);
   }
 
   return userSiteId;
