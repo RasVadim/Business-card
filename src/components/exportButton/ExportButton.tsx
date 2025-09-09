@@ -17,25 +17,24 @@ export const ExportButton: FC<ExportButtonProps> = ({ targetElementId, filename 
   const { t } = useTranslation();
 
   const { isMedium } = useDevice();
-  const { exportToPDF } = useExportPDF();
+  const { exportToPDF, isExporting } = useExportPDF();
 
   const handleExport = () => {
     exportToPDF(targetElementId, filename);
   };
-
-  const label = t('layout.save');
 
   return (
     <div className={s.container}>
       <Button
         className={s.exportButton}
         onClick={handleExport}
-        label={label}
+        label={t('layout.save')}
         size={isMedium ? 'medium' : 'large'}
-        icon={<SaveIcon />}
+        icon={isExporting ? <div className={s.loadingSpinner} /> : <SaveIcon />}
         gradient
         empty
         onlyIcon={isMedium}
+        disabled={isExporting}
       />
     </div>
   );

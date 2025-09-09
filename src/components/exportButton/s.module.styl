@@ -16,11 +16,65 @@
 
 .exportButton
   transition all 0.2s ease
+  position relative
 
-  &:hover
+  &:hover:not(:disabled)
     transform translateY(-2px)
     box-shadow 0 -3px 30px -15px var(--shadow-color)
 
-  &:active
+  &:active:not(:disabled)
     transform translateY(0)
     box-shadow 0 0 8px -15px var(--shadow-color)
+
+  &:disabled
+    opacity 0.8
+    cursor wait
+    position relative
+
+    p
+      filter brightness(0.8)
+
+    &::before
+      content ''
+      position absolute
+      top 0
+      left 0
+      right 0
+      bottom 0
+      background linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%)
+      animation shimmer 2s infinite
+      border-radius inherit
+      pointer-events none
+
+// Loading animations
+@keyframes spin
+  0%
+    transform rotate(0deg)
+
+  100%
+    transform rotate(360deg)
+
+@keyframes shimmer
+  0%
+    transform translateX(-100%)
+
+  100%
+    transform translateX(100%)
+
+@keyframes pulse
+  0%, 100%
+    opacity 0.7
+
+  50%
+    opacity 1
+
+.loadingSpinner
+  display inline-block
+  width 16px
+  height 16px
+  border 2px solid rgba(255, 255, 255, 0.3)
+  border-top 2px solid var(--brand-g2-color)
+  border-radius 50%
+  animation spin 0.8s linear infinite
+  flex-shrink 0
+  margin 0 7px 0 1px

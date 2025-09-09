@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -7,10 +7,16 @@ import { useDevice } from './useDevice';
 
 export const useExportPDF = () => {
   const { isMedium } = useDevice();
+  const [isExporting, setIsExporting] = useState(false);
 
   const exportToPDF = useCallback(
     async (elementId: string, filename: string = 'CV.pdf') => {
       try {
+        setIsExporting(true);
+
+        // Add loading cursor to body
+        document.body.style.cursor = 'wait';
+
         const element = document.getElementById(elementId);
         if (!element) {
           return;
@@ -48,6 +54,17 @@ export const useExportPDF = () => {
           height: element.scrollHeight,
           logging: false,
           removeContainer: true,
+          // Performance optimizations
+          ignoreElements: (element) => {
+            // Skip elements that might slow down rendering
+            return (
+              element.classList.contains('video') ||
+              element.tagName === 'VIDEO' ||
+              element.classList.contains('videoPlaceholder')
+            );
+          },
+          // Use faster rendering method
+          foreignObjectRendering: false,
         });
 
         // Restore original styles only if they were changed
@@ -57,8 +74,8 @@ export const useExportPDF = () => {
           cvWrapper.style.height = originalHeight;
         }
 
-        // Create PDF
-        const imgData = canvas.toDataURL('image/png', 1.0);
+        // Create PDF with optimized image format
+        const imgData = canvas.toDataURL('image/jpeg', 0.95); // JPEG with 95% quality for smaller size
         const pdf = new jsPDF({
           orientation: 'portrait',
           unit: 'mm',
@@ -74,16 +91,20 @@ export const useExportPDF = () => {
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
         // Add image to PDF
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
 
         // Save PDF
         pdf.save(filename);
       } catch (error) {
         console.error('Error generating PDF:', error);
+      } finally {
+        // Reset cursor and loading state
+        document.body.style.cursor = 'default';
+        setIsExporting(false);
       }
     },
     [isMedium],
   );
 
-  return { exportToPDF };
+  return { exportToPDF, isExporting };
 };
