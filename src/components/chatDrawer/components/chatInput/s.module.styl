@@ -1,9 +1,9 @@
 @import '../../../../styles/vars.styl'
 
-.inputContainer
+.wrapper
   display flex
+  justify-content center
   align-items flex-end
-  gap 8px
   padding 16px
   border-top 1px solid var(--border-color)
   background-color var(--background-front-color)
@@ -11,6 +11,16 @@
 
   @media (min-width $mobile-width)
     padding 16px 60px
+
+.inputContainer
+  display flex
+  gap 8px
+  align-items flex-end
+  align-items center
+  width 100%
+
+  @media (min-width $mobile-width)
+    width 980px
 
 .messageInput
   flex 1

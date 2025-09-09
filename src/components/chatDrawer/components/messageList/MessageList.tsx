@@ -42,35 +42,37 @@ export const MessageList: FC = () => {
   );
 
   return (
-    <div className={s.messagesContainer}>
-      {chatState.messages.length === 0 ? (
-        <div className={s.emptyState}>
-          <p>{t('layout.yourMessageWillBeSent')}</p>
-        </div>
-      ) : (
-        groupedMessages.map((messageGroup, groupIndex) => (
-          <MessageGroup key={`group-${groupIndex}`} messages={messageGroup} />
-        ))
-      )}
+    <div className={s.wrapper}>
+      <div className={s.messagesContainer}>
+        {chatState.messages.length === 0 ? (
+          <div className={s.emptyState}>
+            <p>{t('layout.yourMessageWillBeSent')}</p>
+          </div>
+        ) : (
+          groupedMessages.map((messageGroup, groupIndex) => (
+            <MessageGroup key={`group-${groupIndex}`} messages={messageGroup} />
+          ))
+        )}
 
-      {chatState.isLoading && (
-        <div className={cn(s.messageGroup, s.botGroup)}>
-          <ChatAvatar type={EMessageType.BOT} />
-          <div className={s.messagesWrapper}>
-            <div className={cn(s.message, s.botMessage)}>
-              <div className={s.messageContent}>
-                <div className={s.typingIndicator}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+        {chatState.isLoading && (
+          <div className={cn(s.messageGroup, s.botGroup)}>
+            <ChatAvatar type={EMessageType.BOT} />
+            <div className={s.messagesWrapper}>
+              <div className={cn(s.message, s.botMessage)}>
+                <div className={s.messageContent}>
+                  <div className={s.typingIndicator}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <div ref={messagesEndRef} />
+        <div ref={messagesEndRef} />
+      </div>
     </div>
   );
 };

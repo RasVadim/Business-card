@@ -34,6 +34,8 @@ export { ExperienceIcon } from './experienceIcon';
 
 export { SaveIcon } from './saveIcon';
 
+export { EditIcon } from './editIcon';
+
 // experience sections
 export { ProjectsIcon } from './projectsIcon';
 export { EducationIcon } from './educationIcon';

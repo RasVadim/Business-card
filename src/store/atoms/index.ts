@@ -14,3 +14,5 @@ export {
   useSetLoading,
   useSetConnected,
 } from './chat/useChatState';
+
+export { useUserName, useSetUserName } from './userName/useUserName';

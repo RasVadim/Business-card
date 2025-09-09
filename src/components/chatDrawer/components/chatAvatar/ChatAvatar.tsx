@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 
 import cn from 'classnames';
 
+import { useUserName } from '@/store/atoms';
 import { EMessageType } from '@/types';
 
 import s from './s.module.styl';
@@ -21,6 +22,7 @@ export const ChatAvatar: FC<IChatAvatarProps> = ({
 }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [userName] = useUserName();
 
   // Load owner avatar image
   useEffect(() => {
@@ -48,6 +50,10 @@ export const ChatAvatar: FC<IChatAvatarProps> = ({
     }
 
     // Default letters for other types
+    if (type === EMessageType.USER) {
+      return <span className={s.avatarLetter}>{userName.charAt(0).toUpperCase()}</span>;
+    }
+
     const letterMap: Record<EMessageType, string> = {
       user: 'U',
       bot: 'B',

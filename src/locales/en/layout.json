@@ -19,6 +19,7 @@
     "offline": "Offline",
     "yourMessageWillBeSent": "Your message will be sent to me, the bot, in the messenger (telegram)",
     "send": "Send",
-    "enterYourMessage": "Enter your message..."
+    "enterYourMessage": "Enter your message...",
+    "visitor": "Visitor"
   }
 }

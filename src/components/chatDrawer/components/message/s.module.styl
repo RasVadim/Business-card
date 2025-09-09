@@ -13,8 +13,7 @@
 .ownerMessage
   .messageContent
     background-color var(--background-front-color) !important
-    background linear-gradient(135deg, var(--c-brand1-t-color) 0%, var(--c-brand2-t-color) 100%)
-    color var(--contrast-color)
+    background linear-gradient(135deg, var(--c-brand1-t-color) 0%, var(--c-brand2-t-color) 100%) !important
 
 // Message content bubble
 .messageContent
@@ -24,6 +23,7 @@
   max-width 100%
   word-wrap break-word
   box-shadow 0 1px 2px rgba(0, 0, 0, 0.1)
+  color var(--text-color)
 
 // User message styling
 .userMessage .messageContent
@@ -34,7 +34,8 @@
 
 // Bot message styling
 .botMessage .messageContent
-  background-color var(--text-highlight-color)
+  background-color var(--img-bg-color)
+  background linear-gradient(135deg, var(--img-bg-color) 0%, var(--shadow-hover-color) 100%)
   border-bottom-left-radius 4px
   margin-right 40px
 

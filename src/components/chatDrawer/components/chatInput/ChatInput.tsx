@@ -40,23 +40,25 @@ export const ChatInput: FC = () => {
   };
 
   return (
-    <div className={s.inputContainer}>
-      <textarea
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyPress={handleKeyPress}
-        placeholder={t('layout.enterYourMessage')}
-        className={s.messageInput}
-        rows={1}
-      />
-      <Button
-        onClick={handleSendMessage}
-        disabled={!inputValue.trim() || chatState.isLoading}
-        className={s.sendButton}
-        active
-        label={t('layout.send')}
-        size="large"
-      />
+    <div className={s.wrapper}>
+      <div className={s.inputContainer}>
+        <textarea
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder={t('layout.enterYourMessage')}
+          className={s.messageInput}
+          rows={1}
+        />
+        <Button
+          onClick={handleSendMessage}
+          disabled={!inputValue.trim() || chatState.isLoading}
+          className={s.sendButton}
+          active
+          label={t('layout.send')}
+          size="large"
+        />
+      </div>
     </div>
   );
 };

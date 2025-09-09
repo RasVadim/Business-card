@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
 import { sendTelegramMessage } from '@/api';
-import { useAddMessage, useSetLoading, useSetConnected } from '@/store/atoms';
+import { useAddMessage, useSetLoading, useSetConnected, useUserName } from '@/store/atoms';
 import { IChatMessage, EMessageType } from '@/types';
 import { getUserMetadata, getUserSiteId } from '@/utils';
 
@@ -9,6 +9,7 @@ export const useTelegramBot = () => {
   const addMessage = useAddMessage();
   const setLoading = useSetLoading();
   const setConnected = useSetConnected();
+  const [userName] = useUserName();
 
   const sendMessage = useCallback(
     async (message: string) => {
@@ -18,10 +19,11 @@ export const useTelegramBot = () => {
         const userMetadata = getUserMetadata();
         const userSiteId = getUserSiteId();
 
-        // Add userSiteId to metadata
+        // Add userSiteId and userName to metadata
         const enhancedMetadata = {
           ...userMetadata,
           userSiteId,
+          userName,
         };
 
         console.log('useTelegramBot sending message with metadata:', enhancedMetadata);
@@ -55,7 +57,7 @@ export const useTelegramBot = () => {
         setLoading(false);
       }
     },
-    [addMessage, setLoading, setConnected],
+    [addMessage, setLoading, setConnected, userName],
   );
 
   return {
