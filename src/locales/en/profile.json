@@ -26,9 +26,8 @@
     },
     "ownProjectDescriptions": {
       "op1": "Interactive business card with candidate's experience data.",
-      "op2": "Browser extension to manage application submissions with window tracking and auto‑fill.",
-      "op3": "Telegram bot to manage extension subscriptions, including key generation and payments.",
-      "op4": "A project that visualizes your whole life by weeks."
+      "op2": "Browser extension to manage application submissions with auto‑fill. \n + \n Telegram bot to manage subscriptions with key generation and payments.",
+      "op3": "A project that visualizes your whole life by weeks."
     },
     "projectFullDescriptions": {
       "p1": "- First commercial project providing foundational professional experience",
@@ -40,10 +39,9 @@
       "p7": "- Full desktop application for Windows, macOS, Linux with OS API integration, Remote configuration"
     },
     "ownProjectFullDescriptions": {
-      "op1": "- Connected Telegram bot, mini backend on node.js",
-      "op2": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation",
-      "op3": "- Telegram API, key hash generation, crypto wallet integration",
-      "op4": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization"
+      "op1": "- Connected Telegram bot, messages through redis, server-less functions",
+      "op2": "- Vanilla JS extension, messaging between browser scripts, data encryption, code obfuscation\n- Telegram API, key hash generation, crypto wallet integration",
+      "op3": "- PWA, 5000 elements on page, canvas rendering with Pixi.js, performance optimization"
     },
     "educationData": {
       "degree": "Service specialist of microprocessor technology",
@@ -128,6 +126,6 @@
       "firebase": "Backend-as-a-Service platform",
       "rest": "Representational State Transfer API"
     },
-    "cvBigDescription": "+7 years of frontend development experience. Held lead positions in 4 projects, contributed to large-scale CRM systems, international e-commerce, and desktop applications."
+    "cvBigDescription": "+{{expYears}} years of frontend development experience. Held lead positions in {{leadedProjects}} projects, contributed to large-scale CRM systems, international e-commerce, and desktop applications."
   }
 }

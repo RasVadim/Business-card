@@ -1,3 +1,7 @@
+export { getUserSiteId } from './userSiteId';
+export { getExperienceYears } from './getExperienceYears';
+export { getLeadedProjects } from './getLeadedProjects';
+
 // toggleTheme
 export { toggleTheme } from './toggleTheme/toggleTheme';
 
@@ -13,6 +17,3 @@ export { getUserMetadata } from './common/getUserMetadata';
 // scroll
 export { createSectionScrollHandler } from './scroll/sectionDetection';
 export { globalScrollManager } from './scroll/globalScrollManager';
-
-// userSiteId
-export { getUserSiteId } from './userSiteId';
