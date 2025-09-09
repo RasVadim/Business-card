@@ -13,7 +13,7 @@ export const ChatHeader: FC = () => {
 
   return (
     <div className={s.chatHeader}>
-      <h3 className={s.chatTitle}>{t('profile.name')}</h3>
+      <h3 className={s.chatTitle}>Ваше имя</h3>
       <div className={s.chatStatus}>
         <div className={cn(s.statusDot, { [s.connected]: chatState.isConnected })} />
         <span className={s.statusText}>

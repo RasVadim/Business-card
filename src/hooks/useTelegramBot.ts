@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import { sendTelegramMessage } from '@/api';
 import { useAddMessage, useSetLoading, useSetConnected } from '@/store/atoms';
-import { IChatMessage } from '@/types';
+import { IChatMessage, EMessageType } from '@/types';
 import { getUserMetadata, getUserSiteId } from '@/utils';
 
 export const useTelegramBot = () => {
@@ -33,7 +33,7 @@ export const useTelegramBot = () => {
           id: Date.now().toString(),
           text: '✅ Сообщение отправлено! Я передам его владельцу сайта.',
           timestamp: Date.now(),
-          isFromUser: false,
+          type: EMessageType.BOT,
         };
 
         addMessage(botMessage);
@@ -46,7 +46,7 @@ export const useTelegramBot = () => {
           id: Date.now().toString(),
           text: '❌ Произошла ошибка при отправке сообщения. Попробуйте еще раз.',
           timestamp: Date.now(),
-          isFromUser: false,
+          type: EMessageType.BOT,
         };
 
         addMessage(errorMessage);

@@ -1,8 +1,14 @@
+export enum EMessageType {
+  USER = 'user',
+  BOT = 'bot',
+  OWNER = 'owner',
+}
+
 export interface IChatMessage {
   id: string;
   text: string;
   timestamp: number;
-  isFromUser: boolean;
+  type: EMessageType;
   isRead?: boolean;
   userSiteId?: string; // For personal messages
 }

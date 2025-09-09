@@ -19,7 +19,7 @@ export const ChatDrawer: FC = () => {
     <Drawer
       keyProp={EModalKeys.CHAT_DRAWER}
       onClose={handleClose}
-      title={t('layout.writeMe')}
+      title={t('profile.name')}
       closeButton={true}
     >
       <Chat />

@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import { useTranslation, useTelegramBot } from '@/hooks';
 import { useChatState, useAddMessage } from '@/store/atoms';
-import { IChatMessage } from '@/types';
+import { IChatMessage, EMessageType } from '@/types';
 import { Button } from '@/ui-kit';
 
 import s from './s.module.styl';
@@ -21,7 +21,7 @@ export const ChatInput: FC = () => {
       id: Date.now().toString(),
       text: inputValue.trim(),
       timestamp: Date.now(),
-      isFromUser: true,
+      type: EMessageType.USER,
     };
 
     addMessage(userMessage);
