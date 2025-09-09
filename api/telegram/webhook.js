@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         text: message.text,
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
         type: 'owner', // Messages from Telegram are from owner
-        userSiteId: userSiteId, // Add userSiteId for personal messages
+        userSiteId: userSiteId || 'global', // Use 'global' if no userSiteId found
       };
 
       // Store message in Vercel KV with retry logic

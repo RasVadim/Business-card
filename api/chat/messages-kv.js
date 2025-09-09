@@ -22,10 +22,14 @@ export default async function handler(req, res) {
     }
 
     try {
-      // Get all message keys for this user
-      const messageKeys = await kv.keys(`message:${userSiteId}:*`);
+      // Get message keys for this user AND global messages
+      const userMessageKeys = await kv.keys(`message:${userSiteId}:*`);
+      const globalMessageKeys = await kv.keys(`message:global:*`);
 
-      if (messageKeys.length === 0) {
+      // Combine both arrays
+      const allMessageKeys = [...userMessageKeys, ...globalMessageKeys];
+
+      if (allMessageKeys.length === 0) {
         return res.status(200).json({
           success: true,
           messages: [],
@@ -34,7 +38,7 @@ export default async function handler(req, res) {
       }
 
       // Get all messages at once
-      const messages = await kv.mget(...messageKeys);
+      const messages = await kv.mget(...allMessageKeys);
 
       // Filter out null values and format messages
       const validMessages = messages
@@ -49,8 +53,8 @@ export default async function handler(req, res) {
         .sort((a, b) => a.timestamp - b.timestamp);
 
       // Delete delivered messages from KV
-      if (messageKeys.length > 0) {
-        await kv.del(...messageKeys);
+      if (allMessageKeys.length > 0) {
+        await kv.del(...allMessageKeys);
       }
 
       console.log(`📨 Delivered ${validMessages.length} messages to user ${userSiteId}`);
