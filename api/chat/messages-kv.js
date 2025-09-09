@@ -57,8 +57,6 @@ export default async function handler(req, res) {
         await kv.del(...allMessageKeys);
       }
 
-      console.log(`📨 Delivered ${validMessages.length} messages to user ${userSiteId}`);
-
       return res.status(200).json({
         success: true,
         messages: validMessages,
@@ -91,8 +89,6 @@ export default async function handler(req, res) {
 
       // Store with 15-day TTL (15 * 24 * 60 * 60 = 1,296,000 seconds)
       await kv.setex(messageKey, 15 * 24 * 60 * 60, messageData);
-
-      console.log(`✅ Message stored in KV: ${messageKey}`);
 
       return res.status(200).json({
         success: true,

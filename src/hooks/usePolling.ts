@@ -9,7 +9,7 @@ const POLLING_INTERVAL = 10 * 1000;
 export const usePolling = () => {
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const pollMessages = async () => {
@@ -22,8 +22,6 @@ export const usePolling = () => {
           const data = await response.json();
 
           if (data.success && data.messages && data.messages.length > 0) {
-            console.log(`📨 Received ${data.messages.length} new messages from KV`);
-
             data.messages.forEach(
               (msg: {
                 id: string;
@@ -45,8 +43,6 @@ export const usePolling = () => {
 
             // Note: KV API automatically deletes messages after delivery
             // so we don't need to track lastMessageId
-          } else {
-            console.log('📭 No new messages');
           }
         } else {
           console.error('❌ Polling failed with status:', response.status);

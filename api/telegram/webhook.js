@@ -47,8 +47,6 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Failed to store message' });
       }
 
-      console.log(`✅ Message stored in KV for user: ${userSiteId || 'global'}`);
-
       return res.status(200).json({ success: true });
     }
 
@@ -69,8 +67,6 @@ async function storeMessageInKV(message, maxRetries = 3) {
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      console.log(`🔄 Storing message in KV (attempt ${attempt}/${maxRetries})`);
-
       const response = await fetch(`${baseUrl}/api/chat/messages-kv`, {
         method: 'POST',
         headers: {
@@ -82,7 +78,6 @@ async function storeMessageInKV(message, maxRetries = 3) {
       });
 
       if (response.ok) {
-        console.log('✅ Message stored successfully in KV');
         return true;
       }
 
@@ -98,7 +93,6 @@ async function storeMessageInKV(message, maxRetries = 3) {
       // Wait before retry (exponential backoff)
       if (attempt < maxRetries) {
         const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
-        console.log(`⏳ Waiting ${delay}ms before retry...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
     } catch (error) {
@@ -107,7 +101,6 @@ async function storeMessageInKV(message, maxRetries = 3) {
       // If it's a network error, retry
       if (attempt < maxRetries) {
         const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
-        console.log(`⏳ Waiting ${delay}ms before retry...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }

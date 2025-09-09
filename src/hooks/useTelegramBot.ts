@@ -30,8 +30,6 @@ export const useTelegramBot = () => {
           userName,
         };
 
-        console.log('useTelegramBot sending message with metadata:', enhancedMetadata);
-
         await sendTelegramMessage(message, enhancedMetadata);
 
         // Add bot confirmation message
