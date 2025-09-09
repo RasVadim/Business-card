@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC, useState, useMemo } from 'react';
 
 import { CONTACTS } from '@/constants';
 import { useTranslation } from '@/hooks';
 import { GithubIcon, LinkedinIcon, MailIcon, TelegramIcon } from '@/icons';
+import { getExperienceYears, getLeadedProjects } from '@/utils';
 
 import s from './s.module.styl';
 
@@ -12,6 +13,14 @@ export const HeaderCard: FC = () => {
   const [showImage, setShowImage] = useState(false);
 
   const firstLetter = 'V';
+
+  const { expYears, leadedProjects } = useMemo(
+    () => ({
+      expYears: getExperienceYears(),
+      leadedProjects: getLeadedProjects(),
+    }),
+    [],
+  );
 
   // Static skeleton matching the PDF header; replace texts later by i18n/data if needed
   return (
@@ -29,7 +38,12 @@ export const HeaderCard: FC = () => {
       <div className={s.titleBlock}>
         <h1 className={s.name}>{t('profile.name')}</h1>
         <div className={s.role}>Senior Frontend Engineer</div>
-        <p className={s.summary}>{t('profile.cvBigDescription')}</p>
+        <p className={s.summary}>
+          {t('profile.cvBigDescription', {
+            expYears,
+            leadedProjects,
+          })}
+        </p>
       </div>
       <div className={s.contacts}>
         <span className={s.contact}>

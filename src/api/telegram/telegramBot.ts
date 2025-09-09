@@ -35,8 +35,6 @@ export const sendTelegramMessage = async (
   },
 ): Promise<ITelegramBotResponse> => {
   try {
-    console.log('telegramBot.ts sending to API:', { message, userMetadata });
-
     // Send to our secure backend API instead of directly to Telegram
     const response = await fetch('/api/telegram/send-message', {
       method: 'POST',

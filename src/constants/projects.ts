@@ -7,7 +7,6 @@ import {
   LogoIcon,
   MegePlanIcon,
   PassportDealerIcon,
-  SubscriptionTGBotIcon,
   VPNDesktopAppIcon,
   VPNExtensionIcon,
 } from '@/icons';
@@ -154,6 +153,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p1',
     companyId: 'c1',
     icon: MegePlanIcon,
+    photo: '/images/projects/MegaPlanPhoto.jpg',
+    video: '/videos/projects/MegaPlanClip.mp4',
     isLead: false,
     technologies: [
       HARD_SKILLS.React,
@@ -171,10 +172,10 @@ export const PROJECTS = {
 };
 
 export const OWN_PROJECTS = {
-  op4: {
+  op3: {
     name: 'Life Calendar',
-    descriptionKey: 'profile.ownProjectDescriptions.op4',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op4',
+    descriptionKey: 'profile.ownProjectDescriptions.op3',
+    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
     icon: LifeCalendarIcon,
     technologies: [
       HARD_SKILLS.React,
@@ -189,27 +190,15 @@ export const OWN_PROJECTS = {
       HARD_SKILLS.GitHub,
     ],
   },
-  op3: {
-    name: 'Subscription Telegram Bot',
-    descriptionKey: 'profile.ownProjectDescriptions.op3',
-    fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
-    icon: SubscriptionTGBotIcon,
-    technologies: [
-      HARD_SKILLS.JavaScript,
-      HARD_SKILLS.TypeScript,
-      HARD_SKILLS.Nodejs,
-      HARD_SKILLS.Git,
-      HARD_SKILLS.GitHub,
-    ],
-  },
   op2: {
-    name: 'Auto Fill chrome extension',
+    name: 'Chrome extension + Telegram Bot',
     descriptionKey: 'profile.ownProjectDescriptions.op2',
     fullDescriptionKey: 'profile.ownProjectFullDescriptions.op2',
     icon: AutoFillExtensionIcon,
     technologies: [
       HARD_SKILLS.JavaScript,
       HARD_SKILLS.TypeScript,
+      HARD_SKILLS.Nodejs,
       HARD_SKILLS.CSS,
       HARD_SKILLS.Git,
       HARD_SKILLS.GitHub,

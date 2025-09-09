@@ -36,33 +36,15 @@ export default async function handler(req, res) {
         text: message.text,
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
         type: 'owner', // Messages from Telegram are from owner
-        userSiteId: userSiteId, // Add userSiteId for personal messages
+        userSiteId: userSiteId || 'global', // Use 'global' if no userSiteId found
       };
 
-      // Also store message for polling fallback
-      try {
-        // eslint-disable-next-line no-undef
-        const baseUrl = process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}`
-          : 'http://localhost:3000';
-        
-        const response = await fetch(`${baseUrl}/api/chat/messages`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: chatMessage }),
-        });
+      // Store message in Vercel KV with retry logic
+      const success = await storeMessageInKV(chatMessage);
 
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error(
-            '❌ Failed to store message for polling. Status:',
-            response.status,
-            'Error:',
-            errorText,
-          );
-        }
-      } catch (error) {
-        console.error('❌ Failed to store message for polling:', error);
+      if (!success) {
+        console.error('❌ Failed to store message in KV');
+        return res.status(500).json({ error: 'Failed to store message' });
       }
 
       return res.status(200).json({ success: true });
@@ -74,4 +56,56 @@ export default async function handler(req, res) {
     console.error('Error processing Telegram webhook:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+}
+
+// Store message in Vercel KV with retry logic
+async function storeMessageInKV(message, maxRetries = 3) {
+  // eslint-disable-next-line no-undef
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}` // eslint-disable-line no-undef
+    : 'http://localhost:3000';
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await fetch(`${baseUrl}/api/chat/messages-kv`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'TelegramWebhook/1.0',
+        },
+        body: JSON.stringify({ message }),
+        signal: AbortSignal.timeout(10000), // 10 second timeout
+      });
+
+      if (response.ok) {
+        return true;
+      }
+
+      const errorText = await response.text();
+      console.error(`❌ Attempt ${attempt} failed:`, response.status, errorText);
+
+      // If it's a client error (4xx), don't retry
+      if (response.status >= 400 && response.status < 500) {
+        console.error('❌ Client error, not retrying');
+        return false;
+      }
+
+      // Wait before retry (exponential backoff)
+      if (attempt < maxRetries) {
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    } catch (error) {
+      console.error(`❌ Attempt ${attempt} error:`, error.message);
+
+      // If it's a network error, retry
+      if (attempt < maxRetries) {
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    }
+  }
+
+  console.error('❌ All retry attempts failed');
+  return false;
 }

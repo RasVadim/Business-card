@@ -9,41 +9,40 @@ const POLLING_INTERVAL = 10 * 1000;
 export const usePolling = () => {
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const pollMessages = async () => {
       try {
         const userSiteId = getUserSiteId();
-        
-        const response = await fetch(
-          `/api/chat/messages?since=${lastMessageIdRef.current}&userSiteId=${userSiteId}`,
-        );
+
+        const response = await fetch(`/api/chat/messages-kv?userSiteId=${userSiteId}`);
 
         if (response.ok) {
           const data = await response.json();
 
-          if (data.success && data.messages.length > 0) {
+          if (data.success && data.messages && data.messages.length > 0) {
             data.messages.forEach(
               (msg: {
-                id: number;
+                id: string;
                 text: string;
                 timestamp: number;
                 type: string;
                 userSiteId?: string;
               }) => {
                 const chatMessage: IChatMessage = {
-                  id: msg.id.toString(),
+                  id: msg.id,
                   text: msg.text,
                   timestamp: msg.timestamp,
                   type: msg.type as EMessageType,
-                  userSiteId: msg.userSiteId, // Include userSiteId for personal messages
+                  userSiteId: msg.userSiteId,
                 };
                 addMessage(chatMessage);
               },
             );
 
-            lastMessageIdRef.current = data.lastMessageId;
+            // Note: KV API automatically deletes messages after delivery
+            // so we don't need to track lastMessageId
           }
         } else {
           console.error('❌ Polling failed with status:', response.status);
