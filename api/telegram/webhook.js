@@ -35,6 +35,7 @@ export default async function handler(req, res) {
         id: message.message_id.toString(),
         text: message.text,
         timestamp: message.date * 1000, // Convert Unix timestamp to milliseconds
+        type: 'owner', // Messages from Telegram are from owner
         userSiteId: userSiteId, // Add userSiteId for personal messages
       };
 

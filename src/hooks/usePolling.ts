@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import { useAddMessage } from '@/store/atoms';
-import { IChatMessage } from '@/types';
+import { IChatMessage, EMessageType } from '@/types';
 import { getUserSiteId } from '@/utils';
 
 const POLLING_INTERVAL = 10 * 1000;
@@ -29,7 +29,7 @@ export const usePolling = () => {
                   id: msg.id.toString(),
                   text: msg.text,
                   timestamp: msg.timestamp,
-                  isFromUser: false,
+                  type: EMessageType.BOT,
                   userSiteId: msg.userSiteId, // Include userSiteId for personal messages
                 };
                 addMessage(chatMessage);

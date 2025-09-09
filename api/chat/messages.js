@@ -42,7 +42,7 @@ export default async function handler(req, res) {
       id: ++lastMessageId,
       text: message.text,
       timestamp: message.timestamp || Date.now(),
-      isFromUser: false,
+      type: 'bot', // Messages from webhook are always from bot
       userSiteId: message.userSiteId || null, // Add userSiteId for personal messages
     };
 
