@@ -20,6 +20,8 @@
     "yourMessageWillBeSent": "Your message will be sent to me, the bot, in the messenger (telegram)",
     "send": "Send",
     "enterYourMessage": "Enter your message...",
-    "visitor": "Visitor"
+    "visitor": "Visitor",
+    "messageSentSuccessfully": "✅ Message sent! Forwarding to Telegram messenger.",
+    "messageSentFailed": "❌ Failed to send message. Please try again."
   }
 }

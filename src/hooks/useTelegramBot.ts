@@ -1,11 +1,15 @@
 import { useCallback } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { sendTelegramMessage } from '@/api';
 import { useAddMessage, useSetLoading, useSetConnected, useUserName } from '@/store/atoms';
 import { IChatMessage, EMessageType } from '@/types';
 import { getUserMetadata, getUserSiteId } from '@/utils';
 
 export const useTelegramBot = () => {
+  const { t } = useTranslation();
+
   const addMessage = useAddMessage();
   const setLoading = useSetLoading();
   const setConnected = useSetConnected();
@@ -33,7 +37,7 @@ export const useTelegramBot = () => {
         // Add bot confirmation message
         const botMessage: IChatMessage = {
           id: Date.now().toString(),
-          text: '✅ Сообщение отправлено! Я передам его владельцу сайта.',
+          text: t('layout.messageSentSuccessfully'),
           timestamp: Date.now(),
           type: EMessageType.BOT,
         };
@@ -46,7 +50,7 @@ export const useTelegramBot = () => {
         // Add error message
         const errorMessage: IChatMessage = {
           id: Date.now().toString(),
-          text: '❌ Произошла ошибка при отправке сообщения. Попробуйте еще раз.',
+          text: t('layout.messageSentFailed'),
           timestamp: Date.now(),
           type: EMessageType.BOT,
         };
