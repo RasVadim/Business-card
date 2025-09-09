@@ -51,8 +51,9 @@ export const usePolling = () => {
               },
             );
 
+            console.log('📊 Before update - lastMessageId:', lastMessageIdRef.current, 'new lastMessageId:', data.lastMessageId);
             lastMessageIdRef.current = data.lastMessageId;
-            console.log('📊 Updated lastMessageId to:', lastMessageIdRef.current);
+            console.log('📊 After update - lastMessageId:', lastMessageIdRef.current);
           } else {
             console.log('📭 No new messages');
           }

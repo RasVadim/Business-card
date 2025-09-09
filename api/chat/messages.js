@@ -28,10 +28,13 @@ export default async function handler(req, res) {
     
     console.log('🔍 Filtered messages:', filteredMessages);
 
+    const responseLastMessageId = messages.length > 0 ? messages[messages.length - 1].id : 0;
+    console.log('📤 Sending response with lastMessageId:', responseLastMessageId);
+    
     return res.status(200).json({
       success: true,
       messages: filteredMessages,
-      lastMessageId: messages.length > 0 ? messages[messages.length - 1].id : 0,
+      lastMessageId: responseLastMessageId,
     });
   }
 
@@ -46,7 +49,7 @@ export default async function handler(req, res) {
     }
 
     const newMessage = {
-      id: ++lastMessageId,
+      id: message.id || (++lastMessageId).toString(), // Use original id from message, or generate new one
       text: message.text,
       timestamp: message.timestamp || Date.now(),
       type: message.type || 'bot', // Use the type from the message, default to 'bot'
