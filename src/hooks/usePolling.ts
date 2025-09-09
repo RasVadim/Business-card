@@ -9,7 +9,7 @@ const POLLING_INTERVAL = 10 * 1000;
 export const usePolling = () => {
   const addMessage = useAddMessage();
   const lastMessageIdRef = useRef(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     const pollMessages = async () => {
