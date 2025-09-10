@@ -1,3 +1,5 @@
+@import '../../../../styles/vars.styl'
+
 .wrapper
   margin-top 250px
   display flex
@@ -16,4 +18,7 @@
 .list
   display grid
   grid-template-columns 1fr
-  gap 90px
+  gap 70px
+
+  @media (min-width $mobile-width)
+    gap 120px
