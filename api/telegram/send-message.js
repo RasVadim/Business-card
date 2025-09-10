@@ -55,12 +55,9 @@ export default async function handler(req, res) {
 }
 
 function formatMessageForTelegram(message, userMetadata) {
-  let formattedMessage = `💬 <b>Новое сообщение с сайта</b>\n\n`;
-  formattedMessage += `📝 ${message}\n\n`;
+  let formattedMessage = `📝 ${message}\n\n\n`;
 
   if (userMetadata) {
-    formattedMessage += `📊 <b>Метаданные:</b>\n`;
-
     // User info
     if (userMetadata.userName) {
       formattedMessage += `👤 ${userMetadata.userName}`;
@@ -76,6 +73,14 @@ function formatMessageForTelegram(message, userMetadata) {
     }
     if (userMetadata.time?.timezone) {
       timeInfo.push(userMetadata.time.timezone);
+    }
+    if (userMetadata.time?.timezoneOffset) {
+      const offsetHours = Math.abs(userMetadata.time.timezoneOffset) / 60;
+      const offsetSign = userMetadata.time.timezoneOffset <= 0 ? '+' : '-';
+      timeInfo.push(`UTC${offsetSign}${offsetHours}`);
+    }
+    if (userMetadata.time?.localTime) {
+      timeInfo.push(`(${userMetadata.time.localTime})`);
     }
     if (timeInfo.length > 0) {
       formattedMessage += `\n🕐 ${timeInfo.join(', ')}`;
@@ -119,13 +124,29 @@ function formatMessageForTelegram(message, userMetadata) {
     }
 
     // Language
-    if (userMetadata.locale?.language) {
-      formattedMessage += `\n🗣️ ${userMetadata.locale.language}`;
+    if (userMetadata.locale?.languages) {
+      formattedMessage += `\n🗣️ ${userMetadata.locale.languages.join(', ')}`;
     }
 
-    // Visit count
+    // Visit info
+    const visitInfo = [];
     if (userMetadata.behavior?.visitCount) {
-      formattedMessage += `\n📈 visit #${userMetadata.behavior.visitCount}`;
+      visitInfo.push(`visit #${userMetadata.behavior.visitCount}`);
+    }
+    if (userMetadata.behavior?.lastVisit) {
+      const lastVisitDate = new Date(parseInt(userMetadata.behavior.lastVisit)).toLocaleDateString(
+        'ru-RU',
+      );
+      visitInfo.push(`last: ${lastVisitDate}`);
+    }
+    if (userMetadata.behavior?.sessionStart) {
+      const sessionStartDate = new Date(
+        parseInt(userMetadata.behavior.sessionStart),
+      ).toLocaleTimeString('ru-RU');
+      visitInfo.push(`session: ${sessionStartDate}`);
+    }
+    if (visitInfo.length > 0) {
+      formattedMessage += `\n📈 ${visitInfo.join(', ')}`;
     }
   }
 

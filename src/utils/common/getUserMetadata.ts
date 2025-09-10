@@ -59,7 +59,6 @@ export const getUserMetadata = () => {
 
   // Language and locale
   const localeInfo = {
-    language: navigator.language,
     languages: navigator.languages || [navigator.language],
   };
 
@@ -93,7 +92,6 @@ export const getUserMetadata = () => {
     // Browser info
     browser: {
       name: getBrowser(),
-      version: userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera)\/[\d.]+/)?.[0] || 'Unknown',
     },
 
     // OS info
