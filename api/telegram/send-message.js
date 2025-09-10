@@ -55,7 +55,7 @@ export default async function handler(req, res) {
 }
 
 function formatMessageForTelegram(message, userMetadata) {
-  let formattedMessage = `💬 \n${message}\n\n`;
+  let formattedMessage = `💬 \n 📝 ${message}\n\n`;
 
   if (userMetadata) {
     // User info
