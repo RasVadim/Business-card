@@ -56,44 +56,78 @@ export default async function handler(req, res) {
 
 function formatMessageForTelegram(message, userMetadata) {
   let formattedMessage = `💬 <b>Новое сообщение с сайта</b>\n\n`;
-  formattedMessage += `📝 <b>Сообщение:</b>\n${message}\n\n`;
+  formattedMessage += `📝 ${message}\n\n`;
 
   if (userMetadata) {
     formattedMessage += `📊 <b>Метаданные:</b>\n`;
 
+    // User info
     if (userMetadata.userName) {
-      formattedMessage += `👤 <b>Имя:</b> ${userMetadata.userName}\n`;
+      formattedMessage += `👤 ${userMetadata.userName}`;
     }
-
     if (userMetadata.userSiteId) {
-      formattedMessage += `🆔 <b>userSiteId:</b> ${userMetadata.userSiteId}\n`;
+      formattedMessage += `\n🆔 ${userMetadata.userSiteId}`;
     }
 
+    // Time and location
+    const timeInfo = [];
     if (userMetadata.timestamp) {
-      formattedMessage += `🕐 <b>Время:</b> ${new Date(userMetadata.timestamp).toLocaleString('ru-RU')}\n`;
+      timeInfo.push(new Date(userMetadata.timestamp).toLocaleString('ru-RU'));
+    }
+    if (userMetadata.time?.timezone) {
+      timeInfo.push(userMetadata.time.timezone);
+    }
+    if (timeInfo.length > 0) {
+      formattedMessage += `\n🕐 ${timeInfo.join(', ')}`;
     }
 
-    if (userMetadata.pageUrl) {
-      formattedMessage += `🌐 <b>Страница:</b> ${userMetadata.pageUrl}\n`;
+    // Device info
+    const deviceInfo = [];
+    if (userMetadata.device?.type) {
+      deviceInfo.push(userMetadata.device.type);
+    }
+    if (userMetadata.os?.name) {
+      deviceInfo.push(userMetadata.os.name);
+    }
+    if (userMetadata.browser?.name) {
+      deviceInfo.push(userMetadata.browser.name);
+    }
+    if (userMetadata.device?.screen) {
+      const { width, height } = userMetadata.device.screen;
+      deviceInfo.push(`${width}x${height}`);
+    }
+    if (userMetadata.device?.hardware?.cores) {
+      deviceInfo.push(`${userMetadata.device.hardware.cores} cores`);
+    }
+    if (userMetadata.device?.hardware?.memory) {
+      deviceInfo.push(`${userMetadata.device.hardware.memory} GB`);
+    }
+    if (deviceInfo.length > 0) {
+      formattedMessage += `\n💻 ${deviceInfo.join(', ')}`;
     }
 
-    if (userMetadata.referrer) {
-      formattedMessage += `🔗 <b>Источник:</b> ${userMetadata.referrer}\n`;
+    // URL info
+    const urlInfo = [];
+    if (userMetadata.url?.href) {
+      urlInfo.push(userMetadata.url.href);
+    }
+    if (userMetadata.url?.referrer && userMetadata.url.referrer !== 'Direct transition') {
+      urlInfo.push(`from: ${userMetadata.url.referrer}`);
+    }
+    if (urlInfo.length > 0) {
+      formattedMessage += `\n🌐 ${urlInfo.join(', ')}`;
     }
 
-    if (userMetadata.userAgent) {
-      formattedMessage += `💻 <b>Устройство:</b> ${getDeviceInfo(userMetadata.userAgent)}\n`;
+    // Language
+    if (userMetadata.locale?.language) {
+      formattedMessage += `\n🗣️ ${userMetadata.locale.language}`;
+    }
+
+    // Visit count
+    if (userMetadata.behavior?.visitCount) {
+      formattedMessage += `\n📈 visit #${userMetadata.behavior.visitCount}`;
     }
   }
 
   return formattedMessage;
-}
-
-function getDeviceInfo(userAgent) {
-  const isMobile = /Mobile|Android|iPhone|iPad/.test(userAgent);
-  const isTablet = /iPad|Tablet/.test(userAgent);
-
-  if (isTablet) return 'Планшет';
-  if (isMobile) return 'Мобильное устройство';
-  return 'Десктоп';
 }
