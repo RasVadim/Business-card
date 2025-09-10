@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 
+import { TELEGRAM_MESSAGES_KV_API } from '@/api';
 import { useAddMessage } from '@/store/atoms';
 import { IChatMessage, EMessageType } from '@/types';
 import { getUserSiteId } from '@/utils';
@@ -16,7 +17,7 @@ export const usePolling = () => {
       try {
         const userSiteId = getUserSiteId();
 
-        const response = await fetch(`/api/chat/messages-kv?userSiteId=${userSiteId}`);
+        const response = await fetch(TELEGRAM_MESSAGES_KV_API + `?userSiteId=${userSiteId}`);
 
         if (response.ok) {
           const data = await response.json();

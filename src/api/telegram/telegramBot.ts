@@ -1,3 +1,5 @@
+import { TELEGRAM_SEND_MESSAGE_API } from '../constants';
+
 // Telegram Bot API integration utilities
 
 export interface ITelegramMessage {
@@ -36,7 +38,7 @@ export const sendTelegramMessage = async (
 ): Promise<ITelegramBotResponse> => {
   try {
     // Send to our secure backend API instead of directly to Telegram
-    const response = await fetch('/api/telegram/send-message', {
+    const response = await fetch(TELEGRAM_SEND_MESSAGE_API, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
