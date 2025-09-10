@@ -80,7 +80,8 @@ function formatMessageForTelegram(message, userMetadata) {
       timeInfo.push(`UTC${offsetSign}${offsetHours}`);
     }
     if (userMetadata.time?.localTime) {
-      timeInfo.push(`(${userMetadata.time.localTime})`);
+      const timeOnly = new Date(userMetadata.time.localTime).toLocaleTimeString('ru-RU');
+      timeInfo.push(`(${timeOnly})`);
     }
     if (timeInfo.length > 0) {
       formattedMessage += `\n🕐 ${timeInfo.join(', ')}`;

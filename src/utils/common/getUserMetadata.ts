@@ -40,7 +40,7 @@ export const getUserMetadata = () => {
   // Hardware information
   const hardwareInfo = {
     cores: navigator.hardwareConcurrency || 0,
-    memory: (navigator as any).deviceMemory || 0,
+    memory: (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0,
   };
 
   // Time and date information
