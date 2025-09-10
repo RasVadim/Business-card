@@ -177,6 +177,8 @@ export const OWN_PROJECTS = {
     descriptionKey: 'profile.ownProjectDescriptions.op3',
     fullDescriptionKey: 'profile.ownProjectFullDescriptions.op3',
     icon: LifeCalendarIcon,
+    photo: '/images/projects/LifeCalendarPhoto.jpg',
+    video: '/videos/projects/LifeCalendarClip.mp4',
     technologies: [
       HARD_SKILLS.React,
       HARD_SKILLS.Pixi,
@@ -195,6 +197,8 @@ export const OWN_PROJECTS = {
     descriptionKey: 'profile.ownProjectDescriptions.op2',
     fullDescriptionKey: 'profile.ownProjectFullDescriptions.op2',
     icon: AutoFillExtensionIcon,
+    photo: '/images/projects/AutoFillExtensionPhoto.jpg',
+    video: '/videos/projects/AutoFillExtensionClip.mp4',
     technologies: [
       HARD_SKILLS.JavaScript,
       HARD_SKILLS.TypeScript,
@@ -209,6 +213,8 @@ export const OWN_PROJECTS = {
     descriptionKey: 'profile.ownProjectDescriptions.op1',
     fullDescriptionKey: 'profile.ownProjectFullDescriptions.op1',
     icon: LogoIcon,
+    photo: '/images/projects/BussinesCardPhoto.jpg',
+    // video: '/videos/projects/BussinesCardClip.mp4',
     technologies: [
       HARD_SKILLS.React,
       HARD_SKILLS.TypeScript,
