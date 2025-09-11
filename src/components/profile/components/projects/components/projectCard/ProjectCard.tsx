@@ -4,18 +4,21 @@ import cn from 'classnames';
 
 import { TOOLTIP_DELAY } from '@/constants';
 import { useScrollDetection } from '@/hooks';
+import { GithubIcon, LinkIcon } from '@/icons';
+import { useThemeMode } from '@/store/atoms';
+import { EThemeMode } from '@/types/settings';
 import { Tooltip } from '@/ui-kit';
+
+import { Skill } from '../../../skill/Skill';
+import { TProjectView } from '../../Projects';
+
+import s from './s.module.styl';
 
 enum EMediaState {
   PLACEHOLDER = 'placeholder',
   PHOTO = 'photo',
   VIDEO = 'video',
 }
-
-import { Skill } from '../../../skill/Skill';
-import { TProjectView } from '../../Projects';
-
-import s from './s.module.styl';
 
 type TProps = {
   project: TProjectView;
@@ -39,7 +42,11 @@ export const ProjectCard: FC<TProps> = ({
     photo,
     video,
     technologies = [],
+    gitHub,
+    link,
   } = project;
+
+  const [theme] = useThemeMode();
 
   // Media loading state - single enum instead of 4 booleans
   const [mediaState, setMediaState] = useState<EMediaState>(EMediaState.PLACEHOLDER);
@@ -47,6 +54,8 @@ export const ProjectCard: FC<TProps> = ({
   // Video control
   const videoRef = useRef<HTMLVideoElement>(null);
   const { isScrolling } = useScrollDetection();
+
+  const oppositeColor = theme === EThemeMode.DARK ? '#FFFFFF' : '#000000';
 
   // Preload photo first, then video
   useEffect(() => {
@@ -103,6 +112,25 @@ export const ProjectCard: FC<TProps> = ({
           </div>
         )}
         {description && <div className={s.description}>{description}</div>}
+
+        {/* Project links */}
+        {(gitHub || link) && (
+          <div className={s.links}>
+            {gitHub && (
+              <a href={gitHub} target="_blank" rel="noopener noreferrer" className={s.link}>
+                <GithubIcon size="16" color={oppositeColor} />
+                <span>{gitHub.replace('https://github.com/', '')}</span>
+              </a>
+            )}
+            {link && (
+              <a href={link} target="_blank" rel="noopener noreferrer" className={s.link}>
+                <LinkIcon size="16" color={oppositeColor} />
+                <span>{link.replace('https://', '')}</span>
+              </a>
+            )}
+          </div>
+        )}
+
         {technologies.length > 0 && (
           <div className={s.techList}>
             {technologies.map((tech) => (

@@ -90,6 +90,33 @@
   padding-top 16px
   white-space pre-line
 
+.links
+  display flex
+  flex-direction column
+  gap 6px
+  margin-top 12px
+
+.link
+  display flex
+  align-items center
+  gap 8px
+  color var(--brand-g2-color)
+  text-decoration none
+  font-size 13px
+  transition color 0.2s ease
+  opacity 0.5
+
+  &:hover
+    opacity 1
+
+  span
+    color var(--text-color)
+    word-break break-all
+    font-size 10px
+
+    &:hover
+      color var(--brand-g1-color)
+
 .techList
   display flex
   flex-wrap wrap

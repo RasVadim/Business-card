@@ -6,6 +6,8 @@ export type TProject = {
   icon?: React.ComponentType<{ className?: string; size?: string }>;
   video?: string;
   photo?: string;
+  gitHub?: string;
+  link?: string;
   technologies?: THardSkill[];
 };
 

@@ -179,6 +179,8 @@ export const OWN_PROJECTS = {
     icon: LifeCalendarIcon,
     photo: '/images/projects/LifeCalendarPhoto.jpg',
     video: '/videos/projects/LifeCalendarClip.mp4',
+    gitHub: 'https://github.com/RasVadim/Life-calendar',
+    link: 'https://calendarlife.vercel.app',
     technologies: [
       HARD_SKILLS.React,
       HARD_SKILLS.Pixi,
@@ -215,6 +217,8 @@ export const OWN_PROJECTS = {
     icon: LogoIcon,
     photo: '/images/projects/BussinesCardPhoto.jpg',
     // video: '/videos/projects/BussinesCardClip.mp4',
+    gitHub: 'https://github.com/RasVadim/Business-card',
+    link: 'https://rasstrigin.vercel.app',
     technologies: [
       HARD_SKILLS.React,
       HARD_SKILLS.TypeScript,
