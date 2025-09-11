@@ -66,6 +66,8 @@ export const PROJECTS = {
     fullDescriptionKey: 'profile.projectFullDescriptions.p5',
     companyId: 'c3',
     icon: BuilderPlatformIcon,
+    photo: '/images/projects/BuilderPlatformPhoto.jpg',
+    video: '/videos/projects/BuilderPlatformClip.mp4',
     isLead: true,
     technologies: [
       HARD_SKILLS.React,
