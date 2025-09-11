@@ -218,7 +218,7 @@ export const OWN_PROJECTS = {
     fullDescriptionKey: 'profile.ownProjectFullDescriptions.op1',
     icon: LogoIcon,
     photo: '/images/projects/BussinesCardPhoto.jpg',
-    // video: '/videos/projects/BussinesCardClip.mp4',
+    video: '/videos/projects/BussinesCardClip.mp4',
     gitHub: 'https://github.com/RasVadim/Business-card',
     link: 'https://rasstrigin.vercel.app',
     technologies: [
