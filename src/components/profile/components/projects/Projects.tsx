@@ -39,14 +39,14 @@ export const Projects: FC = () => {
 
   return (
     <div className={s.wrapper} id={ESection.PROJECTS}>
-      <div className={s.sectionTitle}>Projects</div>
+      <div className={s.sectionTitle}>{t('layout.projects')}</div>
       <div className={s.list}>
         {companyProjects.map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
       </div>
 
-      <div className={`${s.sectionTitle} ${s.secondTitle}`}>Own Projects</div>
+      <div className={`${s.sectionTitle} ${s.secondTitle}`}>{t('layout.ownProjects')}</div>
       <div className={s.list}>
         {ownProjects.map((project) => (
           <ProjectCard key={project.name} project={project} />
