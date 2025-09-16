@@ -23,12 +23,12 @@ export const LANGUAGES = [
     id: 'l1',
     nameKey: 'profile.languageList.english.name',
     levelKey: 'profile.languageList.english.level',
-    levelCode: 'B1',
+    levelCode: 'B2',
   },
   {
     id: 'l2',
     nameKey: 'profile.languageList.russian.name',
     levelKey: 'profile.languageList.russian.level',
-    levelCode: 'C1',
+    levelCode: 'C2',
   },
 ];
