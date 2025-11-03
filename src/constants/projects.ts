@@ -182,7 +182,7 @@ export const OWN_PROJECTS = {
     photo: '/images/projects/LifeCalendarPhoto.jpg',
     video: '/videos/projects/LifeCalendarClip.mp4',
     gitHub: 'https://github.com/RasVadim/Life-calendar',
-    link: 'https://calendarlife.vercel.app',
+    link: 'https://lcalendar.app',
     technologies: [
       HARD_SKILLS.React,
       HARD_SKILLS.Pixi,
