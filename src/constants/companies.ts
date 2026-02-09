@@ -3,6 +3,18 @@ import { TCompany } from '@/types';
 import { PROJECTS } from './projects';
 
 export const COMPANIES: Record<string, TCompany> = {
+  c5: {
+    name: 'Global Work AI',
+    descriptionKey: 'profile.companyDescriptions.c5',
+    countries: ['USA', 'Poland', 'Worldwide'],
+    startDate: '2025-11-01',
+    endDate: '2026-02-09',
+    position: 'Software Engineer',
+    technologies: ['React', 'TypeScript', 'NestJS', 'Node.js'],
+    image: '/images/companies/globalworkai.png',
+    isLead: false,
+    projects: [PROJECTS.p8],
+  },
   c4: {
     name: 'Browsec',
     descriptionKey: 'profile.companyDescriptions.c4',
@@ -51,17 +63,17 @@ export const COMPANIES: Record<string, TCompany> = {
     isLead: false,
     projects: [PROJECTS.p2, PROJECTS.p1],
   },
-  c0: {
-    name: 'KT.Team',
-    descriptionKey: 'profile.companyDescriptions.c0',
-    countries: ['Russia'],
-    startDate: '2017-12-01',
-    endDate: '2018-07-01',
-    position: 'Project Manager',
-    technologies: [],
-    image: '/images/companies/kt-team.png',
-    isLead: false,
-    projects: [],
-    isPM: true,
-  },
+  // c0: {
+  //   name: 'KT.Team',
+  //   descriptionKey: 'profile.companyDescriptions.c0',
+  //   countries: ['Russia'],
+  //   startDate: '2017-12-01',
+  //   endDate: '2018-07-01',
+  //   position: 'Project Manager',
+  //   technologies: [],
+  //   image: '/images/companies/kt-team.png',
+  //   isLead: false,
+  //   projects: [],
+  //   isPM: true,
+  // },
 };

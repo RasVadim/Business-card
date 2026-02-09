@@ -48,6 +48,7 @@ export { SoftSkillsIcon } from './softSkillsIcon';
 export { VPNExtensionIcon } from './VPNExtensionIcon';
 export { VPNDesktopAppIcon } from './VPNDesktopAppIcon';
 export { BuilderPlatformIcon } from './builderPlatformIcon';
+export { GlobalWorkAiIcon } from './GlobalWorkAiIcon';
 export { GUSADesktopIcon } from './GUSADesktopIcon';
 export { GUSAMobileIcon } from './GUSAMobileIcon';
 export { PassportDealerIcon } from './passportDealerIcon';

@@ -282,6 +282,19 @@ export const HARD_SKILLS: Record<string, THardSkill> = {
     showLabel: false,
     descriptionKey: 'profile.hardSkillDescriptions.rest',
   },
+  NestJS: {
+    name: 'NestJS',
+    icon: '/images/skills/NestJs.png',
+    showLabel: false,
+    descriptionKey: 'profile.hardSkillDescriptions.nestjs',
+  },
+  AIApi: {
+    name: 'AI API',
+    icon: '/images/skills/AiApi.png',
+    showLabel: true,
+    darkIcon: '/images/skills/AiApiDark.png',
+    descriptionKey: 'profile.hardSkillDescriptions.aiapi',
+  },
 };
 
 export const HARD_SKILL_CATEGORIES = [
@@ -305,7 +318,9 @@ export const HARD_SKILL_CATEGORIES = [
       HARD_SKILLS.Docker,
       HARD_SKILLS.Lua,
       HARD_SKILLS.Storybook,
+      HARD_SKILLS.AIApi,
       HARD_SKILLS.Nodejs,
+      HARD_SKILLS.NestJS,
       HARD_SKILLS.PWA,
       HARD_SKILLS.HTML,
       HARD_SKILLS.GitHub,

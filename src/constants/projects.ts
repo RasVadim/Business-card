@@ -3,6 +3,7 @@ import {
   BuilderPlatformIcon,
   GUSADesktopIcon,
   GUSAMobileIcon,
+  GlobalWorkAiIcon,
   LifeCalendarIcon,
   LogoIcon,
   MegePlanIcon,
@@ -14,6 +15,29 @@ import {
 import { HARD_SKILLS } from './skills';
 
 export const PROJECTS = {
+  p8: {
+    name: 'Global Work AI',
+    descriptionKey: 'profile.projectDescriptions.p8',
+    fullDescriptionKey: 'profile.projectFullDescriptions.p8',
+    companyId: 'c5',
+    icon: GlobalWorkAiIcon,
+    photo: '/images/projects/GlobalWorkAiPhoto.jpg',
+    video: '/videos/projects/GlobalWorkAi.mp4',
+    isLead: false,
+    technologies: [
+      HARD_SKILLS.Nodejs,
+      HARD_SKILLS.JavaScript,
+      HARD_SKILLS.TypeScript,
+      HARD_SKILLS.NestJS,
+      HARD_SKILLS.AIApi,
+      HARD_SKILLS.Docker,
+      HARD_SKILLS.REST,
+      HARD_SKILLS.GitHub,
+      HARD_SKILLS.HTML,
+      HARD_SKILLS.CSS,
+      HARD_SKILLS.Webpack,
+    ],
+  },
   p7: {
     name: 'VPN Desktop App',
     descriptionKey: 'profile.projectDescriptions.p7',
