@@ -17,26 +17,10 @@ export const usePolling = () => {
       try {
         const userSiteId = getUserSiteId();
 
-        const url = TELEGRAM_MESSAGES_KV_API + `?userSiteId=${userSiteId}`;
-        const response = await fetch(url);
-
-        // #region agent log
-        console.log('[debug] poll response', {
-          ok: response.ok,
-          status: response.status,
-          contentType: response.headers.get('content-type'),
-        });
-        // #endregion
+        const response = await fetch(TELEGRAM_MESSAGES_KV_API + `?userSiteId=${userSiteId}`);
 
         if (response.ok) {
           const data = await response.json();
-
-          // #region agent log
-          console.log('[debug] poll parsed', {
-            success: data.success,
-            messagesCount: data.messages ? data.messages.length : null,
-          });
-          // #endregion
 
           if (data.success && data.messages && data.messages.length > 0) {
             data.messages.forEach(

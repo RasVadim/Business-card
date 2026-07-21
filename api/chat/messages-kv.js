@@ -29,14 +29,6 @@ export default async function handler(req, res) {
       // Combine both arrays
       const allMessageKeys = [...userMessageKeys, ...globalMessageKeys];
 
-      // #region agent log
-      console.log('[debug] KV GET poll', {
-        userSiteId,
-        userKeys: userMessageKeys.length,
-        globalKeys: globalMessageKeys.length,
-      });
-      // #endregion
-
       if (allMessageKeys.length === 0) {
         return res.status(200).json({
           success: true,
@@ -80,14 +72,6 @@ export default async function handler(req, res) {
     // Store new message with 15-day TTL
     const { message } = req.body;
 
-    // #region agent log
-    console.log('[debug] KV POST entry', {
-      hasMessage: !!message,
-      hasText: !!(message && message.text),
-      userSiteId: message && message.userSiteId,
-    });
-    // #endregion
-
     if (!message || !message.text || !message.userSiteId) {
       return res.status(400).json({ error: 'Invalid message format' });
     }
@@ -105,10 +89,6 @@ export default async function handler(req, res) {
 
       // Store with 15-day TTL (15 * 24 * 60 * 60 = 1,296,000 seconds)
       await kv.setex(messageKey, 15 * 24 * 60 * 60, messageData);
-
-      // #region agent log
-      console.log('[debug] KV POST stored', { messageKey });
-      // #endregion
 
       return res.status(200).json({
         success: true,

@@ -10,15 +10,6 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
 
-    // #region agent log
-    console.log('[debug] webhook entry', {
-      hasMessage: !!message,
-      hasText: !!(message && message.text),
-      isBot: !!(message && message.from && message.from.is_bot),
-      hasReply: !!(message && message.reply_to_message),
-    });
-    // #endregion
-
     if (!message || !message.text) {
       console.error('❌ Invalid message format:', message);
       return res.status(400).json({ error: 'Invalid message format' });
@@ -37,16 +28,6 @@ export default async function handler(req, res) {
         }
       }
 
-      // #region agent log
-      console.log('[debug] userSiteId extraction', {
-        extracted: userSiteId,
-        replySnippet:
-          message.reply_to_message && message.reply_to_message.text
-            ? message.reply_to_message.text.slice(0, 120)
-            : null,
-      });
-      // #endregion
-
       // This is a message from user
       const chatMessage = {
         id: message.message_id.toString(),
@@ -58,10 +39,6 @@ export default async function handler(req, res) {
 
       // Store message in Vercel KV with retry logic
       const success = await storeMessageInKV(chatMessage);
-
-      // #region agent log
-      console.log('[debug] store result', { success, chatMessage });
-      // #endregion
 
       if (!success) {
         console.error('❌ Failed to store message in KV');
@@ -85,11 +62,6 @@ async function storeMessageInKV(message, maxRetries = 3) {
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}` // eslint-disable-line no-undef
     : 'http://localhost:3000';
-
-  // #region agent log
-  // eslint-disable-next-line no-undef
-  console.log('[debug] storeMessageInKV baseUrl', { baseUrl, hasVercelUrl: !!process.env.VERCEL_URL });
-  // #endregion
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
