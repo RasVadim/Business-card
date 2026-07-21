@@ -16,7 +16,7 @@ export type TCompany = {
   descriptionKey: string;
   countries: string[];
   startDate: string;
-  endDate: string;
+  endDate?: string;
   position: string;
   technologies: string[];
   projects: TProject[];

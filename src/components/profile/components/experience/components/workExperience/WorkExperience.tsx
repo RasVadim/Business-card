@@ -11,11 +11,18 @@ export const WorkExperience: FC = () => {
   const { t, i18n } = useTranslation();
 
   const items = useMemo(() => {
+    const latestCompany = Object.values(COMPANIES).reduce((latest, current) =>
+      new Date(current.startDate) > new Date(latest.startDate) ? current : latest,
+    );
+
     return Object.values(COMPANIES).map((company) => {
+      const isPresent = !company.endDate && latestCompany.name === company.name;
+      const end = isPresent ? 'Present' : company.endDate ? formatMonthYear(company.endDate) : '';
+
       return {
         title: company.position,
         company: company.name,
-        period: `${formatMonthYear(company.startDate)} - ${formatMonthYear(company.endDate)}`,
+        period: end ? `${formatMonthYear(company.startDate)} - ${end}` : formatMonthYear(company.startDate),
         location: company.countries?.join(', '),
         description: t(company.descriptionKey),
         projects: company.projects,

@@ -8,7 +8,6 @@ export const COMPANIES: Record<string, TCompany> = {
     descriptionKey: 'profile.companyDescriptions.c5',
     countries: ['USA', 'Poland', 'Worldwide'],
     startDate: '2025-11-01',
-    endDate: '2026-02-09',
     position: 'Software Engineer',
     technologies: ['React', 'TypeScript', 'NestJS', 'Node.js'],
     image: '/images/companies/globalworkai.png',
