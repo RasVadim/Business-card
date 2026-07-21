@@ -34,11 +34,11 @@ export const ExpierienceItem: FC<TProps> = ({ company }) => {
 
   const formatDates = (company: TCompany) => {
     const start = formatDate(company.startDate);
-    const present = isPresentCompany(company);
-    const end = present ? 'Present' : company.endDate ? formatDate(company.endDate) : '';
-    // #region agent log
-    fetch('http://127.0.0.1:7360/ingest/440c82d2-e822-49d4-884f-3df580880ffc',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'109fcf'},body:JSON.stringify({sessionId:'109fcf',runId:'post-fix',hypothesisId:'A',location:'ExpierienceItem.tsx:38',message:'formatDates',data:{name:company.name,endDate:company.endDate,isPresent:present,end},timestamp:Date.now()})}).catch(()=>{});
-    // #endregion
+    const end = isPresentCompany(company)
+      ? 'Present'
+      : company.endDate
+        ? formatDate(company.endDate)
+        : '';
     return end ? `${start} - ${end}` : start;
   };
 
