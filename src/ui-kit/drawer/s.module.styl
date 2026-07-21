@@ -6,8 +6,9 @@
   bottom 0
   width 100vw
   height 85dvh
-  background-color var(--background-front-color)
-  opacity 0.97
+  background-color var(--background-front-t-color)
+  -webkit-backdrop-filter blur(10px)
+  backdrop-filter blur(10px)
   border-top-left-radius 24px
   border-top-right-radius 24px
   box-shadow 0 -4px 24px rgba(0, 0, 0, 0.15)
@@ -68,15 +69,15 @@
 @keyframes showDrawer
   from
     transform translateY(100%)
-    opacity 0.3
+    opacity 0
 
   to
     transform translateY(0)
-    opacity 0.97
+    opacity 1
 
 @keyframes hideDrawer
   from
-    opacity 0.45
+    opacity 1
     display flex
 
   to
